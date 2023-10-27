@@ -24,6 +24,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         UpdateCoinsTexts();
     }
 
@@ -50,5 +51,19 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", coins);
 
 
+    }
+
+    public void UseCoin(int amount)
+    {
+        coins -= amount;
+
+        UpdateCoinsTexts();
+
+        PlayerPrefs.SetInt("coins", coins);
+    }
+
+    public int GetCoins()
+    {
+        return coins;
     }
 }

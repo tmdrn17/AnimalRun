@@ -11,7 +11,7 @@ public class SkinButton : MonoBehaviour
     [SerializeField] GameObject lockImage;
     [SerializeField] GameObject selector;
 
-    bool unlocked;
+    [SerializeField]bool unlocked;
 
     public void Configure(Sprite skinSprite, bool unlocked)
     {
@@ -32,7 +32,7 @@ public class SkinButton : MonoBehaviour
     {
         thisButton.interactable = true;
         skinImage.gameObject.SetActive(true);
-        lockImage.SetActive(true);
+        lockImage.SetActive(false);
 
         unlocked = true;
     }
@@ -52,6 +52,11 @@ public class SkinButton : MonoBehaviour
     public void Deselect()
     {
         selector.SetActive(false);
+    }
+
+    public Button GetButton()
+    {
+        return thisButton;
     }
 
     public bool IsUnlocked()
