@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Manager")]
     [SerializeField] ShopManager shopManager;
+    [SerializeField] ShootingManager shootingManager;
 
     [Header(" Elements ")]
     [SerializeField] private GameObject menuPanel;
@@ -49,9 +50,14 @@ public class UIManager : MonoBehaviour
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
         if (gameState == GameManager.GameState.Gameover)
+        {
             ShowGameover();
+        }
+
         else if (gameState == GameManager.GameState.LevelComplete)
+        {
             ShowLevelComplete();
+        }
     }
 
     public void PlayButtonPressed()

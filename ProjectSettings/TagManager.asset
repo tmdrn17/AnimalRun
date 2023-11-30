@@ -6,14 +6,16 @@ TagManager:
   tags:
   - Coin
   - First
+  - Enemy
+  - Special
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - 3DUI
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

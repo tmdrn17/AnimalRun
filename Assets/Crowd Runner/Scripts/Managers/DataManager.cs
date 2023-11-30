@@ -18,7 +18,9 @@ public class DataManager : MonoBehaviour
         else
             instance = this;
 
-        coins = PlayerPrefs.GetInt("coins", 0);
+        coins = PlayerPrefs.GetInt("coins", 20000);
+
+        AddCoins(20000);
     }
 
     // Start is called before the first frame update
@@ -49,8 +51,6 @@ public class DataManager : MonoBehaviour
         UpdateCoinsTexts();
 
         PlayerPrefs.SetInt("coins", coins);
-
-
     }
 
     public void UseCoin(int amount)

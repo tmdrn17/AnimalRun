@@ -8,6 +8,7 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField] private PlayerAnimator playerAnimator;
     [SerializeField] private Transform runnersParent;
     [SerializeField] private GameObject runnerPrefab;
+    [SerializeField] ShootingManager shootingManager;
 
     [Header(" Settings ")]
     [SerializeField] private float radius;
@@ -80,8 +81,9 @@ public class CrowdSystem : MonoBehaviour
     private void AddRunners(int amount)
     {
         for (int i = 0; i < amount; i++)
+        {
             Instantiate(runnerPrefab, runnersParent);
-
+        }
         playerAnimator.Run();
     }
 

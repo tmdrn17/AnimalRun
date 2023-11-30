@@ -13,10 +13,12 @@ public class SkinButton : MonoBehaviour
 
     [SerializeField]bool unlocked;
 
+
     public void Configure(Sprite skinSprite, bool unlocked)
     {
         skinImage.sprite = skinSprite;
         this.unlocked = unlocked;
+
 
         if (unlocked)
         {

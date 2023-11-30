@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAnimator playerAnimator;
 
     [Header(" Settings ")]
-    [SerializeField] private float moveSpeed;
+    public float moveSpeed;
     [SerializeField] private float roadWidth;
     private bool canMove;
 

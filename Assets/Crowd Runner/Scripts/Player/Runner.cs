@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
+    [Header("Elements")]
+    [SerializeField] Animator animator;
+    [SerializeField] RunnerSelector runnerSelector;
+
     [Header(" Settings ")]
     private bool isTarget;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            int runnerIndex = PlayerPrefs.GetInt("lastSelectedSkin", 0);
+
+            if (i == runnerIndex)
+            {
+                runnerSelector.SelectRunner(i);
+                SetAnimator(transform.GetChild(i).GetComponent<Animator>());
+            }
+            else
+            {
+                continue;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public void SetTarget()
@@ -27,5 +46,15 @@ public class Runner : MonoBehaviour
     public bool IsTarget()
     {
         return isTarget;
+    }
+
+    public Animator GetAnimator()
+    {
+        return animator;
+    }
+
+    public void SetAnimator(Animator animator)
+    {
+        this.animator = animator;
     }
 }

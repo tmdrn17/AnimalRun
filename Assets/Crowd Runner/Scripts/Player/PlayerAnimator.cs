@@ -8,25 +8,12 @@ public class PlayerAnimator : MonoBehaviour
     [Header(" Elements ")]
     [SerializeField] private Transform runnersParent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Run()
     {
         for (int i = 0; i < runnersParent.childCount; i++)
         {
             Transform runner = runnersParent.GetChild(i);
-            Animator runnerAnimator = runner.GetComponent<Animator>();
-
+            Animator runnerAnimator = runner.GetComponent<Runner>().GetAnimator();
             runnerAnimator.Play("Run");
         }
     }
@@ -36,7 +23,7 @@ public class PlayerAnimator : MonoBehaviour
         for (int i = 0; i < runnersParent.childCount; i++)
         {
             Transform runner = runnersParent.GetChild(i);
-            Animator runnerAnimator = runner.GetComponent<Animator>();
+            Animator runnerAnimator = runner.GetComponent<Runner>().GetAnimator();
 
             runnerAnimator.Play("Idle");
         }

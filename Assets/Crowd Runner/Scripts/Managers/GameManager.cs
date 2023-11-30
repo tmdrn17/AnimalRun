@@ -6,13 +6,13 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public enum GameState { Menu, Game, LevelComplete, Gameover }
+    public enum GameState {Menu, Game, LevelComplete, Gameover}
 
-    private GameState gameState;
+    public GameState gameState { get; private set; }
 
     public static Action<GameState> onGameStateChanged;
 
-    private void Awake()
+    void Awake()
     {
         if (instance != null)
             Destroy(gameObject);
@@ -20,13 +20,11 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -36,8 +34,6 @@ public class GameManager : MonoBehaviour
     {
         this.gameState = gameState;
         onGameStateChanged?.Invoke(gameState);
-
-        Debug.Log("Game State changed to : " + gameState);
     }
 
     public bool IsGameState()

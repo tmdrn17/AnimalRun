@@ -9,6 +9,7 @@ public class PlayerDetection : MonoBehaviour
 
     [Header(" Elements ")]
     [SerializeField] private CrowdSystem crowdSystem;
+    [SerializeField] private Transform runnersParent;
 
 
     [Header(" Events ")]
@@ -35,7 +36,7 @@ public class PlayerDetection : MonoBehaviour
         {
             if(detectedColliders[i].TryGetComponent(out Doors doors))
             {
-                Debug.Log("We hit some doors");
+                // hit doors
 
                 int bonusAmount = doors.GetBonusAmount(transform.position.x);
                 BonusType bonusType = doors.GetBonusType(transform.position.x);
@@ -53,9 +54,9 @@ public class PlayerDetection : MonoBehaviour
 
                 PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
 
-                GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
+                DataManager.instance.AddCoins(runnersParent.childCount);
 
-                //SceneManager.LoadScene(0);
+                GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
             }
         
             else if(detectedColliders[i].tag == "Coin")
