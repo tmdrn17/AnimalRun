@@ -58,7 +58,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2236507327356337622, guid: 79fe11994c1671c4a939a9f48b7fa2e7, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2236507327356337622, guid: 79fe11994c1671c4a939a9f48b7fa2e7, type: 3}
       propertyPath: specialBulletSpeed
@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4051849554861881184, guid: 6de562a0ece50d647b302bd94d3935cd, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4051849554861881184, guid: 6de562a0ece50d647b302bd94d3935cd, type: 3}
       propertyPath: specialBulletSpeed
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6902789888475372309, guid: 1061cecc713ef084e88754cffe1cef3f, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6902789888475372309, guid: 1061cecc713ef084e88754cffe1cef3f, type: 3}
       propertyPath: specialBulletSpeed
@@ -268,7 +268,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 560114281071502692, guid: e3660b7224e27a340b43c8867ff64859, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 560114281071502692, guid: e3660b7224e27a340b43c8867ff64859, type: 3}
       propertyPath: specialBulletSpeed
@@ -378,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3344768680538104953, guid: 2d6909fd29a424e4b9b210d4644d028f, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3344768680538104953, guid: 2d6909fd29a424e4b9b210d4644d028f, type: 3}
       propertyPath: specialBulletSpeed
@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785475869843705179, guid: de3c683d1274128458fe753bedc38803, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6785475869843705179, guid: de3c683d1274128458fe753bedc38803, type: 3}
       propertyPath: bulletPrefab
@@ -526,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6855480211888016887, guid: 8019a12e9e6fee14cbb7a6b8708a872c, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6855480211888016887, guid: 8019a12e9e6fee14cbb7a6b8708a872c, type: 3}
       propertyPath: specialBulletSpeed
@@ -552,7 +552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267608781642429504, guid: 35e4cca50dab95c499e30aa925554c21, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4267608781642429504, guid: 35e4cca50dab95c499e30aa925554c21, type: 3}
       propertyPath: specialBulletSpeed
@@ -662,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462692250806203238, guid: de7d2a94fc0320744b20785da2db4a47, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4462692250806203238, guid: de7d2a94fc0320744b20785da2db4a47, type: 3}
       propertyPath: specialBulletSpeed
@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8989905835851128944, guid: 3875b0d4667e16045b86cdb249b71515, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8989905835851128944, guid: 3875b0d4667e16045b86cdb249b71515, type: 3}
       propertyPath: specialBulletSpeed
@@ -806,7 +806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419464672148231577, guid: e7f02c21b39441d42af57e180f525f6b, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5419464672148231577, guid: e7f02c21b39441d42af57e180f525f6b, type: 3}
       propertyPath: specialBulletSpeed
@@ -872,7 +872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5577453691411566441, guid: 0abf938167503d44bb0844840e317ad5, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5577453691411566441, guid: 0abf938167503d44bb0844840e317ad5, type: 3}
       propertyPath: specialBulletSpeed
@@ -902,7 +902,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6381357352595338616, guid: e91fe280f4eb394408728c782b6c5ced, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6381357352595338616, guid: e91fe280f4eb394408728c782b6c5ced, type: 3}
       propertyPath: specialBulletSpeed
@@ -972,7 +972,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3811666250738774583, guid: a40680caedf738043a9b353ab1b1c2b7, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3811666250738774583, guid: a40680caedf738043a9b353ab1b1c2b7, type: 3}
       propertyPath: specialBulletSpeed
@@ -1042,7 +1042,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1509178376658848528, guid: 51fd9791c98229146b24ee1bce8f1aa3, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1509178376658848528, guid: 51fd9791c98229146b24ee1bce8f1aa3, type: 3}
       propertyPath: specialBulletSpeed
@@ -1156,7 +1156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394521212110319176, guid: 01e2a001934ddd748841ceedf7df34e8, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8394521212110319176, guid: 01e2a001934ddd748841ceedf7df34e8, type: 3}
       propertyPath: specialBulletSpeed
@@ -1226,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4936564240364998443, guid: 84559027e9499e945b333d585ce71cc0, type: 3}
       propertyPath: bulletTime
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4936564240364998443, guid: 84559027e9499e945b333d585ce71cc0, type: 3}
       propertyPath: bulletPrefab

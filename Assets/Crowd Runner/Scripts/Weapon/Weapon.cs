@@ -24,18 +24,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] float specialBulletSpeed;
     [SerializeField] float specialProb = 0.3f;
 
-    [SerializeField] private List<GameObject> bullets = new List<GameObject>();
-
     void Start()
     {
-        for (int i = 0; i < bulletFireTransform.Length; i++)
-        {
-            GameObject bulletInstance = Instantiate(bulletPrefab, bulletFireTransform[i].transform.position,
-                                                    bulletFireTransform[i].transform.rotation);
-            bulletInstance.SetActive(false);
-            bullets.Add(bulletInstance);
-        }
-
         bulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
 
         StartCoroutine(FireBullet());
@@ -70,34 +60,34 @@ public class Weapon : MonoBehaviour
 
             float randomValue = Random.value;
 
-            for (int i = 0; i < bullets.Count; i++)
+            for (int i = 0; i < bulletFireTransform.Length; i++)
             {
-                if (!(bullets[i].activeSelf)) // 비활성화된 총알 인스턴스를 찾음
+                GameObject bulletInstance = Instantiate(bulletPrefab, bulletFireTransform[i].transform.position,
+                                                        bulletFireTransform[i].transform.rotation);
+
+                bulletInstance.transform.position = bulletFireTransform[i].transform.position;
+                bulletInstance.transform.rotation = bulletFireTransform[i].transform.rotation;
+
+                bulletInstance.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * bulletSpeed, ForceMode.Impulse);
+                bulletInstance.GetComponent<Bullet>().SetTarget(bulletFireTransform[i].transform);
+            }
+
+            if (randomValue <= specialProb && !(specialBulletPrefab == null))
+            {
+                GameObject specialBullet = Instantiate(specialBulletPrefab, bulletFireTransform[0].transform.position,
+                                                bulletFireTransform[0].transform.rotation);
+
+                if (specialBullet.GetComponent<Bullet>().bType == BulletTyp.Grenade || specialBullet.GetComponent<Bullet>().bType == BulletTyp.FireBottle)
                 {
-                    bullets[i].transform.position = bulletFireTransform[i].transform.position;
-                    bullets[i].transform.rotation = bulletFireTransform[i].transform.rotation;
-                    bullets[i].SetActive(true);
-                    bullets[i].GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * bulletSpeed, ForceMode.Impulse);
-                    bullets[i].GetComponent<Bullet>().SetTarget(bulletFireTransform[i].transform);
+                    specialBullet.GetComponent<Rigidbody>().AddForce(bulletFireTransform[0].transform.forward * specialBulletSpeed, ForceMode.Impulse);
+                    specialBullet.GetComponent<Rigidbody>().AddForce(bulletFireTransform[0].transform.up * specialBulletSpeed, ForceMode.Impulse);
+                    specialBullet.GetComponent<Bullet>().SetTarget(bulletFireTransform[0].transform);
                 }
 
-                if (randomValue <= specialProb && !(specialBulletPrefab == null))
+                else
                 {
-                    GameObject specialBullet = Instantiate(specialBulletPrefab, bulletFireTransform[i].transform.position,
-                                                    bulletFireTransform[i].transform.rotation);
-
-                    if (specialBullet.GetComponent<Bullet>().bType == BulletTyp.Grenade || specialBullet.GetComponent<Bullet>().bType == BulletTyp.FireBottle)
-                    {
-                        specialBullet.GetComponent<Rigidbody>().AddForce(bulletFireTransform[i].transform.forward * specialBulletSpeed, ForceMode.Impulse);
-                        specialBullet.GetComponent<Rigidbody>().AddForce(bulletFireTransform[i].transform.up * specialBulletSpeed, ForceMode.Impulse);
-                        specialBullet.GetComponent<Bullet>().SetTarget(bulletFireTransform[i].transform);
-                    }
-
-                    else
-                    {
-                        specialBullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * specialBulletSpeed, ForceMode.Impulse);
-                        specialBullet.GetComponent<Bullet>().SetTarget(bulletFireTransform[i].transform);
-                    }
+                    specialBullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * specialBulletSpeed, ForceMode.Impulse);
+                    specialBullet.GetComponent<Bullet>().SetTarget(bulletFireTransform[0].transform);
                 }
             }
 

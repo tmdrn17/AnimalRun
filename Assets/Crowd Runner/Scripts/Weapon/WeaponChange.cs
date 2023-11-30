@@ -34,12 +34,12 @@ public class WeaponChange : MonoBehaviour
     public void SelectSpecialBullet()
     {
         int weaponIndex = PlayerPrefs.GetInt("lastSelectedSpecial");
-        Debug.Log(weaponIndex);
         for (int i = 0; i < weaponParent.transform.childCount; i++)
         {
             if (weaponIndex >= 0)
             {
                 weaponParent.transform.GetChild(i).GetComponent<Weapon>().specialBulletPrefab = specialBullet[weaponIndex];
+                Debug.Log(i);
                 weaponParent.transform.GetChild(i).GetComponent<Weapon>().SpecialSetting();
             }
             else

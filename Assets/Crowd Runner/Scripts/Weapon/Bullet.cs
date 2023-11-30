@@ -58,14 +58,7 @@ public class Bullet : MonoBehaviour
 
         if (transform.position.z - startTransform.z >= bulletRange)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            gameObject.SetActive(false);
-
-            if (gameObject.CompareTag("Special"))
-            {
-                Destroy(gameObject, 2f);
-            }
+            Destroy(gameObject);
         }
     }
 
@@ -110,6 +103,7 @@ public class Bullet : MonoBehaviour
                         hitCount = 0;
                     }
                 }
+                Destroy(gameObject);
             }
 
             else if (bType == BulletTyp.Grenade)
@@ -131,8 +125,7 @@ public class Bullet : MonoBehaviour
             else
             {
                 other.gameObject.GetComponent<Enemy>().OnDamage(damage);
-                rb.velocity = Vector3.zero;
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }

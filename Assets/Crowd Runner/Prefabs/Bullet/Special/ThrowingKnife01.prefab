@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4126360566911183938}
   - component: {fileID: 598972502829019366}
   m_Layer: 0
-  m_Name: ThrowingKnife
+  m_Name: ThrowingKnife01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,13 +146,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da99a3dc09adbe44b8b92c07787be084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grenadeMesh: {fileID: 0}
+  grenadeParticle: {fileID: 0}
   startTransform: {x: 0, y: 0, z: 0}
   curTransform: {x: 0, y: 0, z: 0}
   bulletRange: 5
-  searchRadius: 0
-  rotationSpeed: 0
-  targetEnemy: {fileID: 0}
+  rotationSpeed: 10
   damage: 0
-  parent: {fileID: 0}
+  specialProb: 0.1
   bType: 3
   radius: 0
+  fireField: {fileID: 0}
+  weapon: {fileID: 0}
