@@ -2,56 +2,61 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Random = UnityEngine.Random;
-
 
 public enum WeaponVariation
 {
     Rifle
 }
 
-
-
 public class Weapon : MonoBehaviour
 {
     public float bulletTime;
 
-    [SerializeField] GameObject bulletPrefab;
+    public GameObject bulletPrefab;
     public GameObject specialBulletPrefab;
     public GameObject[] bulletFireTransform;
-    [SerializeField] float bulletSpeed;
+    public float bulletSpeed;
     [SerializeField] float specialBulletSpeed;
     [SerializeField] float specialProb = 0.3f;
+    [SerializeField] int damage;
+    [SerializeField] int range;
+    public List<GameObject> bullets = new List<GameObject>();
+    public int count;
 
     void Start()
     {
         bulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
+        bullets = transform.Find("BulletFireTransform").gameObject.GetComponent<BulletCreate>().bullets;
 
         StartCoroutine(FireBullet());
+
+        bulletPrefab.GetComponent<Bullet>().damage = damage;
+        bulletPrefab.GetComponent<Bullet>().bulletRange = range;
     }
 
     public void SpecialSetting()
     {
-        specialProb = specialBulletPrefab.GetComponent<Bullet>().specialProb;
+        //specialProb = specialBulletPrefab.GetComponent<Bullet>().specialProb;
 
-        switch (specialBulletPrefab.GetComponent<Bullet>().bType)
+        if(specialBulletPrefab != null)
         {
-            case BulletTyp.Grenade:
-                specialBulletSpeed = 4;
-                break;
-            case BulletTyp.Throwing:
-                specialBulletSpeed = bulletSpeed - 1;
-                break;
+            switch (specialBulletPrefab.GetComponent<Bullet>().bType)
+            {
+                case BulletTyp.Grenade:
+                    specialBulletSpeed = 4;
+                    break;
+                case BulletTyp.Throwing:
+                    specialBulletSpeed = bulletSpeed - 1;
+                    break;
+            }
         }
     }
 
-    public IEnumerator FireBullet()
+    IEnumerator FireBullet()
     {
         while (true)
         {
-            yield return null;
-
             if(GameManager.instance.gameState != GameManager.GameState.Game)
             {
                 yield return null;
@@ -59,18 +64,6 @@ public class Weapon : MonoBehaviour
             }
 
             float randomValue = Random.value;
-
-            for (int i = 0; i < bulletFireTransform.Length; i++)
-            {
-                GameObject bulletInstance = Instantiate(bulletPrefab, bulletFireTransform[i].transform.position,
-                                                        bulletFireTransform[i].transform.rotation);
-
-                bulletInstance.transform.position = bulletFireTransform[i].transform.position;
-                bulletInstance.transform.rotation = bulletFireTransform[i].transform.rotation;
-
-                bulletInstance.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * bulletSpeed, ForceMode.Impulse);
-                bulletInstance.GetComponent<Bullet>().SetTarget(bulletFireTransform[i].transform);
-            }
 
             if (randomValue <= specialProb && !(specialBulletPrefab == null))
             {

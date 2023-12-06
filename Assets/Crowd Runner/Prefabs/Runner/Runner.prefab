@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 750582228174882142}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -487,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 7365024171851999491}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -604,6 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 5339767737477351363}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -1112,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 5613100938479188678}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -1578,34 +1582,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: specialBullet.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[0]'
       value: 
-      objectReference: {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[1]'
       value: 
-      objectReference: {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
+      objectReference: {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[2]'
       value: 
-      objectReference: {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
+      objectReference: {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[3]'
       value: 
-      objectReference: {fileID: 2483591410381351384, guid: 204cf718d29c1984bb7c31c7d28c382d, type: 3}
+      objectReference: {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[4]'
       value: 
-      objectReference: {fileID: 6232235633892959289, guid: 81342d7c539b2994cb8bc9e9c2cf0be2, type: 3}
+      objectReference: {fileID: 2483591410381351384, guid: 204cf718d29c1984bb7c31c7d28c382d, type: 3}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[5]'
       value: 
-      objectReference: {fileID: 6566603417326185039, guid: a5531da21406c5344986091efd215cd3, type: 3}
+      objectReference: {fileID: 6232235633892959289, guid: 81342d7c539b2994cb8bc9e9c2cf0be2, type: 3}
     - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
       propertyPath: 'specialBullet.Array.data[6]'
+      value: 
+      objectReference: {fileID: 6566603417326185039, guid: a5531da21406c5344986091efd215cd3, type: 3}
+    - target: {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
+      propertyPath: 'specialBullet.Array.data[7]'
       value: 
       objectReference: {fileID: 737275357323721329, guid: ed3497d11b023f24896e4055ddcd9f31, type: 3}
     - target: {fileID: 6649952869875695132, guid: 387269d195072c84a898889f6d095dd4, type: 3}
@@ -2136,6 +2144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 7079536610351186364}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -2714,6 +2723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 2720996898321874584}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -3229,6 +3239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 3545049245242543094}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}
@@ -3336,6 +3347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 5974760949427977618}
   specialBullet:
+  - {fileID: 0}
   - {fileID: 747712412096397577, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
   - {fileID: 7658806776718880468, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
   - {fileID: 656378909733675845, guid: 0c4a739aa1f1fca4e8a2078371c97d00, type: 3}

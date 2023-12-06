@@ -51,7 +51,6 @@ public class ShootingManager : MonoBehaviour
                             if ((weaponIndex.gameObject.activeSelf) == true)
                             {
                                 Debug.Log(child.parent.parent.parent.parent.parent.name);
-                                StartCoroutine(weaponIndex.gameObject.GetComponent<Weapon>().FireBullet());
                                 Debug.Log(j);
                             }
                         }

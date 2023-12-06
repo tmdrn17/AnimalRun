@@ -152,7 +152,8 @@ MonoBehaviour:
   curTransform: {x: 0, y: 0, z: 0}
   bulletRange: 5
   rotationSpeed: -10
-  damage: 0
+  damage: 3
+  specialProb: 0
   bType: 3
   radius: 10
   fireField: {fileID: 0}

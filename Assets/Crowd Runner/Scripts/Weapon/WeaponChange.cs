@@ -39,7 +39,6 @@ public class WeaponChange : MonoBehaviour
             if (weaponIndex >= 0)
             {
                 weaponParent.transform.GetChild(i).GetComponent<Weapon>().specialBulletPrefab = specialBullet[weaponIndex];
-                Debug.Log(i);
                 weaponParent.transform.GetChild(i).GetComponent<Weapon>().SpecialSetting();
             }
             else

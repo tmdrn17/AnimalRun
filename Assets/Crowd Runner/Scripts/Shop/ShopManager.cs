@@ -46,6 +46,10 @@ public class ShopManager : MonoBehaviour
         UnlockGun(0);
 
         priceText.text = skinPrice.ToString();
+        if (!(PlayerPrefs.HasKey("lastSelectedSpecial")))
+        {
+            PlayerPrefs.SetInt("lastSelectedSpecial", -1);
+        }        
     }
 
     IEnumerator Start()
@@ -256,12 +260,19 @@ public class ShopManager : MonoBehaviour
         {
             if (specialIndex == i)
             {
-                previewSpecialObj[i].gameObject.SetActive(true);
+                if (previewSpecialObj[i] != null)
+                {
+                    previewSpecialObj[i].gameObject.SetActive(true);
+                }
             }
             else
             {
-                previewSpecialObj[i].gameObject.SetActive(false);
+                if (previewSpecialObj[i] != null)
+                {
+                    previewSpecialObj[i].gameObject.SetActive(false);
+                }
             }
+            Debug.Log(specialIndex);
         }
         for (int i = 0; i < skinButtons.Length; i++)
         {
@@ -386,7 +397,6 @@ public class ShopManager : MonoBehaviour
         else if (specialItem.gameObject.activeSelf)
         {
             PlayerPrefs.SetInt("lastSelectedSpecial", skinIndex);
-            Debug.Log(skinIndex);
         }
 
     }
@@ -422,6 +432,6 @@ public class ShopManager : MonoBehaviour
         specialItem.gameObject.SetActive(true);
         PreviewSpecial(GetLastSelecedSpecial());
         SelectSpecial(GetLastSelecedSpecial());
-        Debug.LogWarning(GetLastSelecedSpecial());
+       // Debug.LogWarning(GetLastSelecedSpecial());
     }
 }

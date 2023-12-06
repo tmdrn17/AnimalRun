@@ -22,11 +22,10 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     Vector3 curTransform;
 
-    [SerializeField]
-    int bulletRange = 5;
+    public int bulletRange = 5;
+    public int damage;
     [SerializeField]
     float rotationSpeed;
-    public int damage;
     int hitCount = 0;
     public float specialProb;
 
@@ -58,7 +57,8 @@ public class Bullet : MonoBehaviour
 
         if (transform.position.z - startTransform.z >= bulletRange)
         {
-            Destroy(gameObject);
+            rb.velocity = Vector3.zero;
+            gameObject.SetActive(false);
         }
     }
 
@@ -103,7 +103,6 @@ public class Bullet : MonoBehaviour
                         hitCount = 0;
                     }
                 }
-                Destroy(gameObject);
             }
 
             else if (bType == BulletTyp.Grenade)
@@ -125,7 +124,8 @@ public class Bullet : MonoBehaviour
             else
             {
                 other.gameObject.GetComponent<Enemy>().OnDamage(damage);
-                Destroy(gameObject);
+                rb.velocity = Vector3.zero;
+                gameObject.SetActive(false);
             }
         }
     }

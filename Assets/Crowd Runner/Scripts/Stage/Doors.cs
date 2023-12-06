@@ -51,8 +51,8 @@ public class Doors : MonoBehaviour
     {
         if (gameObject.CompareTag("First"))
         {
-            rightRandomType = Random.Range(1, 2);
-            leftRandomType = Random.Range(1, 2);
+            rightRandomType = 1;
+            leftRandomType = 1;
 
             rightPMAmount = Random.Range(1, 2);
             rightMDAmount = Random.Range(1, 3);

@@ -148,13 +148,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da99a3dc09adbe44b8b92c07787be084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grenadeMesh: {fileID: 0}
+  grenadeParticle: {fileID: 0}
   startTransform: {x: 0, y: 0, z: 0}
   curTransform: {x: 0, y: 0, z: 0}
-  bulletRange: 5
-  searchRadius: 0
+  bulletRange: 10
   rotationSpeed: 0
-  targetEnemy: {fileID: 0}
-  damage: 0
-  parent: {fileID: 0}
+  damage: 13
+  specialProb: 0
   bType: 2
   radius: 0
+  fireField: {fileID: 0}
+  weapon: {fileID: 0}

@@ -10,13 +10,16 @@ public class EnemyGroup : MonoBehaviour
 
 
     [Header(" Settings ")]
-    [SerializeField] private int amount;
+    int amount;
+    [SerializeField] private int amountRange;
     [SerializeField] private float radius;
     [SerializeField] private float angle;
 
     // Start is called before the first frame update
     void Start()
     {
+        amount = Random.Range(0, amountRange);
+
         GenerateEnemies();
     }
 
