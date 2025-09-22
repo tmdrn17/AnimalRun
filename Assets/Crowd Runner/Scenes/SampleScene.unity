@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502688, g: 0.3713926, b: 0.49601027, a: 1}
+  m_IndirectSpecularColor: {r: 0.285027, g: 0.37139285, b: 0.49601087, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14467,7 +14467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crowdSystem: {fileID: 1578294423}
   playerAnimator: {fileID: 1578294425}
-  moveSpeed: 0
+  moveSpeed: 5
   roadWidth: 10
   slideSpeed: 6
 --- !u!114 &1578294423

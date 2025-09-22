@@ -12,12 +12,6 @@ public class PlayerSelector : MonoBehaviour
     {
         ShopManager.onSkinSelected += SelectSkin;
     }
-
-    void OnDestroy()
-    {
-        ShopManager.onSkinSelected -= SelectSkin;
-    }
-
     public void SelectSkin(int skinIndex)
     {
         for (int i = 0; i < runnersParent.childCount; i++)

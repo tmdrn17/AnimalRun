@@ -99,8 +99,6 @@ public class PlayerController : MonoBehaviour
                 roadWidth / 2 - crowdSystem.GetCrowdRadius());
 
             transform.position = position;
-
-            //transform.position = clickedPlayerPosition + Vector3.right * xScreenDifference;
         }
     }
 }
