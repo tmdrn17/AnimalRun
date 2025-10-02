@@ -8,10 +8,16 @@ public class PlayerSelector : MonoBehaviour
     [SerializeField] Transform runnersParent;
     [SerializeField] RunnerSelector runnerSelectorPrefab;
 
+    void OnDestroy()
+    {
+        ShopManager.onSkinSelected -= SelectSkin;
+    }
+
     void Start()
     {
         ShopManager.onSkinSelected += SelectSkin;
     }
+
     public void SelectSkin(int skinIndex)
     {
         for (int i = 0; i < runnersParent.childCount; i++)

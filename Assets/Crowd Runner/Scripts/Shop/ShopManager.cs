@@ -46,11 +46,13 @@ public class ShopManager : MonoBehaviour
         UnlockGun(0);
 
         priceText.text = skinPrice.ToString();
+
         if (!(PlayerPrefs.HasKey("lastSelectedSpecial")))
         {
             PlayerPrefs.SetInt("lastSelectedSpecial", -1);
         }        
     }
+
 
     IEnumerator Start()
     {
