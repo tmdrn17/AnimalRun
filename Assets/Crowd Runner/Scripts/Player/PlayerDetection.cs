@@ -6,25 +6,16 @@ using System;
 
 public class PlayerDetection : MonoBehaviour
 {
-
     [Header(" Elements ")]
     [SerializeField] private CrowdSystem crowdSystem;
     [SerializeField] private Transform runnersParent;
 
-
     [Header(" Events ")]
     public static Action onDoorsHit;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(GameManager.instance.IsGameState())
+        if(GameManager.instance.IsGameState(1))
             DetectColliders();
     }
 

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ShootingManager : MonoBehaviour
 {
-    [SerializeField] GameObject runnerParent;
+    [SerializeField]
+    GameObject runnerParent;
+
     [SerializeField]
     Transform[] allChildren;
-    [SerializeField] GameObject childWeapon;
+    
+    [SerializeField]
+    GameObject childWeapon;
+    
     [SerializeField]
     int previousChildCount;
+    
     [SerializeField]
     int currentChildCount;
 
     void Start()
     {
         previousChildCount = runnerParent.transform.childCount;
-    }
-
-    void Update()
-    {
-        
     }
 }

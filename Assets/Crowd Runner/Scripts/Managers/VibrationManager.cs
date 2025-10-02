@@ -24,12 +24,6 @@ public class VibrationManager : MonoBehaviour
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
         if (gameState == GameManager.GameState.LevelComplete)

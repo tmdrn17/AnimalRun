@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,25 +12,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] ShootingManager shootingManager;
 
     [Header(" Elements ")]
-    [SerializeField] private GameObject menuPanel;
-    [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject gameoverPanel;
-    [SerializeField] private GameObject levelCompletePanel;
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] GameObject shopPanel;
+    /* * 0 = Menu Pannel  1 = Game Pannel
+       * 2 = GameOver Pannel  3 = Level Complete Pannel
+       * 4 = Settings Pannel  5 = Shop Pannel
+       * 6 = Pause Pannel  7 = Exit Pannel */
+    public GameObject[] allPanels = new GameObject[8];
 
-    [SerializeField] private Slider progressBar;
-    [SerializeField] private Text levelText;
+    [SerializeField] Slider progressBar;
+    [SerializeField] Text levelText;
 
     // Start is called before the first frame update
     void Start()
     {
         progressBar.value = 0;
 
-        gamePanel.SetActive(false);
-        gameoverPanel.SetActive(false);
-        settingsPanel.SetActive(false);
-        HideShop();
+        allPanels[1].SetActive(false);
+        allPanels[2].SetActive(false);
+        allPanels[4].SetActive(false);
+        allPanels[5].SetActive(false);
 
         levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
 
@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateProgressBar();
@@ -64,8 +63,8 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.SetGameState(GameManager.GameState.Game);
 
-        menuPanel.SetActive(false);
-        gamePanel.SetActive(true);
+        allPanels[0].SetActive(false);
+        allPanels[1].SetActive(true);
     }
 
     public void RetryButtonPressed()
@@ -75,43 +74,45 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameover()
     {
-        gamePanel.SetActive(false);
-        gameoverPanel.SetActive(true);
+        allPanels[1].SetActive(false);
+        allPanels[2].SetActive(true);
     }
 
     private void ShowLevelComplete()
     {
-        gamePanel.SetActive(false);
-        levelCompletePanel.SetActive(true);
+        allPanels[1].SetActive(false);
+        allPanels[3].SetActive(true);
     }
 
     public void UpdateProgressBar()
     {
-        if (!GameManager.instance.IsGameState())
+        if (!GameManager.instance.IsGameState(1))
             return;
 
         float progress = PlayerController.instance.transform.position.z / ChunkManager.instance.GetFinishZ();
         progressBar.value = progress;
     }
 
-    public void ShowSettingsPanel()
+    public void ShowSettingsPanel(int pannelNum)
     {
-        settingsPanel.SetActive(true);
+        if (allPanels[pannelNum].activeSelf)
+        {
+            Time.timeScale = 1.0f;
+            allPanels[pannelNum].SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+            allPanels[pannelNum].SetActive(true);
+        }
     }
 
-    public void HideSettingsPanel()
+    public void QuitGame()
     {
-        settingsPanel.SetActive(false);
-    }
-
-    public void ShowShop()
-    {
-        shopPanel.SetActive(true);
-        shopManager.UpdeatePurchaseButton();
-    }
-
-    public void HideShop()
-    {
-        shopPanel.SetActive(false);
+        #if UNITY_EDITOR
+          UnityEditor.EditorApplication.isPlaying = false;
+        #else
+          Application.Quit();
+        #endif
     }
 }

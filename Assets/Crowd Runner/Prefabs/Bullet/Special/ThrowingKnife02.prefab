@@ -151,8 +151,8 @@ MonoBehaviour:
   startTransform: {x: 0, y: 0, z: 0}
   curTransform: {x: 0, y: 0, z: 0}
   bulletRange: 5
-  rotationSpeed: 10
   damage: 0
+  rotationSpeed: 10
   specialProb: 0.1
   bType: 3
   radius: 10

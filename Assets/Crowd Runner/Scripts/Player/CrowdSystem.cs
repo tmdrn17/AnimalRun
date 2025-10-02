@@ -23,7 +23,7 @@ public class CrowdSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.IsGameState())
+        if (!GameManager.instance.IsGameState(1))
             return;
 
         PlaceRunners();

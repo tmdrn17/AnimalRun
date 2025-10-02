@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public static Action<GameState> onGameStateChanged;
 
+    [SerializeField] UIManager uiManager;
+
     void Awake()
     {
         if (instance != null)
@@ -22,12 +24,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        Time.timeScale = 1.0f;
     }
 
     void Update()
     {
-        
+        PauseGame();
     }
 
     public void SetGameState(GameState gameState)
@@ -36,8 +38,58 @@ public class GameManager : MonoBehaviour
         onGameStateChanged?.Invoke(gameState);
     }
 
-    public bool IsGameState()
+    public bool IsGameState(int stateNum)
     {
-        return gameState == GameState.Game;
+        switch (stateNum)
+        {
+            default: 
+                return false;
+            case 0:
+                return gameState == GameState.Menu;
+            case 1:
+                return gameState == GameState.Game;
+            case 2:
+                return gameState == GameState.LevelComplete;
+            case 3:
+                return gameState == GameState.Gameover;
+        }
+        
+    }
+
+    void PauseGame()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            switch (gameState)
+            {
+                case GameState.Menu:
+                    uiManager.allPanels[7].SetActive(true);
+                    break;
+
+                case GameState.Game:
+                    Time.timeScale = 0.0f;
+                    uiManager.allPanels[6].SetActive(true);
+                    break;
+
+                case GameState.LevelComplete:
+                    #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+                    #else
+                        Application.Quit();
+                    #endif
+                    break;
+
+                case GameState.Gameover:
+                    #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+                    #else
+                        Application.Quit();
+                    #endif
+                    break;
+
+            }
+
+
+        }
     }
 }
