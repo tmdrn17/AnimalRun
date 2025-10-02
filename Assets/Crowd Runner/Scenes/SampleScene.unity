@@ -22469,6 +22469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Runner
       objectReference: {fileID: 0}
+    - target: {fileID: 1248207317733292634, guid: a97766b7e5bd95f41898dc1936f520d0, type: 3}
+      propertyPath: range
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 1533433681581126989, guid: a97766b7e5bd95f41898dc1936f520d0, type: 3}
       propertyPath: specialBullet.Array.size
       value: 7

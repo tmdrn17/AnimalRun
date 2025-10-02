@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         BulletElement();
-
+        Debug.Log(transform.position.z - startTransform.z);
         if (transform.position.z - startTransform.z >= bulletRange)
         {
             rb.velocity = Vector3.zero;
