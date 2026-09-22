@@ -39,7 +39,7 @@ public class PlayerDetection : MonoBehaviour
                 crowdSystem.ApplyBonus(bonusType, bonusAmount);
             }
         
-            else if(detectedColliders[i].tag == "Finish")
+            else if(detectedColliders[i].CompareTag("Finish"))
             {
                 Debug.Log("We've hit the finish line");
 
@@ -50,7 +50,7 @@ public class PlayerDetection : MonoBehaviour
                 GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
             }
         
-            else if(detectedColliders[i].tag == "Coin")
+            else if(detectedColliders[i].CompareTag("Coin"))
             {
                 Destroy(detectedColliders[i].gameObject);
 

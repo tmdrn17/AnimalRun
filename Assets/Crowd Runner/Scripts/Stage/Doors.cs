@@ -7,15 +7,12 @@ public enum BonusType { Addition, Difference, Product, Division }
 
 public class Doors : MonoBehaviour
 {
-
-
     [Header(" Elements ")]
     [SerializeField] private SpriteRenderer rightDoorRenderer;
     [SerializeField] private SpriteRenderer leftDoorRenderer;
     [SerializeField] private TextMeshPro rightDoorText;
     [SerializeField] private TextMeshPro leftDoorText;
     [SerializeField] private Collider collider;
-
 
     [Header(" Settings ")]
     [SerializeField] private BonusType rightDoorBonusType;
@@ -30,24 +27,14 @@ public class Doors : MonoBehaviour
 
     [SerializeField] private Color bonusColor;
     [SerializeField] private Color penaltyColor;
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Start()
     {
         RandomDoor();
         ConfigureDoors();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void RandomDoor()
+    private void RandomDoor()
     {
         if (gameObject.CompareTag("First"))
         {
@@ -91,8 +78,6 @@ public class Doors : MonoBehaviour
 
     private void ConfigureDoors()
     {
-        // Configure the right door
-
         switch(rightDoorBonusType)
         {
             case BonusType.Addition:
@@ -147,28 +132,24 @@ public class Doors : MonoBehaviour
     {
         if (xPosition > 0)
         {
-            if ((rightDoorBonusType == BonusType.Addition) || (rightDoorBonusType == BonusType.Difference))
+            if (rightDoorBonusType == BonusType.Addition || rightDoorBonusType == BonusType.Difference)
                 return rightPMAmount;
-            else
-                return rightMDAmount;
+            
+            return rightMDAmount;
         }
 
-
-        else
-        {
-            if ((leftDoorBonusType == BonusType.Addition) || (leftDoorBonusType == BonusType.Difference))
-                return leftPMAmount;
-            else
-                return leftMDAmount;
-        }
+        if (leftDoorBonusType == BonusType.Addition || leftDoorBonusType == BonusType.Difference)
+            return leftPMAmount;
+            
+        return leftMDAmount;
     }
 
     public BonusType GetBonusType(float xPosition)
     {
         if (xPosition > 0)
             return rightDoorBonusType;
-        else
-            return leftDoorBonusType;
+        
+        return leftDoorBonusType;
     }
 
     public void Disable()

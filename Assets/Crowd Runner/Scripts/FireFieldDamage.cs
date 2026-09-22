@@ -26,7 +26,7 @@ public class FireFieldDamage : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             timeOverDamage += Time.deltaTime;
             if(timeOverDamage >= 1)

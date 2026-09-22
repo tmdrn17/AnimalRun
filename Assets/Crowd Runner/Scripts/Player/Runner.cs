@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Crowd_Runner.Scripts.Managers;
 using UnityEngine;
 
 public class Runner : MonoBehaviour
@@ -22,11 +24,17 @@ public class Runner : MonoBehaviour
                 runnerSelector.SelectRunner(i);
                 SetAnimator(transform.GetChild(i).GetComponent<Animator>());
             }
-            else
-            {
-                continue;
-            }
         }
+    }
+
+    private void OnEnable()
+    {
+        ListManager.Runners.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        ListManager.Runners.Remove(this);
     }
 
     void OnTriggerEnter(Collider other)

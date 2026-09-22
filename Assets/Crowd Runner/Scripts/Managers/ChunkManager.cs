@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
@@ -17,19 +15,12 @@ public class ChunkManager : MonoBehaviour
         else
             instance = this;
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         GenerateLevel();
 
         finishLine = GameObject.FindWithTag("Finish");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void GenerateLevel()
@@ -46,9 +37,15 @@ public class ChunkManager : MonoBehaviour
         for (int i = 1; i < levelChunks.Length - 1; i++)
         {
             int randomIndex = Random.Range(i, levelChunks.Length - 1);
-            Chunk temp = levelChunks[randomIndex];
+            
+            /*
+             Chunk temp = levelChunks[randomIndex];
             levelChunks[randomIndex] = levelChunks[i];
             levelChunks[i] = temp;
+            */
+            
+            // 위의 코드를 튜플 구문 방식으로 변환
+            (levelChunks[randomIndex], levelChunks[i]) =  (levelChunks[i], levelChunks[randomIndex]);
         }
 
         Vector3 chunkPosition = Vector3.zero;

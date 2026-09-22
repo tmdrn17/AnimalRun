@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Sprite[] special;
     [SerializeField] GameObject[] previewSpecialObj;
 
-    [Header("Princing")]
+    [Header("Pricing")]
     [SerializeField] int skinPrice;
     [SerializeField] Text priceText;
 

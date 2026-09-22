@@ -33,15 +33,12 @@ public class WeaponChange : MonoBehaviour
 
     public void SelectSpecialBullet()
     {
-        // PlayerPrefs에서 인덱스 값을 가져옵니다.
-        int weaponIndex = PlayerPrefs.GetInt("lastSelectedSpecial", -1); // 기본값을 -1로 설정하여 유효성 검사 용이하게 함
-
-        // 인덱스가 배열의 범위를 벗어나지 않도록 검사합니다.
+        int weaponIndex = PlayerPrefs.GetInt("lastSelectedSpecial", -1);
+        
         bool isValidIndex = (weaponIndex >= 0 && weaponIndex < specialBullet.Length);
 
         for (int i = 0; i < weaponParent.transform.childCount; i++)
         {
-            // GetComponent를 반복적으로 호출하는 대신 변수에 저장합니다.
             Weapon weaponComponent = weaponParent.transform.GetChild(i).GetComponent<Weapon>();
 
             if (weaponComponent != null)

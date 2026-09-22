@@ -1,30 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UIElements;
+using Crowd_Runner.Scripts.Managers;
 
 public class Enemy : MonoBehaviour
 {
-    enum State { Idle, Running }
+    enum State
+    {
+        Idle,
+        Running
+    }
+    
+    [Header(" Settings ")] 
+    [SerializeField]
+    private float searchRadius;
 
-
-    [Header(" Settings ")]
-    [SerializeField] private float searchRadius;
     [SerializeField] private float moveSpeed;
     [SerializeField] float maxHP;
     [SerializeField] float currentHP;
     [SerializeField] private State state;
-    [SerializeField]
-    private Transform targetRunner;
+    [SerializeField] private Transform targetRunner;
     [SerializeField] HealthBar healthBar;
 
-    [Header(" Events ")]
-    public static Action onRunnerDied;
+    [Header(" Events ")] public static Action onRunnerDied;
 
     void Awake()
     {
-
         currentHP = maxHP;
     }
 
@@ -33,10 +33,16 @@ public class Enemy : MonoBehaviour
         healthBar.UpdateHealthBar(maxHP, currentHP);
     }
 
+    private void OnEnable()
+    {
+        ListManager.Enemies.Add(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        ManageState();
+        // ManageState();
+        
         healthBar.UpdateHealthBar(maxHP, currentHP);
         if (currentHP <= 0)
         {
@@ -44,18 +50,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void ManageState()
+    private void OnDisable()
     {
-        switch(state)
-        {
-            case State.Idle:
-                //SearchForTarget();
-            break;
-
-            case State.Running:
-                RunTowardsTarget();
-            break;
-        }
+        ListManager.Enemies.Remove(this);
     }
 
     public void OnDamage(float damage)
@@ -63,24 +60,36 @@ public class Enemy : MonoBehaviour
         currentHP -= damage;
     }
 
-    /*    private void SearchForTarget()
+    /*private void ManageState()
+    {
+        switch (state)
         {
-            Collider[] detectedColliders = Physics.OverlapSphere(transform.position, searchRadius);
+            case State.Idle:
+                SearchForTarget();
+                break;
 
-            for (int i = 0; i < detectedColliders.Length; i++)
+            case State.Running:
+                RunTowardsTarget();
+                break;
+        }
+    }
+
+    private void SearchForTarget()
+    {
+        for (int i = 0; i < ListManager.Runners.Count; i++)
+        {
+            Transform target = ListManager.Runners[i].transform;
+            
+            float targetDistance = Vector3.Distance(transform.position, target.position);
+
+            if (targetDistance <= searchRadius)
             {
-                if(detectedColliders[i].TryGetComponent(out Runner runner))
-                {
-                    if (runner.IsTarget())
-                        continue;
-
-                    runner.SetTarget();
-                    targetRunner = runner.transform;
-
-                    StartRunningTowardsTarget();
-                }
+                targetRunner = target;
+                StartRunningTowardsTarget();
+                break;
             }
-        }*/
+        }
+    }
 
     private void StartRunningTowardsTarget()
     {
@@ -96,12 +105,12 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetRunner.position,
             Time.deltaTime * moveSpeed);
 
-        if(Vector3.Distance(transform.position, targetRunner.position) < .1f)
+        if (Vector3.Distance(transform.position, targetRunner.position) < .1f)
         {
             onRunnerDied?.Invoke();
-            
+
             Destroy(targetRunner.gameObject);
             Destroy(gameObject);
         }
-    }
+    }*/
 }

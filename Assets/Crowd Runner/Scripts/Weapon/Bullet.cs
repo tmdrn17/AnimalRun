@@ -5,7 +5,7 @@ using UnityEngine;
 public enum BulletTyp
 {
     GunBullet,
-    Misile,
+    Missile,
     Arrow,
     Throwing,
     Grenade,
@@ -66,7 +66,7 @@ public class Bullet : MonoBehaviour
     {
         switch(bType)
         {
-            case BulletTyp.Misile:
+            case BulletTyp.Missile:
                 transform.Rotate(new Vector3(0, 0, rotationSpeed));
                 break;
             case BulletTyp.Arrow:
@@ -86,9 +86,9 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
-            if (bType == BulletTyp.Misile)
+            if (bType == BulletTyp.Missile)
             {
                 RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, radius, Vector3.up, 0f, LayerMask.GetMask("Enemy"));
 
