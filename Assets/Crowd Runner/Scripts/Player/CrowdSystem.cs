@@ -13,15 +13,8 @@ public class CrowdSystem : MonoBehaviour
     [Header(" Settings ")]
     [SerializeField] private float radius;
     [SerializeField] private float angle;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void Update()
     {
         if (!GameManager.instance.IsGameState(1))
             return;
