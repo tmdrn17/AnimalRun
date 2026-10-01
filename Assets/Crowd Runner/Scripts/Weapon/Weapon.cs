@@ -37,8 +37,6 @@ public class Weapon : MonoBehaviour
 
     public void SpecialSetting()
     {
-        //specialProb = specialBulletPrefab.GetComponent<Bullet>().specialProb;
-
         if(specialBulletPrefab != null)
         {
             switch (specialBulletPrefab.GetComponent<Bullet>().bType)

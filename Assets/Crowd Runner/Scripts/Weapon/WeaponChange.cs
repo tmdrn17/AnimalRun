@@ -1,20 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class WeaponChange : MonoBehaviour
 {
     [SerializeField] GameObject weaponParent;
-    [SerializeField] GameObject[] specialBullet;
 
-    void Update()
+    private void Update()
     {
         SelectWeapon();
-        SelectSpecialBullet();
     }
 
-    public void SelectWeapon()
+    private void SelectWeapon()
     {
         int weaponIndex = PlayerPrefs.GetInt("lastSelectedGun", 0);
 
@@ -30,46 +25,4 @@ public class WeaponChange : MonoBehaviour
             }
         }
     }
-
-    public void SelectSpecialBullet()
-    {
-        int weaponIndex = PlayerPrefs.GetInt("lastSelectedSpecial", -1);
-        
-        bool isValidIndex = (weaponIndex >= 0 && weaponIndex < specialBullet.Length);
-
-        for (int i = 0; i < weaponParent.transform.childCount; i++)
-        {
-            Weapon weaponComponent = weaponParent.transform.GetChild(i).GetComponent<Weapon>();
-
-            if (weaponComponent != null)
-            {
-                if (isValidIndex)
-                {
-                    weaponComponent.specialBulletPrefab = specialBullet[weaponIndex];
-                    weaponComponent.SpecialSetting();
-                }
-                else
-                {
-                    weaponComponent.specialBulletPrefab = null;
-                }
-            }
-        }
-    }
-
-    /*   public void SelectSpecialBullet()
-       {
-           int weaponIndex = PlayerPrefs.GetInt("lastSelectedSpecial");
-           for (int i = 0; i < weaponParent.transform.childCount; i++)
-           {
-               if (weaponIndex >= 0)
-               {
-                   weaponParent.transform.GetChild(i).GetComponent<Weapon>().specialBulletPrefab = specialBullet[weaponIndex];
-                   weaponParent.transform.GetChild(i).GetComponent<Weapon>().SpecialSetting();
-               }
-               else
-               {
-                   weaponParent.transform.GetChild(i).GetComponent<Weapon>().specialBulletPrefab = null;
-               }
-           }
-       }*/
 }

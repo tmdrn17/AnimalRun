@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 60985051428402101}
   - component: {fileID: 4750350396868681168}
   m_Layer: 0
-  m_Name: MolotovCocktail
+  m_Name: FireBottle
   m_TagString: Special
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
