@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3160467016654324909}
   - component: {fileID: 2581017103743259497}
   - component: {fileID: 1427185875528429968}
-  - component: {fileID: 8112566576189208856}
+  - component: {fileID: 3878822696651926470}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Special
@@ -84,7 +84,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &8112566576189208856
+--- !u!114 &3878822696651926470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,21 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 747712412096397577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da99a3dc09adbe44b8b92c07787be084, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c7f8c59dd265f74db517876223522c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grenadeMesh: {fileID: 3375065841838853453}
-  grenadeParticle: {fileID: 2526457065158249203}
-  startTransform: {x: 0, y: 0, z: 0}
-  curTransform: {x: 0, y: 0, z: 0}
-  bulletRange: 5
-  rotationSpeed: 0
-  damage: 1
-  specialProb: 0.1
-  bType: 4
-  radius: 1.5
-  fireField: {fileID: 0}
-  weapon: {fileID: 0}
 --- !u!1 &3375065841838853453
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,10 +279,5 @@ PrefabInstance:
 --- !u!4 &2524009093982723323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4150649967365504, guid: ed511b7776af6174e9b1255c7a81e59c, type: 3}
-  m_PrefabInstance: {fileID: 2524736100943417723}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2526457065158249203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1809022330002312, guid: ed511b7776af6174e9b1255c7a81e59c, type: 3}
   m_PrefabInstance: {fileID: 2524736100943417723}
   m_PrefabAsset: {fileID: 0}

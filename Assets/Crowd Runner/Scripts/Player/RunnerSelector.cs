@@ -22,6 +22,5 @@ public class RunnerSelector : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(false);
             }
         }
-
     }
 }

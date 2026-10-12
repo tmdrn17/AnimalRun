@@ -10,11 +10,15 @@ public class Runner : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] RunnerSelector runnerSelector;
 
+    public Transform weaponPosition;
+
     [Header(" Settings ")]
     private bool isTarget;
 
     void Awake()
     {
+        weaponPosition = transform.Find("Weapon Position");
+        
         for (int i = 0; i < transform.childCount; i++)
         {
             int runnerIndex = PlayerPrefs.GetInt("lastSelectedSkin", 0);
