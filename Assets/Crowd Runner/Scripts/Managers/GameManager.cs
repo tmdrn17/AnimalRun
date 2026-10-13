@@ -6,7 +6,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public enum GameState {Menu, Game, LevelComplete, Gameover}
+    public enum GameState {Menu, Select, Game, LevelComplete, Gameover}
 
     public GameState gameState { get; private set; }
 
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] UIManager uiManager;
 
-    void Awake()
+    private void Awake()
     {
         if (instance != null)
             Destroy(gameObject);
@@ -22,13 +22,12 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
-    void Start()
+    private void Start()
     {
-        
         Time.timeScale = 1.0f;
     }
 
-    void Update()
+    private void Update()
     {
         PauseGame();
     }
@@ -39,25 +38,12 @@ public class GameManager : MonoBehaviour
         onGameStateChanged?.Invoke(gameState);
     }
 
-    public bool IsGameState(int stateNum)
+    public bool IsGameState(GameState state)
     {
-        switch (stateNum)
-        {
-            default: 
-                return false;
-            case 0:
-                return gameState == GameState.Menu;
-            case 1:
-                return gameState == GameState.Game;
-            case 2:
-                return gameState == GameState.LevelComplete;
-            case 3:
-                return gameState == GameState.Gameover;
-        }
-        
+        return gameState == state;
     }
 
-    void PauseGame()
+    private void PauseGame()
     {
         if (Input.GetKey(KeyCode.Escape))
         {

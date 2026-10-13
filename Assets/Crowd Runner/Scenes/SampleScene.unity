@@ -279,7 +279,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 16662334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickAnimalButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &16662334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,12 +1408,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleShopPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2366,14 +2378,13 @@ GameObject:
   - component: {fileID: 213103273}
   - component: {fileID: 213103275}
   - component: {fileID: 213103274}
-  - component: {fileID: 213103276}
   m_Layer: 3
   m_Name: Weapon Select Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &213103273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2381,7 +2392,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213103272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 2.2987479e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2389,7 +2400,7 @@ RectTransform:
   - {fileID: 1910954480}
   - {fileID: 266905159}
   - {fileID: 1703130600}
-  m_Father: {fileID: 1215134786}
+  m_Father: {fileID: 364829294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2434,19 +2445,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213103272}
   m_CullTransparentMesh: 1
---- !u!114 &213103276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213103272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f17290c127fa4ed45ac419ce8e5fb09d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: {fileID: 0}
 --- !u!1 &217402896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,9 +2942,9 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1427185875528429968, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
+    - {fileID: 0}
     - {fileID: 3190270432575817908, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
-    - {fileID: 2581017103743259497, guid: e62735a3cb7119449b68872d26d283cc, type: 3}
+    - {fileID: 0}
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3163,9 +3161,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 213103276}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: SelectWeapon
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4029,6 +4027,23 @@ MonoBehaviour:
   - {fileID: 441972403}
   - {fileID: 397524328}
   - {fileID: 1902193861}
+  panelInfos:
+  - type: 0
+    panelObject: {fileID: 1244452014}
+  - type: 1
+    panelObject: {fileID: 1215134785}
+  - type: 2
+    panelObject: {fileID: 1336372117}
+  - type: 3
+    panelObject: {fileID: 448171523}
+  - type: 4
+    panelObject: {fileID: 567723719}
+  - type: 5
+    panelObject: {fileID: 441972403}
+  - type: 6
+    panelObject: {fileID: 397524328}
+  - type: 7
+    panelObject: {fileID: 1902193861}
   progressBar: {fileID: 1710986426}
   levelText: {fileID: 1620356666}
 --- !u!1 &354501038
@@ -4073,6 +4088,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &364829293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364829294}
+  - component: {fileID: 364829295}
+  m_Layer: 3
+  m_Name: Select Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &364829294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364829293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1378572875}
+  - {fileID: 213103273}
+  m_Father: {fileID: 1215134786}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &364829295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364829293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a15601df414a8e8020e6ee55312612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalSelectPanel: {fileID: 1378572874}
+  weaponSelectPanel: {fileID: 213103272}
+  animalButtons:
+  - {fileID: 496791736}
+  - {fileID: 16662333}
+  - {fileID: 1584351733}
+  weaponButtons:
+  - {fileID: 1910954481}
+  - {fileID: 266905160}
+  - {fileID: 1703130601}
 --- !u!1 &369428658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7414597389953511401, guid: 387269d195072c84a898889f6d095dd4, type: 3}
@@ -4990,7 +5065,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 496791737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickAnimalButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &496791737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9018,6 +9105,7 @@ Transform:
   - {fileID: 693957654}
   - {fileID: 96684447}
   - {fileID: 37290859}
+  - {fileID: 2130694078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &861532317 stripped
@@ -9719,12 +9807,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleShopPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10281,12 +10369,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleExitPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11828,12 +11916,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleSettingsPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -13171,8 +13259,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 9205082157286256566, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
-    - {fileID: 60985051428402101, guid: 7d1103bdbb509f142a8953cc27df0a93, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13570,7 +13658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1215134786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13587,8 +13675,7 @@ RectTransform:
   - {fileID: 1620356665}
   - {fileID: 2085805249}
   - {fileID: 540945823}
-  - {fileID: 1378572875}
-  - {fileID: 213103273}
+  - {fileID: 364829294}
   m_Father: {fileID: 158658062}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13684,7 +13771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1244452015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15239,7 +15326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1378572875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15247,7 +15334,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378572874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 2.2987479e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15255,7 +15342,7 @@ RectTransform:
   - {fileID: 496791735}
   - {fileID: 16662332}
   - {fileID: 1584351732}
-  m_Father: {fileID: 1215134786}
+  m_Father: {fileID: 364829294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16974,7 +17061,6 @@ GameObject:
   - component: {fileID: 1578294423}
   - component: {fileID: 1578294424}
   - component: {fileID: 1578294425}
-  - component: {fileID: 1578294426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -17029,7 +17115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1578294425}
   runnersParent: {fileID: 1680461193}
-  runnerPrefab: {fileID: 509883301906039885, guid: a97766b7e5bd95f41898dc1936f520d0, type: 3}
+  runnerPrefab: {fileID: 0}
   shootingManager: {fileID: 96684448}
   radius: 0.4
   angle: 137.508
@@ -17060,20 +17146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runnersParent: {fileID: 1680461193}
---- !u!114 &1578294426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578294420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c5cfb4cec61a643a4ab385b9888786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runnersParent: {fileID: 1680461193}
-  runnerSelectorPrefab: {fileID: 0}
 --- !u!1 &1584351731
 GameObject:
   m_ObjectHideFlags: 0
@@ -17158,7 +17230,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1584351734}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickAnimalButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1584351734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17282,12 +17366,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleExitPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18339,12 +18423,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: TogglePausePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18472,9 +18556,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 213103276}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: SelectWeapon
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20840,12 +20924,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: ToggleSettingsPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -21891,9 +21975,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 213103276}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: SelectWeapon
+      - m_Target: {fileID: 364829295}
+        m_TargetAssemblyTypeName: SelectUI, Assembly-CSharp
+        m_MethodName: OnClickWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23599,12 +23683,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 353805832}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ShowSettingsPanel
-        m_Mode: 3
+        m_MethodName: TogglePausePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -24044,7 +24128,7 @@ RectTransform:
   m_Father: {fileID: 344510831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.63, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24346,6 +24430,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130367258}
   m_CullTransparentMesh: 1
+--- !u!1 &2130694077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130694078}
+  - component: {fileID: 2130694079}
+  m_Layer: 0
+  m_Name: Select Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2130694078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130694077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 860006894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130694079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130694077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17290c127fa4ed45ac419ce8e5fb09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runnerPosition: {fileID: 1680461193}
+  weaponPosition: {fileID: 0}
+  selectUI: {fileID: 364829295}
 --- !u!1 &2135617260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3702261065244032309, guid: 8019a12e9e6fee14cbb7a6b8708a872c, type: 3}

@@ -3,7 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+
+public enum PanelType
+{
+    Menu,
+    Game,
+    GameOver,
+    LevelComplete,
+    Settings,
+    Shop,
+    Pause,
+    Exit,
+    None
+}
+
+[System.Serializable]
+public struct PanelInfo
+{
+    public PanelType type;
+    public GameObject panelObject;
+}
 
 public class UIManager : MonoBehaviour
 {
@@ -12,24 +31,37 @@ public class UIManager : MonoBehaviour
     [SerializeField] ShootingManager shootingManager;
 
     [Header(" Elements ")]
-    /* * 0 = Menu Pannel  1 = Game Pannel
-       * 2 = GameOver Pannel  3 = Level Complete Pannel
-       * 4 = Settings Pannel  5 = Shop Pannel
-       * 6 = Pause Pannel  7 = Exit Pannel */
     public GameObject[] allPanels = new GameObject[8];
+    [SerializeField] private PanelInfo[] panelInfos;
+    private Dictionary<PanelType, GameObject> panelDict = new();
 
     [SerializeField] Slider progressBar;
     [SerializeField] Text levelText;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public void ToggleSettingsPanel() => TogglePanel(PanelType.Settings);
+    public void ToggleShopPanel() => TogglePanel(PanelType.Shop);
+    public void TogglePausePanel() => TogglePanel(PanelType.Pause);
+    public void ToggleExitPanel() => TogglePanel(PanelType.Exit);
+    
+    private void Awake()
+    {
+        foreach (var info in panelInfos)
+        {
+            if (!panelDict.ContainsKey(info.type))
+            {
+                panelDict.Add(info.type, info.panelObject);
+            }
+        }
+    }
+    
+    private void Start()
     {
         progressBar.value = 0;
-
-        allPanels[1].SetActive(false);
-        allPanels[2].SetActive(false);
-        allPanels[4].SetActive(false);
-        allPanels[5].SetActive(false);
+        
+        ClosePanel(PanelType.Game);
+        ClosePanel(PanelType.GameOver);
+        ClosePanel(PanelType.Settings);
+        ClosePanel(PanelType.Shop);
 
         levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
 
@@ -41,30 +73,64 @@ public class UIManager : MonoBehaviour
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
 
-    void Update()
+    private void Update()
     {
         UpdateProgressBar();
+    }
+    
+    public void OpenPanel(PanelType type)
+    {
+        foreach (var panel in panelDict)
+        {
+            if (panel.Key == type)
+            {
+                panel.Value.SetActive(true);
+            }
+        }
+    }
+    
+    public void ClosePanel(PanelType type = PanelType.None, bool allClose = false)
+    {
+        if (type == PanelType.None && allClose)
+        {
+            foreach (var panel in panelDict)
+            {
+                panel.Value.SetActive(false);
+            }
+            
+            return;
+        }
+        
+        foreach (var panel in panelDict)
+        {
+            if (panel.Key == type)
+            {
+                panel.Value.SetActive(false);
+            }
+        }
     }
 
     private void GameStateChangedCallback(GameManager.GameState gameState)
     {
         if (gameState == GameManager.GameState.Gameover)
         {
-            ShowGameover();
+            ClosePanel(PanelType.Game);
+            OpenPanel(PanelType.GameOver);
         }
 
         else if (gameState == GameManager.GameState.LevelComplete)
         {
-            ShowLevelComplete();
+            ClosePanel(PanelType.Game);
+            OpenPanel(PanelType.LevelComplete);
         }
     }
 
     public void PlayButtonPressed()
     {
-        GameManager.instance.SetGameState(GameManager.GameState.Game);
+        GameManager.instance.SetGameState(GameManager.GameState.Select);
 
-        allPanels[0].SetActive(false);
-        allPanels[1].SetActive(true);
+        ClosePanel(PanelType.Menu);
+        OpenPanel(PanelType.Game);
     }
 
     public void RetryButtonPressed()
@@ -72,47 +138,52 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void ShowGameover()
-    {
-        allPanels[1].SetActive(false);
-        allPanels[2].SetActive(true);
-    }
-
-    private void ShowLevelComplete()
-    {
-        allPanels[1].SetActive(false);
-        allPanels[3].SetActive(true);
-    }
-
     public void UpdateProgressBar()
     {
-        if (!GameManager.instance.IsGameState(1))
+        if (!GameManager.instance.IsGameState(GameManager.GameState.Game))
             return;
 
         float progress = PlayerController.instance.transform.position.z / ChunkManager.instance.GetFinishZ();
         progressBar.value = progress;
     }
 
-    public void ShowSettingsPanel(int pannelNum)
+    public void ShowSettingsPanel(int panelNum)
     {
-        if (allPanels[pannelNum].activeSelf)
+        if (allPanels[panelNum].activeSelf)
         {
             Time.timeScale = 1.0f;
-            allPanels[pannelNum].SetActive(false);
+            allPanels[panelNum].SetActive(false);
         }
         else
         {
             Time.timeScale = 0.0f;
-            allPanels[pannelNum].SetActive(true);
+            allPanels[panelNum].SetActive(true);
         }
     }
-
+    
+    private void TogglePanel(PanelType type)
+    {
+        if (panelDict.TryGetValue(type, out GameObject panel))
+        {
+            if (panel.activeSelf)
+            {
+                Time.timeScale = 1.0f;
+                panel.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0.0f;
+                panel.SetActive(true);
+            }
+        }
+    }
+    
     public void QuitGame()
     {
-        #if UNITY_EDITOR
-          UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
           Application.Quit();
-        #endif
+#endif
     }
 }

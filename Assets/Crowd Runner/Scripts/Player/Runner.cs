@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Crowd_Runner.Scripts.Managers;
 using UnityEngine;
 
@@ -15,20 +12,9 @@ public class Runner : MonoBehaviour
     [Header(" Settings ")]
     private bool isTarget;
 
-    void Awake()
+    private void Awake()
     {
-        weaponPosition = transform.Find("Weapon Position");
-        
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            int runnerIndex = PlayerPrefs.GetInt("lastSelectedSkin", 0);
-
-            if (i == runnerIndex)
-            {
-                runnerSelector.SelectRunner(i);
-                SetAnimator(transform.GetChild(i).GetComponent<Animator>());
-            }
-        }
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()

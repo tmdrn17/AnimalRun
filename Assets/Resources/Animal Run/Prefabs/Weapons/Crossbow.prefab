@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.356, y: 5.062, z: 20.019114}
-  m_LocalScale: {x: 0.025521317, y: 0.025521317, z: 0.025521317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7182411809339532605}
@@ -129,11 +129,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTime: 3
-  maxBulletNumber: 1
   bulletPrefab: {fileID: 3307916066731801436, guid: 6afae0b822af86f47898ea477e2b3b8a, type: 3}
   specialBulletPrefab: {fileID: 0}
   bulletFireTransform:
   - {fileID: 5360272078003996027}
   bulletSpeed: 10
+  specialBulletSpeed: 0
   specialProb: 0.3
+  damage: 0
+  range: 0
   bullets: []
+  count: 0

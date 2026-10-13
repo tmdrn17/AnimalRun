@@ -15,7 +15,7 @@ public class PlayerDetection : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.instance.IsGameState(1))
+        if(GameManager.instance.IsGameState(GameManager.GameState.Game))
             DetectColliders();
     }
 

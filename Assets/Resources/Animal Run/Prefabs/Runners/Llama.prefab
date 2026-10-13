@@ -48,6 +48,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -86,6 +98,10 @@ PrefabInstance:
     - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 396840c047d88b54ebba63d86156d9f6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -148,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   runnerSelector: {fileID: 0}
-  weaponPosition: {fileID: 0}
+  weaponPosition: {fileID: 8777572798836850167}
 --- !u!54 &8445349557441811670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,7 +190,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &8158744852692918238
 CapsuleCollider:

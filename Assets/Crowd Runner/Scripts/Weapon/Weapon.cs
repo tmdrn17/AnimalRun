@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         bulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
-        bullets = transform.Find("BulletFireTransform").gameObject.GetComponent<BulletCreate>().bullets;
+//        bullets = transform.Find("BulletFireTransform").gameObject.GetComponent<BulletCreate>().bullets;
 
         StartCoroutine(FireBullet());
 

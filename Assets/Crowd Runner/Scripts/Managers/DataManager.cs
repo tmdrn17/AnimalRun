@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Crowd_Runner.Scripts.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +9,9 @@ public class DataManager : MonoBehaviour
     [Header(" Coin Texts ")]
     [SerializeField] private Text[] coinsTexts;
     private int coins;
+    
+    public WeaponTable weaponTable;
+    public AnimalTable animalTable;
 
     private void Awake()
     {
@@ -19,17 +21,17 @@ public class DataManager : MonoBehaviour
             instance = this;
 
         coins = PlayerPrefs.GetInt("coins", 2000);
+        
+        animalTable = new AnimalTable();
+        weaponTable = new WeaponTable();
 
+        animalTable.Load();
+        weaponTable.Load();
     }
 
-    void Start()
+    private void Start()
     {
         UpdateCoinsTexts();
-    }
-
-    void Update()
-    {
-        
     }
     
     private void UpdateCoinsTexts()

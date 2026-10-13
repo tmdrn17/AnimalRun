@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Crowd_Runner.Scripts.Managers;
 using UnityEngine;
 
 public class CrowdSystem : MonoBehaviour
@@ -16,9 +17,11 @@ public class CrowdSystem : MonoBehaviour
     
     private void Update()
     {
-        if (!GameManager.instance.IsGameState(1))
+        if (GameManager.instance.IsGameState(GameManager.GameState.Select))
+            runnerPrefab = ListManager.Runners[0].gameObject;
+        if (!GameManager.instance.IsGameState(GameManager.GameState.Game))
             return;
-
+        
         PlaceRunners();
 
         if (runnersParent.childCount <= 0)
