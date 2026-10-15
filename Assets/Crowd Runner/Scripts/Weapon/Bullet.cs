@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public enum BulletTyp
 {
@@ -13,53 +14,74 @@ public enum BulletTyp
 }
 
 public class Bullet : MonoBehaviour
-{
+{/*
     [SerializeField] GameObject grenadeMesh;
     [SerializeField] GameObject grenadeParticle;
 
-    [SerializeField]
-    Vector3 startTransform;
+    public Vector3 startTransform;
     [SerializeField]
     Vector3 curTransform;
-
-    public int bulletRange = 5;
-    public int damage;
+    
     [SerializeField]
     float rotationSpeed;
     int hitCount = 0;
     public float specialProb;
 
     public BulletTyp bType;
-
-    Rigidbody rb;
-
+    
     [SerializeField]
     float radius = 10;
 
     [SerializeField]
     GameObject fireField;
 
-    public Weapon weapon;
+    public Weapon weapon;*/
+    
+    private Rigidbody rb;
+    
+    private IObjectPool<Bullet> myPool;
+    public float speed;
+    private float range;
+    private int damage;
+    private Vector3 startPosition;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void SetTarget(Transform fireTr)
-    {
-        startTransform = fireTr.position;
-    }
-
     void Update()
     {
-        BulletElement();
-        Debug.Log(transform.position.z - startTransform.z);
-        if (transform.position.z - startTransform.z >= bulletRange)
+        /*BulletElement();
+        Debug.Log(transform.position.z - startTransform.z);*/
+        
+        if (Vector3.Distance(startPosition, transform.position) >= range)
         {
             rb.velocity = Vector3.zero;
-            gameObject.SetActive(false);
+            myPool.Release(this);
         }
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = transform.forward * speed;
+    }
+    
+    public void SetPool(IObjectPool<Bullet> pool)
+    {
+        myPool = pool;
+    }
+    
+    public void Init(int damage, float range, float speed)
+    {
+        this.damage = damage;
+        this.range = range;
+        this.speed = speed;
+        startPosition = transform.position;
+    }
+    
+    /*public void SetTarget(Transform fireTr)
+    {
+        startTransform = fireTr.position;
     }
 
     void BulletElement()
@@ -148,5 +170,5 @@ public class Bullet : MonoBehaviour
         grenadeParticle.SetActive(false);
         rb.velocity = Vector3.zero;
         Destroy(gameObject, 2f);
-    }
+    }*/
 }

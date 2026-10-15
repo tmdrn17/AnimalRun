@@ -1,29 +1,87 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Crowd_Runner.Scripts.Data;
+using UnityEngine.Pool;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float specialProb = 0.3f;
-    [SerializeField] private int damage;
-    [SerializeField] private int range;
+    [SerializeField] private Transform firePosition;
     
-    public float bulletTime;
-    public int count;
+    private Bullet bulletPrefab;
+    private int bulletDamage;
+    private float bulletRange;
+    private float bulletSpeed;
+    private float bulletSplashRadius;
+    private float attackInterval;
     
-    public List<GameObject> bullets = new();
-    public GameObject bulletPrefab;
-    public GameObject[] bulletFireTransform;
+    private  ObjectPool<Bullet> bulletPool;
+    private Transform bulletContainer;
 
-    private void Start()
+    public void Init(WeaponDef myDef, Transform poolContainer)
     {
-        bulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
-        bullets = transform.Find("BulletFireTransform").gameObject.GetComponent<BulletCreate>().bullets;
+        bulletPrefab = myDef.BulletPrefab;
+        bulletDamage = myDef.BulletDamage;
+        bulletRange = myDef.BulletRange;
+        bulletSpeed = myDef.BulletSpeed;
+        bulletSplashRadius = myDef.BulletSplashRadius;
+        attackInterval = myDef.AttackInterval;
+        bulletContainer = poolContainer;
+        
+        InitializePool();
+        StartCoroutine(FireRoutine());
+    }
 
-        bulletPrefab.GetComponent<Bullet>().damage = damage;
-        bulletPrefab.GetComponent<Bullet>().bulletRange = range;
+    private IEnumerator FireRoutine()
+    {
+        WaitForSeconds delay = new WaitForSeconds(attackInterval);
+
+        while (true)
+        {
+            Fire();
+            yield return delay;
+        }
+    }
+    
+    private void InitializePool()
+    {
+        bulletPool = new ObjectPool<Bullet>(
+            createFunc: () => {
+                // 1. 풀에 여유가 없을 때 새로 생성
+                Bullet bullet = Instantiate(bulletPrefab, bulletContainer);
+                // 총알에게 자신이 속할 풀의 정보를 넘겨주어, 스스로 풀에 반납할 수 있게 합니다.
+                bullet.SetPool(bulletPool);
+                return bullet;
+            },
+            actionOnGet: (bullet) => {
+                // 2. 풀에서 꺼낼 때
+                bullet.gameObject.SetActive(true);
+            },
+            actionOnRelease: (bullet) => {
+                // 3. 풀에 반납할 때
+                bullet.gameObject.SetActive(false);
+            },
+            actionOnDestroy: (bullet) => {
+                // 4. 풀이 터지거나 파괴될 때
+                Destroy(bullet.gameObject);
+            },
+            collectionCheck: true,
+            defaultCapacity: 10,
+            maxSize: 50
+        );
+    }
+
+    public void Fire()
+    {
+        Vector3 spawnPos = firePosition.position;
+        Quaternion spawnRot = Quaternion.identity;
+        
+        Bullet bulletObj = bulletPool.Get();
+        
+        bulletObj.transform.position = spawnPos;
+        bulletObj.transform.rotation = spawnRot;
+        
+        float finalBulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
+        
+        bulletObj.Init(bulletDamage, bulletRange, finalBulletSpeed);
     }
 }

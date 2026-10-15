@@ -128,15 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7f8c59dd265f74db517876223522c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTime: 3
-  bulletPrefab: {fileID: 4663671698684334080, guid: 74eb73ebc6ad0f345951e813714dcdaa, type: 3}
-  specialBulletPrefab: {fileID: 0}
-  bulletFireTransform:
-  - {fileID: 3542891682235881859}
-  bulletSpeed: 10
-  specialBulletSpeed: 0
-  specialProb: 0.3
-  damage: 0
-  range: 0
-  bullets: []
-  count: 0
+  firePosition: {fileID: 489954717503799203}

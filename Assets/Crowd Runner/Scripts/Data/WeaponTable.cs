@@ -28,13 +28,13 @@ namespace Crowd_Runner.Scripts.Data
                 WeaponDTO dto = rows[i];
                 Weapon weaponPrefab = Resources.Load<Weapon>(dto.PrefabKey);
                 if(weaponPrefab == null) 
-                    Debug.LogWarning($"[UnitTable] {dto.PrefabKey} 경로에 파일 없음");
+                    Debug.LogWarning($"[Table] {dto.PrefabKey} 경로에 파일 없음");
                 Bullet bulletPrefab = Resources.Load<Bullet>(dto.BulletPrefabKey);
                 if(bulletPrefab == null) 
-                    Debug.LogWarning($"[UnitTable] {dto.BulletPrefabKey} 경로에 파일 없음");
+                    Debug.LogWarning($"[Table] {dto.BulletPrefabKey} 경로에 파일 없음");
                 Sprite sprite = Resources.Load<Sprite>(dto.SpriteKey);
                 if(sprite == null) 
-                    Debug.LogWarning($"[UnitTable] {dto.SpriteKey} 경로에 파일 없음");
+                    Debug.LogWarning($"[Table] {dto.SpriteKey} 경로에 파일 없음");
 
                 WeaponDef def = new WeaponDef();
                 def.ID = dto.ID;
@@ -42,12 +42,13 @@ namespace Crowd_Runner.Scripts.Data
                 def.Prefab = weaponPrefab;
                 def.Sprite = sprite;
                 def.Kind = dto.Kind;
-                def.BulletPrefab = bulletPrefab;
-
-                def.Damage = dto.Damage;
-                def.Range = dto.Range;
                 def.AttackInterval = dto.AttackInterval;
-                def.SplashRadius = dto.SplashRadius;
+                
+                def.BulletPrefab = bulletPrefab;
+                def.BulletDamage = dto.BulletDamage;
+                def.BulletRange = dto.BulletRange;
+                def.BulletSpeed = dto.BulletSpeed;
+                def.BulletSplashRadius = dto.BulletSplashRadius;
                 
                 WeaponDefs.Add(dto.ID, def);
             }

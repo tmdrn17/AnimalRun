@@ -27,14 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674729344821104053}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -7.8768635, y: 5.321, z: 21.305021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4335069395835046017}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2329566684335667348
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -97,18 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7f8c59dd265f74db517876223522c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTime: 3
-  bulletPrefab: {fileID: 9065960969435671419, guid: a662c9030581d7a40b113a30eba1410e, type: 3}
-  specialBulletPrefab: {fileID: 0}
-  bulletFireTransform:
-  - {fileID: 6864493644379053813}
-  bulletSpeed: 4
-  specialBulletSpeed: 0
-  specialProb: 0.3
-  damage: 0
-  range: 0
-  bullets: []
-  count: 0
+  firePosition: {fileID: 4335069395835046017}
 --- !u!1 &6864493644379053813
 GameObject:
   m_ObjectHideFlags: 0

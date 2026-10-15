@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Crowd_Runner.Scripts.Data
 {
@@ -17,11 +18,13 @@ namespace Crowd_Runner.Scripts.Data
         public string PrefabKey;
         public string SpriteKey;
         public WeaponKind Kind;
-        public string BulletPrefabKey;
-        public int Damage;
-        public float Range;
         public float AttackInterval;
-        public float SplashRadius;
+        
+        public string BulletPrefabKey;
+        public int BulletDamage;
+        public float BulletRange;
+        public float BulletSpeed;
+        public float BulletSplashRadius;
     }
     
     [System.Serializable]
@@ -32,11 +35,12 @@ namespace Crowd_Runner.Scripts.Data
         public Weapon Prefab;
         public Sprite Sprite;
         public WeaponKind Kind;
-        public Bullet BulletPrefab;
-        
-        public int Damage;
-        public float Range;
         public float AttackInterval;
-        public float SplashRadius;
+        
+        public Bullet BulletPrefab;
+        public int BulletDamage;
+        public float BulletRange;
+        public float BulletSpeed;
+        public float BulletSplashRadius;
     }
 }

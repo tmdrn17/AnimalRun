@@ -12,9 +12,9 @@ public class BulletCreate : MonoBehaviour
 
     void Start()
     {
-        bullet = transform.parent.GetComponent<Weapon>().bulletPrefab;
+        /*bullet = transform.parent.GetComponent<Weapon>().bulletPrefab;
         count = transform.parent.GetComponent<Weapon>().count;
-        bulletTime = transform.parent.GetComponent<Weapon>().bulletTime;
+        bulletTime = transform.parent.GetComponent<Weapon>().bulletTime;*/
 
         for (int i = 0; i < count; i++)
         {
@@ -42,7 +42,7 @@ public class BulletCreate : MonoBehaviour
                 {
                     bullets[i].transform.position = transform.position;
                     bullets[i].transform.rotation = transform.rotation;
-                    bullets[i].GetComponent<Bullet>().SetTarget(transform);
+                    /*bullets[i].GetComponent<Bullet>().SetTarget(transform);*/
                     bullets[i].SetActive(true);
 
                     bullets[i].GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * bulletSpeed, ForceMode.Impulse);
