@@ -17,6 +17,7 @@ namespace Crowd_Runner.Scripts.Data
         public string PrefabKey;
         public string SpriteKey;
         public WeaponKind Kind;
+        public string BulletPrefabKey;
         public int Damage;
         public float Range;
         public float AttackInterval;
@@ -31,6 +32,7 @@ namespace Crowd_Runner.Scripts.Data
         public Weapon Prefab;
         public Sprite Sprite;
         public WeaponKind Kind;
+        public Bullet BulletPrefab;
         
         public int Damage;
         public float Range;

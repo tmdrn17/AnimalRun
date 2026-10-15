@@ -15,7 +15,6 @@ public class BulletCreate : MonoBehaviour
         bullet = transform.parent.GetComponent<Weapon>().bulletPrefab;
         count = transform.parent.GetComponent<Weapon>().count;
         bulletTime = transform.parent.GetComponent<Weapon>().bulletTime;
-        bulletSpeed = transform.parent.GetComponent<Weapon>().bulletSpeed;
 
         for (int i = 0; i < count; i++)
         {
@@ -48,6 +47,7 @@ public class BulletCreate : MonoBehaviour
 
                     bullets[i].GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * bulletSpeed, ForceMode.Impulse);
                 }
+                
                 yield return new WaitForSeconds(bulletTime);
             }
         }

@@ -26,9 +26,12 @@ namespace Crowd_Runner.Scripts.Data
             for (int i = 0; i < rows.Count; i++)
             {
                 WeaponDTO dto = rows[i];
-                Weapon prefab = Resources.Load<Weapon>(dto.PrefabKey);
-                if(prefab == null) 
+                Weapon weaponPrefab = Resources.Load<Weapon>(dto.PrefabKey);
+                if(weaponPrefab == null) 
                     Debug.LogWarning($"[UnitTable] {dto.PrefabKey} 경로에 파일 없음");
+                Bullet bulletPrefab = Resources.Load<Bullet>(dto.BulletPrefabKey);
+                if(bulletPrefab == null) 
+                    Debug.LogWarning($"[UnitTable] {dto.BulletPrefabKey} 경로에 파일 없음");
                 Sprite sprite = Resources.Load<Sprite>(dto.SpriteKey);
                 if(sprite == null) 
                     Debug.LogWarning($"[UnitTable] {dto.SpriteKey} 경로에 파일 없음");
@@ -36,9 +39,10 @@ namespace Crowd_Runner.Scripts.Data
                 WeaponDef def = new WeaponDef();
                 def.ID = dto.ID;
                 def.Name = dto.Name;
-                def.Prefab = prefab;
+                def.Prefab = weaponPrefab;
                 def.Sprite = sprite;
                 def.Kind = dto.Kind;
+                def.BulletPrefab = bulletPrefab;
 
                 def.Damage = dto.Damage;
                 def.Range = dto.Range;
