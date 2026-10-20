@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -14,9 +11,11 @@ public class ButtonElement
 
 public class SelectUI : MonoBehaviour
 {
+    [Header(" Panels ")]
     [SerializeField] private GameObject animalSelectPanel;
     [SerializeField] private GameObject weaponSelectPanel;
 
+    [Header(" Buttons ")]
     [SerializeField] private ButtonElement[] animalButtons;
     [SerializeField] private ButtonElement[] weaponButtons;
     

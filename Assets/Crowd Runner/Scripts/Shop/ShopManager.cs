@@ -9,38 +9,42 @@ using Random = UnityEngine.Random;
 public class ShopManager : MonoBehaviour
 {
     [Header("Elements")]
-    [SerializeField] Button purchaseButton;
-    [SerializeField] SkinButton[] skinButtons;
-    [SerializeField] SkinButton[] gunButtons;
-    [SerializeField] SkinButton[] specialButtons;
-    [SerializeField] GameObject panel;
-    [SerializeField] Button skinTapButton;
-    [SerializeField] Button gunTapButton;
-    [SerializeField] Button specialTapButton;
-    [SerializeField] GameObject skinItem;
-    [SerializeField] GameObject gunItem;
-    [SerializeField] GameObject specialItem;
+    [SerializeField] private GameObject panel;
+
+    [Header(" Item Buttons ")]
+    [SerializeField] private SkinButton[] skinButtons;
+    [SerializeField] private SkinButton[] gunButtons;
+    [SerializeField] private SkinButton[] specialButtons;
+
+    [Header(" Tabs ")]
+    [SerializeField] private Button skinTapButton;
+    [SerializeField] private Button gunTapButton;
+    [SerializeField] private Button specialTapButton;
+    [SerializeField] private GameObject skinItem;
+    [SerializeField] private GameObject gunItem;
+    [SerializeField] private GameObject specialItem;
 
     [Header("Skins")]
-    [SerializeField] Sprite[] skins;
-    [SerializeField] GameObject[] previewSkinObj;
+    [SerializeField] private Sprite[] skins;
+    [SerializeField] private GameObject[] previewSkinObj;
 
     [Header("Gun")]
-    [SerializeField] Sprite[] guns;
-    [SerializeField] GameObject[] previewGunObj;
+    [SerializeField] private Sprite[] guns;
+    [SerializeField] private GameObject[] previewGunObj;
 
     [Header("Special")]
-    [SerializeField] Sprite[] special;
-    [SerializeField] GameObject[] previewSpecialObj;
+    [SerializeField] private Sprite[] special;
+    [SerializeField] private GameObject[] previewSpecialObj;
 
     [Header("Pricing")]
-    [SerializeField] int skinPrice;
-    [SerializeField] Text priceText;
+    [SerializeField] private int skinPrice;
+    [SerializeField] private Text priceText;
+    [SerializeField] private Button purchaseButton;
 
     [Header("Events")]
     public static Action<int> onSkinSelected;
 
-    void Awake()
+    private void Awake()
     {
         UnlockSkin(0);
         UnlockGun(0);
@@ -54,7 +58,7 @@ public class ShopManager : MonoBehaviour
     }
 
 
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         UpdeatePurchaseButton();
 
@@ -66,7 +70,7 @@ public class ShopManager : MonoBehaviour
         PreviewSkin(GetLastSelecedSkin());
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -139,25 +143,25 @@ public class ShopManager : MonoBehaviour
         specialButtons[specialIndex].Unlocked();
     }
 
-    void UnlockSkin(SkinButton skinButton)
+    private void UnlockSkin(SkinButton skinButton)
     {
         int skinIndex = skinButton.transform.GetSiblingIndex();
         UnlockSkin(skinIndex);
     }
 
-    void UnlockGun(SkinButton gunButton)
+    private void UnlockGun(SkinButton gunButton)
     {
         int skinIndex = gunButton.transform.GetSiblingIndex();
         UnlockGun(skinIndex);
     }
 
-    void UnlockSpecial(SkinButton specialButton)
+    private void UnlockSpecial(SkinButton specialButton)
     {
         int skinIndex = specialButton.transform.GetSiblingIndex();
         UnlockSpecial(skinIndex);
     }
 
-    void SelectSkin(int skinIndex)
+    private void SelectSkin(int skinIndex)
     {
         for(int i = 0; i < skinButtons.Length; i++)
         {
@@ -176,7 +180,7 @@ public class ShopManager : MonoBehaviour
         SaveLastSelectedSkin(skinIndex);
     }
 
-    void SelectGun(int skinIndex)
+    private void SelectGun(int skinIndex)
     {
         for (int i = 0; i < gunButtons.Length; i++)
         {
@@ -193,7 +197,7 @@ public class ShopManager : MonoBehaviour
         SaveLastSelectedSkin(skinIndex);
     }
 
-    void SelectSpecial(int skinIndex)
+    private void SelectSpecial(int skinIndex)
     {
         for (int i = 0; i < specialButtons.Length; i++)
         {
@@ -210,7 +214,7 @@ public class ShopManager : MonoBehaviour
         SaveLastSelectedSkin(skinIndex);
     }
 
-    void PreviewSkin(int skinIndex)
+    private void PreviewSkin(int skinIndex)
     {
         for (int i = 0; i < skinButtons.Length; i++)
         {
@@ -233,7 +237,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void PreviewGun(int gunIndex)
+    private void PreviewGun(int gunIndex)
     {
         for (int i = 0; i < gunButtons.Length; i++)
         {
@@ -256,7 +260,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void PreviewSpecial(int specialIndex)
+    private void PreviewSpecial(int specialIndex)
     {
         for (int i = 0; i < specialButtons.Length; i++)
         {
@@ -371,22 +375,22 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    int GetLastSelecedSkin()
+    private int GetLastSelecedSkin()
     {
         return PlayerPrefs.GetInt("lastSelectedSkin", 0);
     }
 
-    int GetLastSelecedGun()
+    private int GetLastSelecedGun()
     {
         return PlayerPrefs.GetInt("lastSelectedGun", 0);
     }
 
-    int GetLastSelecedSpecial()
+    private int GetLastSelecedSpecial()
     {
         return PlayerPrefs.GetInt("lastSelectedSpecial", 0);
     }
 
-    void SaveLastSelectedSkin(int skinIndex)
+    private void SaveLastSelectedSkin(int skinIndex)
     {
         if (skinItem.gameObject.activeSelf)
         {
@@ -434,6 +438,5 @@ public class ShopManager : MonoBehaviour
         specialItem.gameObject.SetActive(true);
         PreviewSpecial(GetLastSelecedSpecial());
         SelectSpecial(GetLastSelecedSpecial());
-       // Debug.LogWarning(GetLastSelecedSpecial());
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public static class TSVReader
 {
@@ -62,7 +63,8 @@ public static class TSVReader
 
     public static List<T> ReadTable<T>(string filePath)
     {
-        if (File.Exists(filePath) == false)
+        string tableText = ReadAllText(filePath);
+        if (tableText == null)
         {
             Debug.LogError($"[TableReader] 파일이 존재하지 않습니다: {filePath}");
             return null;
@@ -70,7 +72,7 @@ public static class TSVReader
 
         try
         {
-            using var reader = new StreamReader(filePath);
+            using var reader = new StringReader(tableText);
             using var csv = new CsvReader(reader, TsvConfig);
 
             var records = new List<T>();
@@ -87,6 +89,26 @@ public static class TSVReader
             Debug.LogError($"[TableLoader] {filePath} 로딩 실패: {ex.Message}");
             return null;
         }
+    }
+
+    /// <summary>
+    /// 파일 내용을 문자열로 읽습니다. Android의 StreamingAssets(jar:file://)처럼 File API로 접근할 수 없는 경로는 UnityWebRequest로 읽습니다.
+    /// </summary>
+    /// <returns> 파일 내용, 실패하면 null</returns>
+    private static string ReadAllText(string filePath)
+    {
+        if (filePath.Contains("://") == false)
+            return File.Exists(filePath) ? File.ReadAllText(filePath) : null;
+
+        using var request = UnityWebRequest.Get(filePath);
+        var operation = request.SendWebRequest();
+        while (operation.isDone == false) { }
+
+        if (request.result != UnityWebRequest.Result.Success)
+            return null;
+
+        // UTF-8 BOM이 첫 헤더 이름에 섞이지 않도록 제거한다.
+        return request.downloadHandler.text.TrimStart('﻿');
     }
 }
 }

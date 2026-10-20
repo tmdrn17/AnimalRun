@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,17 +26,15 @@ public struct PanelInfo
 public class UIManager : MonoBehaviour
 {
     [Header("Manager")]
-    [SerializeField] ShopManager shopManager;
-    [SerializeField] ShootingManager shootingManager;
+    [SerializeField] private ShopManager shopManager;
 
     [Header(" Elements ")]
-    public GameObject[] allPanels = new GameObject[8];
     [SerializeField] private PanelInfo[] panelInfos;
+    [SerializeField] private Slider progressBar;
+    [SerializeField] private Text levelText;
+
     private Dictionary<PanelType, GameObject> panelDict = new();
 
-    [SerializeField] Slider progressBar;
-    [SerializeField] Text levelText;
-    
     public void ToggleSettingsPanel() => TogglePanel(PanelType.Settings);
     public void ToggleShopPanel() => TogglePanel(PanelType.Shop);
     public void TogglePausePanel() => TogglePanel(PanelType.Pause);
@@ -147,20 +144,6 @@ public class UIManager : MonoBehaviour
         progressBar.value = progress;
     }
 
-    public void ShowSettingsPanel(int panelNum)
-    {
-        if (allPanels[panelNum].activeSelf)
-        {
-            Time.timeScale = 1.0f;
-            allPanels[panelNum].SetActive(false);
-        }
-        else
-        {
-            Time.timeScale = 0.0f;
-            allPanels[panelNum].SetActive(true);
-        }
-    }
-    
     private void TogglePanel(PanelType type)
     {
         if (panelDict.TryGetValue(type, out GameObject panel))

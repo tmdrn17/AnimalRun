@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public enum GameState {Menu, Select, Game, LevelComplete, Gameover}
-
-    public GameState gameState { get; private set; }
-
     public static Action<GameState> onGameStateChanged;
 
-    [SerializeField] UIManager uiManager;
+    public enum GameState {Menu, Select, Game, LevelComplete, Gameover}
+
+    [Header(" Elements ")]
+    [SerializeField] private UIManager uiManager;
+
+    public GameState gameState { get; private set; }
 
     private void Awake()
     {
@@ -45,17 +44,18 @@ public class GameManager : MonoBehaviour
 
     private void PauseGame()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             switch (gameState)
             {
                 case GameState.Menu:
-                    uiManager.allPanels[7].SetActive(true);
+                    uiManager.OpenPanel(PanelType.Exit);
                     break;
 
+                case GameState.Select:
                 case GameState.Game:
                     Time.timeScale = 0.0f;
-                    uiManager.allPanels[6].SetActive(true);
+                    uiManager.OpenPanel(PanelType.Pause);
                     break;
 
                 case GameState.LevelComplete:

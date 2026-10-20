@@ -5,8 +5,9 @@ using UnityEngine.Pool;
 
 public class Weapon : MonoBehaviour
 {
+    [Header(" Elements ")]
     [SerializeField] private Transform firePosition;
-    
+
     private Bullet bulletPrefab;
     private int bulletDamage;
     private float bulletRange;

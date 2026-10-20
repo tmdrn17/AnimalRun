@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +6,14 @@ public class SettingsManager : MonoBehaviour
     [Header(" Elements ")]
     [SerializeField] private SoundsManager soundsManager;
     [SerializeField] private VibrationManager vibrationManager;
-    [SerializeField] private Sprite optionsOnSprite;
-    [SerializeField] private Sprite optionsOffSprite;
+
+    [Header(" Buttons ")]
     [SerializeField] private Image soundsButtonImage;
     [SerializeField] private Image hapticsButtonImage;
+
+    [Header(" Sprites ")]
+    [SerializeField] private Sprite optionsOnSprite;
+    [SerializeField] private Sprite optionsOffSprite;
 
     [Header(" Settings ")]
     private bool soundsState = true;
@@ -24,13 +26,13 @@ public class SettingsManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Setup();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

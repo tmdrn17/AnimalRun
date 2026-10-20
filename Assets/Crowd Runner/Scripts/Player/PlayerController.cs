@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,10 +11,12 @@ public class PlayerController : MonoBehaviour
     [Header(" Settings ")]
     public float moveSpeed;
     [SerializeField] private float roadWidth;
-    private bool canMove;
 
     [Header(" Control ")]
     [SerializeField] private float slideSpeed;
+
+    private bool canMove;
+
     private Vector3 clickedScreenPosition;
     private Vector3 clickedPlayerPosition;
 
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GameManager.onGameStateChanged += GameStateChangedCallback;
     }
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (canMove)
         {

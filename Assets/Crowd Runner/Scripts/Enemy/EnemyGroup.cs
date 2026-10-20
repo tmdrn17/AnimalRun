@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
@@ -8,15 +6,15 @@ public class EnemyGroup : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Transform enemiesParent;
 
-
     [Header(" Settings ")]
-    int amount;
     [SerializeField] private int amountRange;
     [SerializeField] private float radius;
     [SerializeField] private float angle;
 
+    private int amount;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         amount = Random.Range(0, amountRange);
 

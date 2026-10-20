@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VibrationManager : MonoBehaviour
@@ -9,17 +7,15 @@ public class VibrationManager : MonoBehaviour
     private bool haptics;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         PlayerDetection.onDoorsHit += Vibrate;
-        Enemy.onRunnerDied += Vibrate;
         GameManager.onGameStateChanged += GameStateChangedCallback;
     }
 
     private void OnDestroy()
     {
         PlayerDetection.onDoorsHit -= Vibrate;
-        Enemy.onRunnerDied -= Vibrate;
 
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }

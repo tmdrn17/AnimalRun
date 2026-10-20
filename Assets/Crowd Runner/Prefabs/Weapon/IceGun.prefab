@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6948832317056778886}
-  - component: {fileID: 4625862898425487519}
   m_Layer: 0
   m_Name: BulletFireTransform
   m_TagString: Untagged
@@ -32,20 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6543028458364879815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4625862898425487519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3710645805999667269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e24c491776d524488232c6c390e88e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayLength: 10
-  targetEnemy: {fileID: 0}
 --- !u!1 &4415070735442202864
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,12 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7f8c59dd265f74db517876223522c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTime: 3
-  maxBulletNumber: 1
-  bulletPrefab: {fileID: 0}
-  specialBulletPrefab: {fileID: 0}
-  bulletFireTransform:
-  - {fileID: 3710645805999667269}
-  bulletSpeed: 10
-  specialProb: 0.3
-  bullets: []
+  firePosition: {fileID: 0}

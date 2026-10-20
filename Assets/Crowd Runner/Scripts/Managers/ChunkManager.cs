@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
@@ -5,7 +6,15 @@ public class ChunkManager : MonoBehaviour
     public static ChunkManager instance;
 
     [Header(" Elements ")]
-    [SerializeField] private LevelSO[] levels;
+    [SerializeField] private Chunk firstChunk;
+    [SerializeField] private Chunk[] randomChunks;
+    [SerializeField] private Chunk finishChunk;
+
+    [Header(" Play Time Settings ")]
+    [SerializeField] private float referenceMoveSpeed = 5f;
+    [SerializeField] private float minPlayTime = 60f;
+    [SerializeField] private float maxPlayTime = 90f;
+
     private GameObject finishLine;
 
     private void Awake()
@@ -15,8 +24,8 @@ public class ChunkManager : MonoBehaviour
         else
             instance = this;
     }
-    
-    void Start()
+
+    private void Start()
     {
         GenerateLevel();
 
@@ -25,32 +34,63 @@ public class ChunkManager : MonoBehaviour
 
     private void GenerateLevel()
     {
-        int currentLevel = Random.Range(0, levels.Length);
+        float startZ = PlayerController.instance != null ? PlayerController.instance.transform.position.z : 0f;
+        float finishLineOffset = GetFinishLineOffset();
 
-        LevelSO level = levels[currentLevel];
+        // 플레이어 시작 지점 ~ 결승선 사이 거리 범위 (moveSpeed 5 기준 1분 ~ 1분 30초)
+        float minDistance = minPlayTime * referenceMoveSpeed;
+        float maxDistance = maxPlayTime * referenceMoveSpeed;
+        float targetDistance = Random.Range(minDistance, maxDistance);
 
-        CreateRandomLevel(level.chunks);
-    }
+        List<Chunk> levelChunks = new List<Chunk> { firstChunk };
 
-    private void CreateRandomLevel(Chunk[] levelChunks)
-    {
-        for (int i = 1; i < levelChunks.Length - 1; i++)
+        // 첫 청크는 원점에 중심을 두므로 끝 지점은 길이의 절반
+        float chunkEndZ = firstChunk.GetLength() / 2;
+
+        while (GetFinishDistance(chunkEndZ, finishLineOffset, startZ) < targetDistance)
         {
-            int randomIndex = Random.Range(i, levelChunks.Length - 1);
-            
-            /*
-             Chunk temp = levelChunks[randomIndex];
-            levelChunks[randomIndex] = levelChunks[i];
-            levelChunks[i] = temp;
-            */
-            
-            // 위의 코드를 튜플 구문 방식으로 변환
-            (levelChunks[randomIndex], levelChunks[i]) =  (levelChunks[i], levelChunks[randomIndex]);
+            List<Chunk> candidates = new List<Chunk>();
+
+            foreach (Chunk chunk in randomChunks)
+            {
+                if (GetFinishDistance(chunkEndZ + chunk.GetLength(), finishLineOffset, startZ) <= maxDistance)
+                    candidates.Add(chunk);
+            }
+
+            if (candidates.Count == 0)
+                break;
+
+            Chunk randomChunk = candidates[Random.Range(0, candidates.Count)];
+            levelChunks.Add(randomChunk);
+            chunkEndZ += randomChunk.GetLength();
         }
 
+        levelChunks.Add(finishChunk);
+
+        CreateLevel(levelChunks);
+    }
+
+    private float GetFinishDistance(float chunkEndZ, float finishLineOffset, float startZ)
+    {
+        return chunkEndZ + finishChunk.GetLength() / 2 + finishLineOffset - startZ;
+    }
+
+    private float GetFinishLineOffset()
+    {
+        foreach (Transform child in finishChunk.GetComponentsInChildren<Transform>(true))
+        {
+            if (child.CompareTag("Finish"))
+                return child.position.z - finishChunk.transform.position.z;
+        }
+
+        return 0f;
+    }
+
+    private void CreateLevel(List<Chunk> levelChunks)
+    {
         Vector3 chunkPosition = Vector3.zero;
 
-        for (int i = 0; i < levelChunks.Length; i++)
+        for (int i = 0; i < levelChunks.Count; i++)
         {
             Chunk chunkToCreate = levelChunks[i];
 

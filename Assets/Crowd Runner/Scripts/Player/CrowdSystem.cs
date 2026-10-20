@@ -7,7 +7,6 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField] private PlayerAnimator playerAnimator;
     [SerializeField] private Transform runnersParent;
     [SerializeField] private GameObject runnerPrefab;
-    [SerializeField] ShootingManager shootingManager;
 
     [Header(" Settings ")]
     [SerializeField] private float radius;

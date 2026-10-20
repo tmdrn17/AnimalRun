@@ -8,10 +8,11 @@ public class DataManager : MonoBehaviour
 
     [Header(" Coin Texts ")]
     [SerializeField] private Text[] coinsTexts;
-    private int coins;
-    
+
     public WeaponTable weaponTable;
     public AnimalTable animalTable;
+
+    private int coins;
 
     private void Awake()
     {

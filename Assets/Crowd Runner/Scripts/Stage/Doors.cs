@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -16,17 +14,19 @@ public class Doors : MonoBehaviour
 
     [Header(" Settings ")]
     [SerializeField] private BonusType rightDoorBonusType;
-    int rightPMAmount;
-    int rightMDAmount;
-    int rightRandomType;
-
     [SerializeField] private BonusType leftDoorBonusType;
-    int leftPMAmount;
-    int leftMDAmount;
-    int leftRandomType;
 
+    [Header(" Colors ")]
     [SerializeField] private Color bonusColor;
     [SerializeField] private Color penaltyColor;
+
+    private int rightPMAmount;
+    private int rightMDAmount;
+    private int rightRandomType;
+
+    private int leftPMAmount;
+    private int leftMDAmount;
+    private int leftRandomType;
     
     private void Start()
     {

@@ -6,13 +6,16 @@ using Random = UnityEngine.Random;
 
 public class SelectManager : MonoBehaviour
 {
-    private DataManager dataManager;
-    
+    [Header(" Elements ")]
+    [SerializeField] private SelectUI selectUI;
+
+    [Header(" Positions ")]
     [SerializeField] private Transform runnerPosition;
     [SerializeField] private Transform weaponPosition;
     [SerializeField] private Transform poolContainer;
-    [SerializeField] private SelectUI selectUI;
-    
+
+    private DataManager dataManager;
+
     private AnimalDef[] animalDefs;
     private WeaponDef[] weaponDefs;
     

@@ -22,6 +22,8 @@ namespace Crowd_Runner.Scripts.Data
 
             string path = Path.Combine(Application.streamingAssetsPath, TableName);
             List<WeaponDTO> rows = TSVReader.ReadTable<WeaponDTO>(path);
+            if (rows == null)
+                return;
 
             for (int i = 0; i < rows.Count; i++)
             {

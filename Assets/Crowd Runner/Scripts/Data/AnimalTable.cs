@@ -22,6 +22,8 @@ namespace Crowd_Runner.Scripts.Data
 
             string path = Path.Combine(Application.streamingAssetsPath, TableName);
             List<AnimalDTO> rows = TSVReader.ReadTable<AnimalDTO>(path);
+            if (rows == null)
+                return;
 
             for (int i = 0; i < rows.Count; i++)
             {

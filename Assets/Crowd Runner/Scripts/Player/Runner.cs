@@ -4,9 +4,7 @@ using UnityEngine;
 public class Runner : MonoBehaviour
 {
     [Header("Elements")]
-    [SerializeField] Animator animator;
-    [SerializeField] RunnerSelector runnerSelector;
-
+    [SerializeField] private Animator animator;
     public Transform weaponPosition;
 
     [Header(" Settings ")]
@@ -27,7 +25,7 @@ public class Runner : MonoBehaviour
         ListManager.Runners.Remove(this);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {

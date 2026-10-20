@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.285027, g: 0.37139285, b: 0.49601087, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502688, g: 0.3713926, b: 0.49601027, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -500,11 +500,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dd19ac28f79e24da9f7820a8e179ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: 6e0b75483b9aa23439de54e5cbcd459a, type: 2}
-  - {fileID: 11400000, guid: e52b2fcff898b044d83a55a2f0d40419, type: 2}
-  - {fileID: 11400000, guid: 26d4043162f37d44e841a5fafe8268e3, type: 2}
-  - {fileID: 11400000, guid: b00169593dcd00d4c91a36f2d9a85217, type: 2}
+  firstChunk: {fileID: 4298949002023365770, guid: ae4eb9bd6b3f6d44bbaf68463bcd5f21, type: 3}
+  randomChunks:
+  - {fileID: 8052102723347043478, guid: 2046685ef145ef746b075d6bed675e6c, type: 3}
+  - {fileID: 8052102723347043478, guid: ff22aae2df4dfc04daa2663548be2e35, type: 3}
+  - {fileID: 9206812218148164743, guid: 7269a8e16e8bfc04199920e148ce08ca, type: 3}
+  finishChunk: {fileID: 8052102723347043478, guid: 0b16377c60f1dd849ad505d9f0191ae5, type: 3}
+  referenceMoveSpeed: 5
+  minPlayTime: 60
+  maxPlayTime: 90
 --- !u!1 &42242995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,55 +1557,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5533083459983160736, guid: 51eb477e633935d45bac59203197312f, type: 3}
   m_PrefabInstance: {fileID: 2014888284}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &96684446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 96684447}
-  - component: {fileID: 96684448}
-  m_Layer: 0
-  m_Name: Shooting Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &96684447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96684446}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 860006894}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &96684448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96684446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a0f6fe15f32d9344a031d91cbd3052c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runnerParent: {fileID: 1680461192}
-  allChildren: []
-  childWeapon: {fileID: 0}
-  previousChildCount: 0
-  currentChildCount: 0
 --- !u!224 &102409077 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4261761890839641933, guid: 66a66ce0b2170994ea27df12040b3115, type: 3}
@@ -4017,16 +3972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopManager: {fileID: 503264968}
-  shootingManager: {fileID: 96684448}
-  allPanels:
-  - {fileID: 1244452014}
-  - {fileID: 1215134785}
-  - {fileID: 1336372117}
-  - {fileID: 448171523}
-  - {fileID: 567723719}
-  - {fileID: 441972403}
-  - {fileID: 397524328}
-  - {fileID: 1902193861}
   panelInfos:
   - type: 0
     panelObject: {fileID: 1244452014}
@@ -5250,7 +5195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd714aa49775464dbd304a0e352f3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  purchaseButton: {fileID: 61902852}
+  panel: {fileID: 1813015457}
   skinButtons:
   - {fileID: 4469238459923130750}
   - {fileID: 1717694237}
@@ -5287,7 +5232,6 @@ MonoBehaviour:
   - {fileID: 2042740599}
   - {fileID: 1896815975}
   - {fileID: 541616411}
-  panel: {fileID: 1813015457}
   skinTapButton: {fileID: 1903672379}
   gunTapButton: {fileID: 264129518}
   specialTapButton: {fileID: 763903553}
@@ -5368,6 +5312,7 @@ MonoBehaviour:
   - {fileID: 1389955471}
   skinPrice: 200
   priceText: {fileID: 445588110}
+  purchaseButton: {fileID: 61902852}
 --- !u!1 &515267277
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,7 +5883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSound: {fileID: 1365962939}
   doorHitSound: {fileID: 867289628}
-  runnerDieSound: {fileID: 1374020371}
   levelCompleteSound: {fileID: 2002148757}
   gameoverSound: {fileID: 1020893045}
 --- !u!1 &575345776
@@ -6542,7 +6486,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5857405819347966022, guid: 387269d195072c84a898889f6d095dd4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8311,10 +8256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundsManager: {fileID: 569293075}
   vibrationManager: {fileID: 841061083}
-  optionsOnSprite: {fileID: 21300000, guid: bdc2fde1ff69f4948aa2e5579454813b, type: 3}
-  optionsOffSprite: {fileID: 21300000, guid: f50449dca10d58c45908e07feb60664d, type: 3}
   soundsButtonImage: {fileID: 2089088965}
   hapticsButtonImage: {fileID: 42242998}
+  optionsOnSprite: {fileID: 21300000, guid: bdc2fde1ff69f4948aa2e5579454813b, type: 3}
+  optionsOffSprite: {fileID: 21300000, guid: f50449dca10d58c45908e07feb60664d, type: 3}
 --- !u!1 &808534056
 GameObject:
   m_ObjectHideFlags: 0
@@ -9115,7 +9060,6 @@ Transform:
   - {fileID: 841061082}
   - {fileID: 802125478}
   - {fileID: 693957654}
-  - {fileID: 96684447}
   - {fileID: 37290859}
   - {fileID: 2130694078}
   m_Father: {fileID: 0}
@@ -13373,7 +13317,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8394225675235210851, guid: dc4a86aa5d9a59f419b7bfd72481ec45, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8041827720624478653, guid: dc4a86aa5d9a59f419b7bfd72481ec45, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc4a86aa5d9a59f419b7bfd72481ec45, type: 3}
@@ -14199,7 +14144,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4936564240364998443, guid: 84559027e9499e945b333d585ce71cc0, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9054643231417511022, guid: 84559027e9499e945b333d585ce71cc0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84559027e9499e945b333d585ce71cc0, type: 3}
@@ -17128,7 +17074,6 @@ MonoBehaviour:
   playerAnimator: {fileID: 1578294425}
   runnersParent: {fileID: 1680461193}
   runnerPrefab: {fileID: 0}
-  shootingManager: {fileID: 96684448}
   radius: 0.4
   angle: 137.508
 --- !u!114 &1578294424
@@ -19789,7 +19734,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2203372233287896680, guid: a7550ef1bf77b904a80fa9e157778de5, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3710645805999667269, guid: a7550ef1bf77b904a80fa9e157778de5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7550ef1bf77b904a80fa9e157778de5, type: 3}
@@ -20167,7 +20113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -318.99896}
+  m_AnchoredPosition: {x: 0, y: -318.9989}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813015459
@@ -21893,7 +21839,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1087595642170734710, guid: 71f1f50300c9100439e8b65e1d1dad3b, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4844196832295711518, guid: 71f1f50300c9100439e8b65e1d1dad3b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71f1f50300c9100439e8b65e1d1dad3b, type: 3}
@@ -24486,10 +24433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17290c127fa4ed45ac419ce8e5fb09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectUI: {fileID: 364829295}
   runnerPosition: {fileID: 1680461193}
   weaponPosition: {fileID: 0}
   poolContainer: {fileID: 0}
-  selectUI: {fileID: 364829295}
 --- !u!1 &2135617260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3702261065244032309, guid: 8019a12e9e6fee14cbb7a6b8708a872c, type: 3}
