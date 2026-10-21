@@ -14,7 +14,8 @@ public class Weapon : MonoBehaviour
     private float bulletSpeed;
     private float bulletSplashRadius;
     private float attackInterval;
-    
+    private WeaponKind weaponKind;
+
     private  ObjectPool<Bullet> bulletPool;
     private Transform bulletContainer;
 
@@ -26,23 +27,31 @@ public class Weapon : MonoBehaviour
         bulletSpeed = myDef.BulletSpeed;
         bulletSplashRadius = myDef.BulletSplashRadius;
         attackInterval = myDef.AttackInterval;
+        weaponKind = myDef.Kind;
         bulletContainer = poolContainer;
-        
+
         InitializePool();
         StartCoroutine(FireRoutine());
     }
 
+    private void OnDestroy()
+    {
+        // 러너가 죽으면 풀에 대기 중인 총알도 함께 정리한다.
+        bulletPool?.Clear();
+    }
+
     private IEnumerator FireRoutine()
     {
-        WaitForSeconds delay = new WaitForSeconds(attackInterval);
-
         while (true)
         {
-            Fire();
-            yield return delay;
+            if (GameManager.instance.IsGameState(GameManager.GameState.Game))
+                Fire();
+
+            // 공격 속도 증강이 즉시 반영되도록 매번 대기 시간을 다시 계산한다.
+            yield return new WaitForSeconds(attackInterval / AugmentStats.AttackSpeedMultiplier);
         }
     }
-    
+
     private void InitializePool()
     {
         bulletPool = new ObjectPool<Bullet>(
@@ -63,7 +72,8 @@ public class Weapon : MonoBehaviour
             },
             actionOnDestroy: (bullet) => {
                 // 4. 풀이 터지거나 파괴될 때
-                Destroy(bullet.gameObject);
+                if (bullet != null)
+                    Destroy(bullet.gameObject);
             },
             collectionCheck: true,
             defaultCapacity: 10,
@@ -75,14 +85,17 @@ public class Weapon : MonoBehaviour
     {
         Vector3 spawnPos = firePosition.position;
         Quaternion spawnRot = Quaternion.identity;
-        
+
         Bullet bulletObj = bulletPool.Get();
-        
+
         bulletObj.transform.position = spawnPos;
         bulletObj.transform.rotation = spawnRot;
-        
-        float finalBulletSpeed = bulletSpeed + PlayerController.instance.moveSpeed;
-        
-        bulletObj.Init(bulletDamage, bulletRange, finalBulletSpeed);
+
+        float finalBulletSpeed = bulletSpeed * AugmentStats.BulletSpeedMultiplier + PlayerController.instance.moveSpeed;
+        int finalDamage = Mathf.RoundToInt(bulletDamage * AugmentStats.DamageMultiplier);
+        float finalRange = bulletRange * AugmentStats.RangeMultiplier;
+        float finalSplashRadius = bulletSplashRadius + AugmentStats.BonusSplashRadius;
+
+        bulletObj.Init(finalDamage, finalRange, finalBulletSpeed, finalSplashRadius, weaponKind);
     }
 }

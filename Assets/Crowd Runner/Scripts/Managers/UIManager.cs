@@ -3,17 +3,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// 씬에 정수로 직렬화되어 있으므로 값을 고정한다. (5번은 삭제된 Shop 패널)
 public enum PanelType
 {
-    Menu,
-    Game,
-    GameOver,
-    LevelComplete,
-    Settings,
-    Shop,
-    Pause,
-    Exit,
-    None
+    Menu = 0,
+    Game = 1,
+    GameOver = 2,
+    LevelComplete = 3,
+    Settings = 4,
+    Pause = 6,
+    Exit = 7,
+    None = 8
 }
 
 [System.Serializable]
@@ -25,9 +25,6 @@ public struct PanelInfo
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Manager")]
-    [SerializeField] private ShopManager shopManager;
-
     [Header(" Elements ")]
     [SerializeField] private PanelInfo[] panelInfos;
     [SerializeField] private Slider progressBar;
@@ -36,7 +33,6 @@ public class UIManager : MonoBehaviour
     private Dictionary<PanelType, GameObject> panelDict = new();
 
     public void ToggleSettingsPanel() => TogglePanel(PanelType.Settings);
-    public void ToggleShopPanel() => TogglePanel(PanelType.Shop);
     public void TogglePausePanel() => TogglePanel(PanelType.Pause);
     public void ToggleExitPanel() => TogglePanel(PanelType.Exit);
     
@@ -58,7 +54,6 @@ public class UIManager : MonoBehaviour
         ClosePanel(PanelType.Game);
         ClosePanel(PanelType.GameOver);
         ClosePanel(PanelType.Settings);
-        ClosePanel(PanelType.Shop);
 
         levelText.text = "Level " + (ChunkManager.instance.GetLevel() + 1);
 

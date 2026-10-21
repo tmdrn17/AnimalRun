@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyGroup : MonoBehaviour
 {
@@ -7,7 +8,9 @@ public class EnemyGroup : MonoBehaviour
     [SerializeField] private Transform enemiesParent;
 
     [Header(" Settings ")]
-    [SerializeField] private int amountRange;
+    [SerializeField] private int minAmount = 0;
+    [FormerlySerializedAs("amountRange")]
+    [SerializeField] private int maxAmount = 5;
     [SerializeField] private float radius;
     [SerializeField] private float angle;
 
@@ -16,7 +19,8 @@ public class EnemyGroup : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        amount = Random.Range(0, amountRange);
+        // 최솟값 ~ 최댓값(포함) 사이의 랜덤한 수로 군체를 만든다.
+        amount = Random.Range(minAmount, maxAmount + 1);
 
         GenerateEnemies();
     }
@@ -29,8 +33,13 @@ public class EnemyGroup : MonoBehaviour
 
             Vector3 enemyWorldPosition = enemiesParent.TransformPoint(enemyLocalPosition);
 
-            Instantiate(enemyPrefab, enemyWorldPosition, Quaternion.identity, enemiesParent);
+            Instantiate(enemyPrefab, enemyWorldPosition, enemiesParent.rotation, enemiesParent);
         }
+    }
+
+    public float GetMaxRadius()
+    {
+        return radius * Mathf.Sqrt(maxAmount);
     }
 
     private Vector3 GetRunnerLocalPosition(int index)

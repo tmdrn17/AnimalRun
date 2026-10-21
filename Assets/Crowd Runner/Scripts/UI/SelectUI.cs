@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 [System.Serializable]
 public class ButtonElement
-{ 
+{
     public Image buttonImage;
     public Text name;
     public Text description;
@@ -14,19 +14,24 @@ public class SelectUI : MonoBehaviour
     [Header(" Panels ")]
     [SerializeField] private GameObject animalSelectPanel;
     [SerializeField] private GameObject weaponSelectPanel;
+    [SerializeField] private GameObject augmentSelectPanel;
 
     [Header(" Buttons ")]
     [SerializeField] private ButtonElement[] animalButtons;
     [SerializeField] private ButtonElement[] weaponButtons;
-    
+    [SerializeField] private ButtonElement[] augmentButtons;
+
     public int AnimalButtonCount => animalButtons.Length;
     public int WeaponButtonCount => weaponButtons.Length;
-    
+    public int AugmentButtonCount => augmentButtons.Length;
+
     public void SetAnimalButton(int index, Sprite sprite, string nameText, string descText) =>
         SetButtonData(animalButtons, index, sprite, nameText, descText);
     public void SetWeaponButton(int index, Sprite sprite, string nameText, string descText) =>
         SetButtonData(weaponButtons, index, sprite, nameText, descText);
-    
+    public void SetAugmentButton(int index, Sprite sprite, string nameText, string descText) =>
+        SetButtonData(augmentButtons, index, sprite, nameText, descText);
+
     // 1. 내부에서 공통으로 처리하는 메인 함수 (중복 제거)
     private void SetButtonData(ButtonElement[] targetButtons, int index, Sprite sprite, string nameText, string descText)
     {
@@ -41,9 +46,20 @@ public class SelectUI : MonoBehaviour
         weaponSelectPanel.SetActive(true);
     }
 
+    public void ShowAugmentPanel()
+    {
+        augmentSelectPanel.SetActive(true);
+    }
+
+    public void CloseAugmentPanel()
+    {
+        augmentSelectPanel.SetActive(false);
+    }
+
     public void CloseAll()
     {
         animalSelectPanel.SetActive(false);
         weaponSelectPanel.SetActive(false);
+        augmentSelectPanel.SetActive(false);
     }
 }

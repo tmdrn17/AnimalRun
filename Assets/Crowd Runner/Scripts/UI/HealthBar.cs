@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        healthBar.fillAmount = Mathf.MoveTowards(healthBar.fillAmount, target, reduceSpeed);
+        healthBar.fillAmount = Mathf.MoveTowards(healthBar.fillAmount, target, reduceSpeed * Time.deltaTime);
     }
 
 }

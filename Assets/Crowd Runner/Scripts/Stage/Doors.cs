@@ -15,19 +15,19 @@ public class Doors : MonoBehaviour
     [Header(" Settings ")]
     [SerializeField] private BonusType rightDoorBonusType;
     [SerializeField] private BonusType leftDoorBonusType;
+    [Tooltip("수식이 길어져도 문 안에 들어가도록 자동 크기 조절의 최소 폰트 크기를 낮춘다.")]
+    [SerializeField] private float minFontSize = 4f;
 
     [Header(" Colors ")]
     [SerializeField] private Color bonusColor;
     [SerializeField] private Color penaltyColor;
+    [Tooltip("켜면 계산 결과에 따라 이득/손해 색을 보여준다. 끄면 정답이 드러나지 않도록 두 문 모두 같은 색을 쓴다.")]
+    [SerializeField] private bool showResultColor;
+    [SerializeField] private Color quizColor = new Color(0.25f, 0.6f, 1f, 0.6f);
 
-    private int rightPMAmount;
-    private int rightMDAmount;
-    private int rightRandomType;
+    private DoorQuiz rightQuiz;
+    private DoorQuiz leftQuiz;
 
-    private int leftPMAmount;
-    private int leftMDAmount;
-    private int leftRandomType;
-    
     private void Start()
     {
         RandomDoor();
@@ -38,117 +38,66 @@ public class Doors : MonoBehaviour
     {
         if (gameObject.CompareTag("First"))
         {
-            rightRandomType = 1;
-            leftRandomType = 1;
-
-            rightPMAmount = Random.Range(1, 2);
-            rightMDAmount = Random.Range(1, 3);
-            leftPMAmount = Random.Range(1, 2);
-            leftMDAmount = Random.Range(1, 3);
+            rightQuiz = DoorQuizGenerator.CreateEasy();
+            leftQuiz = DoorQuizGenerator.CreateEasy();
         }
         else
         {
-            rightRandomType = Random.Range(1, 5);
-            leftRandomType = Random.Range(1, 5);
-
-            rightPMAmount = Random.Range(1, 5);
-            rightMDAmount = Random.Range(1, 4);
-            leftPMAmount = Random.Range(1, 5);
-            leftMDAmount = Random.Range(1, 4);
+            rightQuiz = DoorQuizGenerator.Create(GetRandomBonusType());
+            leftQuiz = DoorQuizGenerator.Create(GetRandomBonusType());
         }
 
-        if (rightRandomType == 1)
-            rightDoorBonusType = BonusType.Addition;
-        else if (rightRandomType == 2)
-            rightDoorBonusType = BonusType.Division;
-        else if (rightRandomType == 3)
-            rightDoorBonusType = BonusType.Difference;
-        else if (rightRandomType == 4)
-            rightDoorBonusType = BonusType.Product;
+        rightDoorBonusType = rightQuiz.Type;
+        leftDoorBonusType = leftQuiz.Type;
+    }
 
-        if (leftRandomType == 1)
-            leftDoorBonusType = BonusType.Addition;
-        else if (leftRandomType == 2)
-            leftDoorBonusType = BonusType.Division;
-        else if (leftRandomType == 3)
-            leftDoorBonusType = BonusType.Difference;
-        else if (leftRandomType == 4)
-            leftDoorBonusType = BonusType.Product;
+    private BonusType GetRandomBonusType()
+    {
+        return (BonusType)Random.Range(0, 4);
     }
 
     private void ConfigureDoors()
     {
-        switch(rightDoorBonusType)
+        ConfigureDoor(rightDoorRenderer, rightDoorText, rightQuiz);
+        ConfigureDoor(leftDoorRenderer, leftDoorText, leftQuiz);
+    }
+
+    private void ConfigureDoor(SpriteRenderer doorRenderer, TextMeshPro doorText, DoorQuiz quiz)
+    {
+        if (showResultColor)
+            doorRenderer.color = IsBonus(quiz) ? bonusColor : penaltyColor;
+        else
+            doorRenderer.color = quizColor;
+
+        doorText.enableAutoSizing = true;
+        doorText.fontSizeMin = Mathf.Min(doorText.fontSizeMin, minFontSize);
+        doorText.text = quiz.Text;
+    }
+
+    private bool IsBonus(DoorQuiz quiz)
+    {
+        switch (quiz.Type)
         {
-            case BonusType.Addition:
-                rightDoorRenderer.color = bonusColor;
-                rightDoorText.text = "+" + rightPMAmount;
-                break;
-
-            case BonusType.Difference:
-                rightDoorRenderer.color = penaltyColor;
-                rightDoorText.text = "-" + rightPMAmount;
-                break;
-
-            case BonusType.Product:
-                rightDoorRenderer.color = bonusColor;
-                rightDoorText.text = "x" + rightMDAmount;
-                break;
-
-            case BonusType.Division:
-                rightDoorRenderer.color = penaltyColor;
-                rightDoorText.text = "/" + rightMDAmount;
-                break;
+            case BonusType.Addition: return quiz.Value > 0;
+            case BonusType.Difference: return quiz.Value < 0;
+            case BonusType.Product: return quiz.Value > 1;
+            default: return quiz.Value < 1;
         }
-
-
-        switch (leftDoorBonusType)
-        {
-            case BonusType.Addition:
-                leftDoorRenderer.color = bonusColor;
-                leftDoorText.text = "+" + leftPMAmount;
-                break;
-
-            case BonusType.Difference:
-                leftDoorRenderer.color = penaltyColor;
-                leftDoorText.text = "-" + leftPMAmount;
-                break;
-
-            case BonusType.Product:
-                leftDoorRenderer.color = bonusColor;
-                leftDoorText.text = "x" + leftMDAmount;
-                break;
-
-            case BonusType.Division:
-                leftDoorRenderer.color = penaltyColor;
-                leftDoorText.text = "/" + leftMDAmount;
-                break;
-        }
-
-
     }
 
     public int GetBonusAmount(float xPosition)
     {
         if (xPosition > 0)
-        {
-            if (rightDoorBonusType == BonusType.Addition || rightDoorBonusType == BonusType.Difference)
-                return rightPMAmount;
-            
-            return rightMDAmount;
-        }
+            return rightQuiz.Value;
 
-        if (leftDoorBonusType == BonusType.Addition || leftDoorBonusType == BonusType.Difference)
-            return leftPMAmount;
-            
-        return leftMDAmount;
+        return leftQuiz.Value;
     }
 
     public BonusType GetBonusType(float xPosition)
     {
         if (xPosition > 0)
             return rightDoorBonusType;
-        
+
         return leftDoorBonusType;
     }
 

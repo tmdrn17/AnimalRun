@@ -7,8 +7,7 @@ public class Runner : MonoBehaviour
     [SerializeField] private Animator animator;
     public Transform weaponPosition;
 
-    [Header(" Settings ")]
-    private bool isTarget;
+    private bool isDead;
 
     private void Awake()
     {
@@ -27,21 +26,17 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
+        if (isDead)
+            return;
 
-    public void SetTarget()
-    {
-        isTarget = true;
-    }
+        Enemy enemy = other.GetComponentInParent<Enemy>();
+        if (enemy == null || !enemy.TryKillByRunner())
+            return;
 
-    public bool IsTarget()
-    {
-        return isTarget;
+        isDead = true;
+        // 부모에서 바로 떼어내야 CrowdSystem이 같은 프레임에 남은 러너 수를 정확히 센다.
+        transform.SetParent(null);
+        Destroy(gameObject);
     }
 
     public Animator GetAnimator()

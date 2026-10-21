@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
 
                 case GameState.Select:
                 case GameState.Game:
+                    // 이미 멈춘 상태(일시정지 또는 증강 선택 중)라면 무시한다.
+                    if (Time.timeScale == 0.0f)
+                        break;
+
                     Time.timeScale = 0.0f;
                     uiManager.OpenPanel(PanelType.Pause);
                     break;

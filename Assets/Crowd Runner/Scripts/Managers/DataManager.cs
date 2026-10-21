@@ -1,18 +1,29 @@
+using System;
 using Crowd_Runner.Scripts.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
+    public static Action onLevelUp;
 
-    [Header(" Coin Texts ")]
-    [SerializeField] private Text[] coinsTexts;
+    [Header(" Exp Texts ")]
+    [FormerlySerializedAs("coinsTexts")]
+    [SerializeField] private Text[] expTexts;
+
+    [Header(" Exp Settings ")]
+    [SerializeField] private int baseRequiredExp = 5;
+    [SerializeField] private int requiredExpIncrease = 3;
 
     public WeaponTable weaponTable;
     public AnimalTable animalTable;
 
-    private int coins;
+    // 경험치는 한 판 동안만 유지된다. (코인 1개 = 경험치 1)
+    private int exp;
+    private int level = 1;
+    private int requiredExp;
 
     private void Awake()
     {
@@ -21,8 +32,8 @@ public class DataManager : MonoBehaviour
         else
             instance = this;
 
-        coins = PlayerPrefs.GetInt("coins", 2000);
-        
+        requiredExp = baseRequiredExp;
+
         animalTable = new AnimalTable();
         weaponTable = new WeaponTable();
 
@@ -32,37 +43,35 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCoinsTexts();
+        UpdateExpTexts();
     }
-    
-    private void UpdateCoinsTexts()
+
+    private void UpdateExpTexts()
     {
-        foreach(Text coinText in coinsTexts)
+        foreach(Text expText in expTexts)
         {
-            coinText.text = coins.ToString();
+            expText.text = $"Lv.{level}  {exp}/{requiredExp}";
         }
     }
 
-    public void AddCoins(int amount)
+    public void AddExp(int amount)
     {
-        coins += amount;
+        exp += amount;
 
-        UpdateCoinsTexts();
+        while (exp >= requiredExp)
+        {
+            exp -= requiredExp;
+            level++;
+            requiredExp += requiredExpIncrease;
 
-        PlayerPrefs.SetInt("coins", coins);
+            onLevelUp?.Invoke();
+        }
+
+        UpdateExpTexts();
     }
 
-    public void UseCoin(int amount)
+    public int GetLevel()
     {
-        coins -= amount;
-
-        UpdateCoinsTexts();
-
-        PlayerPrefs.SetInt("coins", coins);
-    }
-
-    public int GetCoins()
-    {
-        return coins;
+        return level;
     }
 }

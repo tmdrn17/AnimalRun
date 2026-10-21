@@ -5,7 +5,6 @@ public class PlayerDetection : MonoBehaviour
 {
     [Header(" Elements ")]
     [SerializeField] private CrowdSystem crowdSystem;
-    [SerializeField] private Transform runnersParent;
 
     [Header(" Events ")]
     public static Action onDoorsHit;
@@ -42,16 +41,18 @@ public class PlayerDetection : MonoBehaviour
 
                 PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
 
-                DataManager.instance.AddCoins(runnersParent.childCount);
-
                 GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
+
+                return;
             }
-        
+
             else if(detectedColliders[i].CompareTag("Coin"))
             {
+                // 코인은 경험치로 사용된다. 같은 프레임에 두 번 집계되지 않도록 콜라이더를 먼저 끈다.
+                detectedColliders[i].enabled = false;
                 Destroy(detectedColliders[i].gameObject);
 
-                DataManager.instance.AddCoins(1);
+                DataManager.instance.AddExp(1);
             }
         }
     }
