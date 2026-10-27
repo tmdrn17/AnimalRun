@@ -8,3 +8,4 @@ ID	Name	PrefabKey	SpriteKey	Kind
 6	누	Animal Run/Prefabs/Runners/Wildebeest	Animal Run/Sprites/Runners/Wildebeest_Image	Medium
 7	페가수스	Animal Run/Prefabs/Runners/Pegasus	Animal Run/Sprites/Runners/Pegasus_Image	Large
 8	기린	Animal Run/Prefabs/Runners/Kirin	Animal Run/Sprites/Runners/Kirin_Image	Large
+9	돼지	Animal Run/Prefabs/Runners/Pig	Animal Run/Sprites/Runners/Pig_Image	Small
