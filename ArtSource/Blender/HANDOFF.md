@@ -13,8 +13,11 @@ Unity 게임 AnimalRun(Unity 2023.1.17f1, URP)에서 쓰는 러너 동물(Quirky
 - `ArtSource/Blender/README.md`: 원본 스타일 분석 결과, 키트 사용법, Unity 연결 방법 (가장 먼저 읽기)
 - `ArtSource/Blender/quirky_animal_kit.py`: 블렌더 애드온 (N 패널 > Quirky 탭)
 - `ArtSource/Blender/tools/make_test_pig.py`: 돼지를 처음부터 만들어 Pig.blend 저장, FBX·텍스처·아이콘을 Assets로 내보냄
-- `ArtSource/Blender/tools/render_references.py`: 원본 동물 참고 이미지 렌더 (`references/`)
-- `Assets/Animal Run/Scripts/Editor/RunnerPrefabBuilder.cs`: FBX로 러너 프리팹 생성 (메뉴 Tools > Animal Run > Build Runner Prefab From Selected FBX, 배치용 `BuildPigBatch`)
+- `ArtSource/Blender/tools/render_references.py`: 원본 동물 참고 이미지 렌더 (`references/`). import 하면 바로 렌더가 돌아 references/를 덮어쓰니 모듈로 쓰지 말 것
+- `ArtSource/Blender/tools/make_animal.py` + `specs/FORMAT.md`: 사양서(JSON)로 동물 생성. 예시 `specs/examples/Unicorn.json`, `Pig.json`
+- `.claude/skills/make-animal/SKILL.md`: 이미지 첨부 → 동물 생성 스킬 (아직 실제 실행 검증 전)
+- `ArtSource/Blender/tools/make_unicorn.py`: 노란 유니콘 (페가수스에서 날개 제거 + 색 변경), 프리팹·Animals.tsv 10번 등록됨
+- `Assets/Animal Run/Scripts/Editor/RunnerPrefabBuilder.cs`: FBX로 러너 프리팹 생성 (메뉴 Tools > Animal Run > Build Runner Prefab From Selected FBX, 배치용 `BuildBatch -runner <Name>`, 기준 프리팹은 크기로 자동 선택)
 
 ## 원본 스타일 핵심 (자세한 건 README)
 - 메시 1개, 머티리얼 1개, 모든 면 Smooth. LOD0는 삼각형 3,000~7,800개. 블렌더에서 머리가 -Y 방향

@@ -1,0 +1,328 @@
+{
+  "name": "GhostHorse",
+  "display_name": "유령마",
+  "kind": "Medium",
+  "notes": "설명만 있음: 몸이 반투명한 민트색 유령마. Horse LOD0 몸·다리·머리를 쓰고, 유령 특징으로 원본 갈기(5위 body 칸)·꼬리를 지운 뒤 목선을 따라 흐르는 혼불 같은 연기 자락 갈기 2가닥, 뒤로 길게 흐르다 끝이 살짝 들리는 통통한 꼬리, 발목의 둥근 연기 뭉치(큰 것+뒤로 작은 것)를 붙임. 뿔·날개 없음. 몸은 불투명도 0.38, 연기 자락(4칸)은 흰민트 0.55, 눈·입속은 불투명",
+  "base": {
+    "reference": "Horse",
+    "mode": "reference_mesh",
+    "remove_mesh": [
+      "tail.01",
+      "tail.02"
+    ],
+    "repaint": [
+      {
+        "from": [
+          5,
+          "top"
+        ],
+        "group": "body",
+        "delete": true
+      }
+    ]
+  },
+  "palette": {
+    "top": [
+      "#9ff7dc",
+      "#d2fff0",
+      "#7fe6c6",
+      "#e6fff8",
+      "#5fd3b4",
+      "#4bbfa0",
+      null,
+      null
+    ],
+    "bottom": [
+      "#9ff7dc",
+      "#d2fff0",
+      "#7fe6c6",
+      "#e6fff8",
+      "#5fd3b4",
+      null,
+      null,
+      null
+    ]
+  },
+  "alpha": {
+    "top": [
+      0.38,
+      0.38,
+      0.38,
+      0.55,
+      0.45,
+      0.45,
+      null,
+      null
+    ],
+    "bottom": [
+      0.38,
+      0.38,
+      0.38,
+      0.55,
+      0.45,
+      null,
+      null,
+      null
+    ]
+  },
+  "parts": [
+    {
+      "name": "mane.1",
+      "shape": "tube",
+      "points": [
+        [
+          0,
+          -0.46,
+          1.06
+        ],
+        [
+          0,
+          -0.32,
+          1.12
+        ],
+        [
+          0,
+          -0.18,
+          1.01
+        ],
+        [
+          0,
+          -0.06,
+          0.87
+        ],
+        [
+          0,
+          0.06,
+          0.8
+        ],
+        [
+          0,
+          0.18,
+          0.8
+        ],
+        [
+          0,
+          0.28,
+          0.84
+        ]
+      ],
+      "radius": 0.09,
+      "taper": 0.3,
+      "resolution": 6,
+      "bevel_resolution": 3,
+      "slot": 4
+    },
+    {
+      "name": "mane.2",
+      "shape": "tube",
+      "points": [
+        [
+          0,
+          -0.44,
+          1.08
+        ],
+        [
+          0,
+          -0.32,
+          1.17
+        ],
+        [
+          0,
+          -0.2,
+          1.12
+        ],
+        [
+          0,
+          -0.1,
+          1.04
+        ]
+      ],
+      "radius": 0.06,
+      "taper": 0.3,
+      "resolution": 6,
+      "bevel_resolution": 3,
+      "slot": 4
+    },
+    {
+      "name": "tail.wisp",
+      "shape": "tube",
+      "points": [
+        [
+          0,
+          0.34,
+          0.64
+        ],
+        [
+          0,
+          0.52,
+          0.66
+        ],
+        [
+          0,
+          0.7,
+          0.62
+        ],
+        [
+          0,
+          0.86,
+          0.64
+        ],
+        [
+          0,
+          0.96,
+          0.72
+        ]
+      ],
+      "radius": 0.11,
+      "taper": 0.25,
+      "resolution": 6,
+      "bevel_resolution": 3,
+      "slot": 4,
+      "bone": "tail.01"
+    },
+    {
+      "name": "leg.F.L.puff",
+      "shape": "ellipsoid",
+      "loc": [
+        0.108,
+        -0.22699999999999998,
+        0.11
+      ],
+      "size": [
+        0.075,
+        0.085,
+        0.06
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.F.L"
+    },
+    {
+      "name": "leg.F.L.puff2",
+      "shape": "ellipsoid",
+      "loc": [
+        0.108,
+        -0.147,
+        0.13
+      ],
+      "size": [
+        0.05,
+        0.055,
+        0.04
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.F.L"
+    },
+    {
+      "name": "leg.B.L.puff",
+      "shape": "ellipsoid",
+      "loc": [
+        0.108,
+        0.256,
+        0.11
+      ],
+      "size": [
+        0.075,
+        0.085,
+        0.06
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.B.L"
+    },
+    {
+      "name": "leg.B.L.puff2",
+      "shape": "ellipsoid",
+      "loc": [
+        0.108,
+        0.33599999999999997,
+        0.13
+      ],
+      "size": [
+        0.05,
+        0.055,
+        0.04
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.B.L"
+    },
+    {
+      "name": "leg.F.R.puff",
+      "shape": "ellipsoid",
+      "loc": [
+        -0.108,
+        -0.22699999999999998,
+        0.11
+      ],
+      "size": [
+        0.075,
+        0.085,
+        0.06
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.F.R"
+    },
+    {
+      "name": "leg.F.R.puff2",
+      "shape": "ellipsoid",
+      "loc": [
+        -0.108,
+        -0.147,
+        0.13
+      ],
+      "size": [
+        0.05,
+        0.055,
+        0.04
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.F.R"
+    },
+    {
+      "name": "leg.B.R.puff",
+      "shape": "ellipsoid",
+      "loc": [
+        -0.108,
+        0.256,
+        0.11
+      ],
+      "size": [
+        0.075,
+        0.085,
+        0.06
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.B.R"
+    },
+    {
+      "name": "leg.B.R.puff2",
+      "shape": "ellipsoid",
+      "loc": [
+        -0.108,
+        0.33599999999999997,
+        0.13
+      ],
+      "size": [
+        0.05,
+        0.055,
+        0.04
+      ],
+      "segments": 12,
+      "rings": 8,
+      "slot": 4,
+      "bone": "leg.B.R"
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+ "name": "DarkPegasus",
+ "display_name": "다크 페가수스",
+ "kind": "Large",
+ "notes": "첨부 이미지(검은 페가수스 4면도). 페가수스 원본 몸·다리·머리·갈기를 쓰고, 이미지에 없는 뿔은 지움. 옆에 접힌 날개는 메시만 지운 뒤 위로 크게 세운 둥근 날개(깃 5장)로 교체, 발목 털 추가, 꼬리를 길고 풍성하게 키움. 색은 차콜 몸, 회보라 갈기, 슬레이트 날개.",
+ "base": {
+  "reference": "Pegasus",
+  "mode": "reference_mesh",
+  "remove_mesh": [
+   "wing.L",
+   "wing.R"
+  ],
+  "remove_slots": [
+   [
+    5,
+    "bottom"
+   ]
+  ],
+  "part_scale": {
+   "tail.01": [
+    1.25,
+    1.2,
+    1.2
+   ],
+   "tail.02": [
+    1.3,
+    1.3,
+    1.5
+   ]
+  }
+ },
+ "bones": {
+  "wing.L": [
+   [
+    0.17,
+    0.03,
+    0.95
+   ],
+   [
+    0.17,
+    0.45,
+    0.84
+   ]
+  ],
+  "wing.R": [
+   [
+    -0.17,
+    0.03,
+    0.95
+   ],
+   [
+    -0.17,
+    0.45,
+    0.84
+   ]
+  ]
+ },
+ "palette": {
+  "top": [
+   "#434455",
+   "#2f303c",
+   "#15151c",
+   "#626183",
+   "#8486aa",
+   null,
+   null,
+   null
+  ],
+  "bottom": [
+   "#434455",
+   "#2f303c",
+   "#15151c",
+   "#626183",
+   "#8486aa",
+   null,
+   null,
+   null
+  ]
+ },
+ "parts": [
+  {
+   "name": "wing.L.base",
+   "shape": "ellipsoid",
+   "loc": [
+    0.328,
+    0.087,
+    1.092
+   ],
+   "rot": [
+    -15,
+    48,
+    0
+   ],
+   "size": [
+    0.15,
+    0.07,
+    0.22
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5
+  },
+  {
+   "name": "wing.L.f0",
+   "shape": "ellipsoid",
+   "loc": [
+    0.363,
+    0.184,
+    1.364
+   ],
+   "rot": [
+    -22,
+    14,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.34
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5
+  },
+  {
+   "name": "wing.L.f1",
+   "shape": "ellipsoid",
+   "loc": [
+    0.488,
+    0.19,
+    1.353
+   ],
+   "rot": [
+    -22,
+    32,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.33
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 4
+  },
+  {
+   "name": "wing.L.f2",
+   "shape": "ellipsoid",
+   "loc": [
+    0.578,
+    0.187,
+    1.309
+   ],
+   "rot": [
+    -22,
+    50,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.3
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5
+  },
+  {
+   "name": "wing.L.f3",
+   "shape": "ellipsoid",
+   "loc": [
+    0.619,
+    0.178,
+    1.253
+   ],
+   "rot": [
+    -22,
+    68,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.25
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 4
+  },
+  {
+   "name": "wing.L.low",
+   "shape": "ellipsoid",
+   "loc": [
+    0.523,
+    0.172,
+    1.088
+   ],
+   "rot": [
+    -30,
+    100,
+    0
+   ],
+   "size": [
+    0.1,
+    0.05,
+    0.2
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 4
+  },
+  {
+   "name": "leg.F.L.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    -0.221,
+    0.11
+   ],
+   "size": [
+    0.085,
+    0.085,
+    0.075
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "leg.F.L",
+   "slot": 4
+  },
+  {
+   "name": "leg.B.L.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    0.322,
+    0.11
+   ],
+   "size": [
+    0.085,
+    0.085,
+    0.075
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "leg.B.L",
+   "slot": 4
+  },
+  {
+   "name": "wing.R.base",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.328,
+    0.087,
+    1.092
+   ],
+   "rot": [
+    -15,
+    -48,
+    0
+   ],
+   "size": [
+    0.15,
+    0.07,
+    0.22
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5
+  },
+  {
+   "name": "wing.R.f0",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.363,
+    0.184,
+    1.364
+   ],
+   "rot": [
+    -22,
+    -14,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.34
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5
+  },
+  {
+   "name": "wing.R.f1",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.488,
+    0.19,
+    1.353
+   ],
+   "rot": [
+    -22,
+    -32,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.33
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 4
+  },
+  {
+   "name": "wing.R.f2",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.578,
+    0.187,
+    1.309
+   ],
+   "rot": [
+    -22,
+    -50,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.3
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5
+  },
+  {
+   "name": "wing.R.f3",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.619,
+    0.178,
+    1.253
+   ],
+   "rot": [
+    -22,
+    -68,
+    0
+   ],
+   "size": [
+    0.11,
+    0.055,
+    0.25
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 4
+  },
+  {
+   "name": "wing.R.low",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.523,
+    0.172,
+    1.088
+   ],
+   "rot": [
+    -30,
+    -100,
+    0
+   ],
+   "size": [
+    0.1,
+    0.05,
+    0.2
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 4
+  },
+  {
+   "name": "leg.F.R.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    -0.221,
+    0.11
+   ],
+   "size": [
+    0.085,
+    0.085,
+    0.075
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "leg.F.R",
+   "slot": 4
+  },
+  {
+   "name": "leg.B.R.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    0.322,
+    0.11
+   ],
+   "size": [
+    0.085,
+    0.085,
+    0.075
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "leg.B.R",
+   "slot": 4
+  }
+ ]
+}

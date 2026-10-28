@@ -1,0 +1,1059 @@
+{
+ "name": "SeahorseSteed",
+ "display_name": "해마말",
+ "kind": "Medium",
+ "notes": "첨부 이미지(해마 머리·꼬리를 가진 말 4면도). Horse 원본 몸·다리·머리를 쓰고, 이미지에 없는 갈기·귀·말꼬리를 지움. 있는 것: 말 머리는 그대로 두고 코끝만 짧은 해마 주둥이(살짝 숙이며 가늘어지는 관 + 끝 크림색 입), 이마 위 가는 뿔 2개, 귀 자리 지느러미 볏(ear 본), 목덜미~등 톱니 가시 볏, 어깨·엉덩이 부채꼴 지느러미(살대 3개), 동그랗게 말린 해마 꼬리(+가시), 크림색 배, 회색 발굽. 없는 것: 갈기 털, 날개, 말 꼬리. 몸 파랑(1위)에만 비늘 셰이더.",
+ "base": {
+  "reference": "Horse",
+  "mode": "reference_mesh",
+  "remove_mesh": [
+   "tail.01",
+   "tail.02",
+   "ear.L",
+   "ear.R"
+  ],
+  "repaint": [
+   {
+    "from": [
+     5,
+     "top"
+    ],
+    "group": "body",
+    "delete": true
+   },
+   {
+    "from": [
+     1,
+     "top"
+    ],
+    "to": [
+     2,
+     "top"
+    ],
+    "group": "body",
+    "z_max": 0.37
+   }
+  ]
+ },
+ "palette": {
+  "top": [
+   "#7fa2cc",
+   "#f0ddb6",
+   "#d6bf95",
+   "#ecd5a8",
+   "#c9995f",
+   "#6b6876",
+   null,
+   null
+  ],
+  "bottom": [
+   "#7fa2cc",
+   "#f0ddb6",
+   "#d6bf95",
+   "#ecd5a8",
+   "#c9995f",
+   null,
+   null,
+   null
+  ]
+ },
+ "scales": {
+  "density": 12,
+  "strength": 0.4,
+  "slots": [
+   1
+  ]
+ },
+ "parts": [
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "snout",
+   "points": [
+    [
+     0,
+     -0.67,
+     0.845
+    ],
+    [
+     0,
+     -0.76,
+     0.83
+    ],
+    [
+     0,
+     -0.84,
+     0.805
+    ]
+   ],
+   "radius": 0.068,
+   "taper": 0.72,
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "snout.mouth",
+   "loc": [
+    0,
+    -0.85,
+    0.8
+   ],
+   "rot": [
+    20,
+    0,
+    0
+   ],
+   "size": [
+    0.05,
+    0.025,
+    0.045
+   ],
+   "slot": 2
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "horn.L",
+   "loc": [
+    0.04,
+    -0.45,
+    1.165
+   ],
+   "rot": [
+    -15,
+    0,
+    10
+   ],
+   "size": [
+    0.025,
+    0.025,
+    0.17
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "horn.R",
+   "loc": [
+    -0.04,
+    -0.45,
+    1.165
+   ],
+   "rot": [
+    -15,
+    0,
+    -10
+   ],
+   "size": [
+    0.025,
+    0.025,
+    0.17
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "headfin.L",
+   "loc": [
+    0.12,
+    -0.33,
+    1.1
+   ],
+   "rot": [
+    -40,
+    0,
+    15
+   ],
+   "size": [
+    0.02,
+    0.13,
+    0.08
+   ],
+   "bone": "ear.L",
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "headfin.R",
+   "loc": [
+    -0.12,
+    -0.33,
+    1.1
+   ],
+   "rot": [
+    -40,
+    0,
+    -15
+   ],
+   "size": [
+    0.02,
+    0.13,
+    0.08
+   ],
+   "bone": "ear.R",
+   "slot": 4
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine0.L",
+   "points": [
+    [
+     0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     0.13,
+     -0.27,
+     1.1800000000000002
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.L",
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine0.R",
+   "points": [
+    [
+     -0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     -0.13,
+     -0.27,
+     1.1800000000000002
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.R",
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine1.L",
+   "points": [
+    [
+     0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     0.13,
+     -0.23,
+     1.11
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.L",
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine1.R",
+   "points": [
+    [
+     -0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     -0.13,
+     -0.23,
+     1.11
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.R",
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine2.L",
+   "points": [
+    [
+     0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     0.13,
+     -0.25,
+     1.03
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.L",
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "headfin.spine2.R",
+   "points": [
+    [
+     -0.11,
+     -0.4,
+     1.08
+    ],
+    [
+     -0.13,
+     -0.25,
+     1.03
+    ]
+   ],
+   "radius": 0.016,
+   "taper": 0.35,
+   "bone": "ear.R",
+   "slot": 5
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal0",
+   "loc": [
+    0,
+    -0.369,
+    1.133
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.13
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal1",
+   "loc": [
+    0,
+    -0.279,
+    1.101
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.13
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal2",
+   "loc": [
+    0,
+    -0.192,
+    1.018
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.12
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal3",
+   "loc": [
+    0,
+    -0.104,
+    0.903
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.11
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal4",
+   "loc": [
+    0,
+    -0.017,
+    0.785
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.1
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal5",
+   "loc": [
+    0,
+    0.081,
+    0.75
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.09
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal6",
+   "loc": [
+    0,
+    0.179,
+    0.747
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.08
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal7",
+   "loc": [
+    0,
+    0.279,
+    0.734
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.08
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "dorsal8",
+   "loc": [
+    0,
+    0.376,
+    0.665
+   ],
+   "rot": [
+    -28.0,
+    0,
+    0
+   ],
+   "size": [
+    0.022,
+    0.039599999999999996,
+    0.07
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "shoulderfin.L",
+   "loc": [
+    0.285,
+    -0.057,
+    0.735
+   ],
+   "rot": [
+    -45,
+    0,
+    12
+   ],
+   "size": [
+    0.02,
+    0.17,
+    0.12240000000000001
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "shoulderfin.R",
+   "loc": [
+    -0.285,
+    -0.057,
+    0.735
+   ],
+   "rot": [
+    -45,
+    0,
+    -12
+   ],
+   "size": [
+    0.02,
+    0.17,
+    0.12240000000000001
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine0.L",
+   "points": [
+    [
+     0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     0.31,
+     0.128,
+     0.71
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine0.R",
+   "points": [
+    [
+     -0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     -0.31,
+     0.128,
+     0.71
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine1.L",
+   "points": [
+    [
+     0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     0.31,
+     0.04,
+     0.832
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine1.R",
+   "points": [
+    [
+     -0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     -0.31,
+     0.04,
+     0.832
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine2.L",
+   "points": [
+    [
+     0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     0.31,
+     -0.112,
+     0.903
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "shoulderfin.spine2.R",
+   "points": [
+    [
+     -0.24,
+     -0.2,
+     0.64
+    ],
+    [
+     -0.31,
+     -0.112,
+     0.903
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "hipfin.L",
+   "loc": [
+    0.255,
+    0.458,
+    0.718
+   ],
+   "rot": [
+    -45,
+    0,
+    12
+   ],
+   "size": [
+    0.02,
+    0.14,
+    0.1008
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "name": "hipfin.R",
+   "loc": [
+    -0.255,
+    0.458,
+    0.718
+   ],
+   "rot": [
+    -45,
+    0,
+    -12
+   ],
+   "size": [
+    0.02,
+    0.14,
+    0.1008
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine0.L",
+   "points": [
+    [
+     0.21,
+     0.34,
+     0.64
+    ],
+    [
+     0.28,
+     0.61,
+     0.698
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine0.R",
+   "points": [
+    [
+     -0.21,
+     0.34,
+     0.64
+    ],
+    [
+     -0.28,
+     0.61,
+     0.698
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine1.L",
+   "points": [
+    [
+     0.21,
+     0.34,
+     0.64
+    ],
+    [
+     0.28,
+     0.538,
+     0.798
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine1.R",
+   "points": [
+    [
+     -0.21,
+     0.34,
+     0.64
+    ],
+    [
+     -0.28,
+     0.538,
+     0.798
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine2.L",
+   "points": [
+    [
+     0.21,
+     0.34,
+     0.64
+    ],
+    [
+     0.28,
+     0.412,
+     0.856
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "hipfin.spine2.R",
+   "points": [
+    [
+     -0.21,
+     0.34,
+     0.64
+    ],
+    [
+     -0.28,
+     0.412,
+     0.856
+    ]
+   ],
+   "radius": 0.018,
+   "taper": 0.35,
+   "slot": 5
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "name": "tail.curl",
+   "points": [
+    [
+     0,
+     0.36,
+     0.64
+    ],
+    [
+     0,
+     0.52,
+     0.64
+    ],
+    [
+     0,
+     0.66,
+     0.58
+    ],
+    [
+     0,
+     0.76,
+     0.46
+    ],
+    [
+     0,
+     0.78,
+     0.33
+    ],
+    [
+     0,
+     0.73,
+     0.22
+    ],
+    [
+     0,
+     0.64,
+     0.18
+    ],
+    [
+     0,
+     0.57,
+     0.23
+    ],
+    [
+     0,
+     0.58,
+     0.31
+    ],
+    [
+     0,
+     0.65,
+     0.33
+    ],
+    [
+     0,
+     0.68,
+     0.27
+    ]
+   ],
+   "radius": 0.075,
+   "taper": 0.3,
+   "bone": "tail.01",
+   "slot": 1
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "tailspike1",
+   "loc": [
+    0,
+    0.539,
+    0.733
+   ],
+   "rot": [
+    -11.3,
+    0,
+    0
+   ],
+   "size": [
+    0.018,
+    0.0324,
+    0.08
+   ],
+   "bone": "tail.01",
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "tailspike2",
+   "loc": [
+    0,
+    0.712,
+    0.65
+   ],
+   "rot": [
+    -36.9,
+    0,
+    0
+   ],
+   "size": [
+    0.018,
+    0.0324,
+    0.075
+   ],
+   "bone": "tail.01",
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "tailspike3",
+   "loc": [
+    0,
+    0.831,
+    0.494
+   ],
+   "rot": [
+    -64.4,
+    0,
+    0
+   ],
+   "size": [
+    0.018,
+    0.0324,
+    0.07
+   ],
+   "bone": "tail.01",
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "tailspike4",
+   "loc": [
+    0,
+    0.848,
+    0.321
+   ],
+   "rot": [
+    -97.1,
+    0,
+    0
+   ],
+   "size": [
+    0.018,
+    0.0324,
+    0.06
+   ],
+   "bone": "tail.01",
+   "slot": 4
+  },
+  {
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.12,
+   "name": "tailspike5",
+   "loc": [
+    0,
+    0.773,
+    0.18
+   ],
+   "rot": [
+    -133.0,
+    0,
+    0
+   ],
+   "size": [
+    0.018,
+    0.0324,
+    0.05
+   ],
+   "bone": "tail.01",
+   "slot": 4
+  }
+ ]
+}

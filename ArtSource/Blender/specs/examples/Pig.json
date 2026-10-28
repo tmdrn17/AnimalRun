@@ -1,0 +1,42 @@
+{
+  "name": "Pig",
+  "display_name": "돼지",
+  "kind": "Small",
+  "notes": "tools/make_test_pig.py 를 사양서로 옮긴 procedural 예시. 귀 가중치 그라데이션과 귀 안쪽 색은 단순화됨",
+  "base": {
+    "reference": "Horse",
+    "mode": "procedural",
+    "voxel": 0.012,
+    "target_tris": 3600
+  },
+  "palette": {
+    "top":    ["#f6b3b4", "#fcd3cf", "#e98d98", "#c46b78", "#6e3b45", "#a84556", null, null],
+    "bottom": ["#f6b3b4", "#fcd3cf", "#e98d98", "#c46b78", "#6e3b45", null, null, null]
+  },
+  "bones": {
+    "body":    [[0, 0, 0.42], [0, 0, 0.82]],
+    "ear.L":   [[0.12, -0.34, 0.64], [0.21, -0.40, 0.80]],
+    "ear.R":   [[-0.12, -0.34, 0.64], [-0.21, -0.40, 0.80]],
+    "tail.01": [[0, 0.44, 0.47], [0, 0.52, 0.44]],
+    "tail.02": [[0, 0.52, 0.44], [0, 0.56, 0.38]],
+    "leg.F.L": [[0.15, -0.17, 0.34], [0.15, -0.17, 0.0]],
+    "leg.F.R": [[-0.15, -0.17, 0.34], [-0.15, -0.17, 0.0]],
+    "leg.B.L": [[0.15, 0.25, 0.34], [0.15, 0.25, 0.0]],
+    "leg.B.R": [[-0.15, 0.25, 0.34], [-0.15, 0.25, 0.0]]
+  },
+  "parts": [
+    {"name": "body", "shape": "ellipsoid", "loc": [0, 0.06, 0.45], "size": [0.27, 0.40, 0.25], "segments": 48, "rings": 24},
+    {"name": "head", "shape": "ellipsoid", "loc": [0, -0.30, 0.52], "size": [0.21, 0.19, 0.19], "segments": 48, "rings": 24},
+    {"name": "snout", "shape": "cylinder", "loc": [0, -0.48, 0.48], "size": [0.085, 0.085, 0.08], "rot": [90, 0, 0], "segments": 24, "slot": 3},
+    {"name": "ear.L", "shape": "cone", "loc": [0.12, -0.33, 0.70], "size": [0.065, 0.065, 0.13], "rot": [-15, 28, 0], "bone": "ear.L"},
+    {"name": "ear.R", "shape": "cone", "loc": [-0.12, -0.33, 0.70], "size": [0.065, 0.065, 0.13], "rot": [-15, -28, 0], "bone": "ear.R"},
+    {"name": "leg.F.L", "shape": "cylinder", "loc": [0.15, -0.17, 0.20], "size": [0.055, 0.055, 0.40], "segments": 12, "bone": "leg.F.L", "merge": false, "tip_slot": 5, "tip_height": 0.05},
+    {"name": "leg.F.R", "shape": "cylinder", "loc": [-0.15, -0.17, 0.20], "size": [0.055, 0.055, 0.40], "segments": 12, "bone": "leg.F.R", "merge": false, "tip_slot": 5, "tip_height": 0.05},
+    {"name": "leg.B.L", "shape": "cylinder", "loc": [0.15, 0.25, 0.20], "size": [0.055, 0.055, 0.40], "segments": 12, "bone": "leg.B.L", "merge": false, "tip_slot": 5, "tip_height": 0.05},
+    {"name": "leg.B.R", "shape": "cylinder", "loc": [-0.15, 0.25, 0.20], "size": [0.055, 0.055, 0.40], "segments": 12, "bone": "leg.B.R", "merge": false, "tip_slot": 5, "tip_height": 0.05},
+    {"name": "tail", "shape": "tube", "points": [[0, 0.42, 0.50], [0, 0.50, 0.52], [0, 0.55, 0.42]], "radius": 0.018, "bones": ["tail.01", "tail.02"], "merge": false},
+    {"name": "nostril.L", "shape": "ellipsoid", "loc": [0.028, -0.522, 0.48], "size": [0.014, 0.008, 0.022], "segments": 12, "rings": 8, "slot": 6, "merge": false},
+    {"name": "nostril.R", "shape": "ellipsoid", "loc": [-0.028, -0.522, 0.48], "size": [0.014, 0.008, 0.022], "segments": 12, "rings": 8, "slot": 6, "merge": false}
+  ],
+  "face_kit": {"reference": "Horse", "center": [0, -0.44, 0.615], "scale": [0.78, 0.9, 0.9], "turn_deg": 40, "push": 0.012}
+}

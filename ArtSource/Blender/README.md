@@ -10,6 +10,11 @@
 | `references/Horse_*_strip.png` | 말 Run/Idle_A/Walk/Jump/Attack/Death 11프레임 |
 | `references/palettes.png` | 9종 팔레트 텍스처 (위에서부터 Horse, Zebra, Donkey, Camel, Llama, Wildebeest, Mousedeer, Kirin, Pegasus) |
 | `tools/render_references.py` | 위 이미지 재생성 스크립트 |
+| `tools/make_animal.py` | 사양서(JSON) 하나로 동물 생성 → FBX·텍스처·아이콘·Animals.tsv 까지 |
+| `specs/FORMAT.md` | 사양서 형식. 예시는 `specs/examples/` |
+
+> 이미지로 새 동물을 만들 때는 Claude Code에 이미지를 첨부하고 "이걸로 동물 만들어줘"라고 하면
+> `.claude/skills/make-animal` 스킬이 이미지 분석 → 사양서 작성 → `make_animal.py` 실행 → 비교·수정 → Unity 등록 순서로 진행합니다.
 
 ---
 
@@ -103,11 +108,15 @@ Rig (오브젝트 스케일 0.4, Kirin/Pegasus 0.56)
    아이콘은 `Assets/Resources/Animal Run/Sprites/Runners/<Name>_Image.png` (256px 투명)
 2. Project 창에서 FBX 선택 → 메뉴 **Tools > Animal Run > Build Runner Prefab From Selected FBX**
    (`Assets/Animal Run/Scripts/Editor/RunnerPrefabBuilder.cs`) — 아래 수동 과정을 그대로 해 줍니다.
-   콜라이더·무기 위치는 Mousedeer 값을 쓰므로 큰 동물이면 프리팹에서 조정하세요.
+   콜라이더·무기 위치는 `Resources/Animal Run/Prefabs/Runners`의 모든 러너 프리팹(새로 추가한 것 포함) 중
+   크기가 가장 비슷한 것에서 가져와 크기 비율만큼 맞춥니다. 어느 프리팹을 골랐는지는 Console 로그에 나옵니다.
+   배치 모드: `Unity -batchmode -projectPath . -executeMethod Animal_Run.Scripts.EditorTools.RunnerPrefabBuilder.BuildBatch -runner <Name> -quit`
+   에디터가 열려 있을 때: 빈 파일 `Temp/RunnerPrefabRequests/<Name>.request`를 만들면 열린 에디터가 빌드하고
+   `<Name>.result`(빌드·검증 로그, 마지막 줄 `RESULT OK`/`RESULT FAIL`)를 남깁니다 (`RunnerPrefabRequestWatcher.cs`).
 3. `Assets/StreamingAssets/Table/Animal Run/Animals.tsv`에 행 추가 (ID, 이름, 프리팹 키, 스프라이트 키, Small/Medium/Large)
 
 예시: `tools/make_test_pig.py`가 돼지를 처음부터 만들어 `Pig.blend`, FBX, 텍스처, 아이콘까지 내보냅니다.
-
+`tools/make_unicorn.py`는 페가수스 LOD0에서 날개를 떼고 팔레트만 바꿔 노란 유니콘을 만듭니다(뿔은 슬롯 5 아래 칸).
 ### 수동
 1. FBX를 `Assets/Animal Run/Models/Animals/` 등에 넣고, 텍스처는 Filter Mode **Point**.
 2. FBX Rig 탭: Animation Type **Generic**. Animation 탭: 클립 이름이 `Rig|Run`처럼 나오니 `Run`, `Idle_A`로 이름 바꾸기(Loop Time 체크, Death 제외).

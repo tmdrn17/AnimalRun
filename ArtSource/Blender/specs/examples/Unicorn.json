@@ -1,0 +1,15 @@
+{
+  "name": "Unicorn",
+  "display_name": "유니콘",
+  "kind": "Large",
+  "notes": "노란 몸, 핑크·라벤더 갈기, 진주색 뿔. 페가수스 LOD0에 이미 뿔이 있어 날개만 떼고 색을 바꿈 (tools/make_unicorn.py 와 같은 결과)",
+  "base": {
+    "reference": "Pegasus",
+    "mode": "reference_mesh",
+    "remove_parts": ["wing.L", "wing.R"]
+  },
+  "palette": {
+    "top":    ["#ffd84f", "#f5b731", "#8a5a2b", "#ff8fc4", "#c27ddc", "#ffffff", null, null],
+    "bottom": ["#ffd84f", "#f5b731", "#8a5a2b", "#ff8fc4", "#fff4dc", null, null, null]
+  }
+}

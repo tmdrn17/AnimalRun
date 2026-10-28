@@ -1,0 +1,620 @@
+{
+ "name": "FrostBatPegasus",
+ "display_name": "서리 박쥐 페가수스",
+ "kind": "Large",
+ "notes": "첨부 이미지(연하늘 몸에 남색 박쥐 날개를 편 말 4면도). 페가수스 원본 몸·다리·머리·꼬리를 쓰고, 이미지에 없는 뿔은 지움. 깃털 날개는 메시만 지운 뒤 크게 편 박쥐 날개(손가락 3개 + 막 4장, 사용자 요청으로 귀 옆에 보이던 까만 팔 뼈·발톱은 빼고 막을 어깨까지 이음. 손가락 뼈도 까맣게 튀어나와 보여 막과 같은 색으로, 막 안쪽까지만)로 교체. 원본 짧은 올림 갈기는 지우고 목덜미 갈기 + 앞머리(어깨 위로 늘어지던 갈기 덩어리는 사용자 요청으로 뺌)를 새로 붙임. 발목 털 4개, 꼬리를 땅 가까이 길게. 있는 것: 박쥐 날개, 긴 갈기, 앞머리, 긴 꼬리, 발목 털, 검은 발굽. 없는 것: 뿔, 깃털. 날개 아래 끝이 꼬리와 겹쳐 꼬리 속에 남색이 비쳐 보여 날개 아래 끝을 올리고, 꼬리 폭(X) 확대를 줄임. 원본 꼬리는 4·5위 칸 경계에 걸친 2색이라, 날개 막·뼈는 5아래 칸(뿔 자리)으로 옮기고 5위는 꼬리 그림자색(연하늘)으로.",
+ "base": {
+  "reference": "Pegasus",
+  "mode": "reference_mesh",
+  "remove_mesh": [
+   "wing.L",
+   "wing.R"
+  ],
+  "remove_slots": [
+   [
+    5,
+    "bottom"
+   ]
+  ],
+  "repaint": [
+   {
+    "from": [
+     4,
+     "top"
+    ],
+    "group": "body",
+    "delete": true
+   },
+   {
+    "from": [
+     5,
+     "top"
+    ],
+    "group": "body",
+    "delete": true
+   },
+   {
+    "from": [
+     5,
+     "top"
+    ],
+    "to": [
+     4,
+     "top"
+    ],
+    "group": "tail.01"
+   },
+   {
+    "from": [
+     5,
+     "top"
+    ],
+    "to": [
+     4,
+     "top"
+    ],
+    "group": "tail.02"
+   }
+  ],
+  "part_scale": {
+   "tail.01": [
+    1.05,
+    1.2,
+    1.2
+   ],
+   "tail.02": [
+    1.1,
+    1.3,
+    1.5
+   ]
+  }
+ },
+ "bones": {
+  "wing.L": [
+   [
+    0.17,
+    0.03,
+    0.95
+   ],
+   [
+    0.17,
+    0.45,
+    0.84
+   ]
+  ],
+  "wing.R": [
+   [
+    -0.17,
+    0.03,
+    0.95
+   ],
+   [
+    -0.17,
+    0.45,
+    0.84
+   ]
+  ]
+ },
+ "palette": {
+  "top": [
+   "#b8d6f5",
+   "#94b6e6",
+   "#1e1f2a",
+   "#eef4ff",
+   "#c9d5ee",
+   "#262b44",
+   null,
+   null
+  ],
+  "bottom": [
+   "#b8d6f5",
+   "#94b6e6",
+   "#1e1f2a",
+   "#eef4ff",
+   "#3c4a78",
+   null,
+   null,
+   null
+  ]
+ },
+ "parts": [
+  {
+   "name": "wing.L.finger0",
+   "shape": "tube",
+   "points": [
+    [
+     0.4,
+     0.22,
+     1.6
+    ],
+    [
+     0.604,
+     0.322,
+     1.421
+    ],
+    [
+     0.808,
+     0.424,
+     1.243
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.L.finger1",
+   "shape": "tube",
+   "points": [
+    [
+     0.4,
+     0.22,
+     1.6
+    ],
+    [
+     0.57,
+     0.339,
+     1.302
+    ],
+    [
+     0.74,
+     0.458,
+     1.005
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.L.finger2",
+   "shape": "tube",
+   "points": [
+    [
+     0.4,
+     0.22,
+     1.6
+    ],
+    [
+     0.46,
+     0.296,
+     1.277
+    ],
+    [
+     0.519,
+     0.373,
+     0.954
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.L.mem0",
+   "shape": "ellipsoid",
+   "loc": [
+    0.607,
+    0.342,
+    1.337
+   ],
+   "rot": [
+    163.9,
+    39.7,
+    -173.8
+   ],
+   "size": [
+    0.206,
+    0.032,
+    0.356
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.L.mem1",
+   "shape": "ellipsoid",
+   "loc": [
+    0.527,
+    0.328,
+    1.257
+   ],
+   "rot": [
+    170.8,
+    24.3,
+    -161.0
+   ],
+   "size": [
+    0.199,
+    0.032,
+    0.381
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.L.mem2",
+   "shape": "ellipsoid",
+   "loc": [
+    0.391,
+    0.262,
+    1.262
+   ],
+   "rot": [
+    173.0,
+    1.9,
+    -152.4
+   ],
+   "size": [
+    0.263,
+    0.032,
+    0.341
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.L.mem3",
+   "shape": "ellipsoid",
+   "loc": [
+    0.304,
+    0.175,
+    1.287
+   ],
+   "rot": [
+    165.5,
+    -12.0,
+    -103.9
+   ],
+   "size": [
+    0.139,
+    0.032,
+    0.33
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.L",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.R.finger0",
+   "shape": "tube",
+   "points": [
+    [
+     -0.4,
+     0.22,
+     1.6
+    ],
+    [
+     -0.604,
+     0.322,
+     1.421
+    ],
+    [
+     -0.808,
+     0.424,
+     1.243
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.R.finger1",
+   "shape": "tube",
+   "points": [
+    [
+     -0.4,
+     0.22,
+     1.6
+    ],
+    [
+     -0.57,
+     0.339,
+     1.302
+    ],
+    [
+     -0.74,
+     0.458,
+     1.005
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.R.finger2",
+   "shape": "tube",
+   "points": [
+    [
+     -0.4,
+     0.22,
+     1.6
+    ],
+    [
+     -0.46,
+     0.296,
+     1.277
+    ],
+    [
+     -0.519,
+     0.373,
+     0.954
+    ]
+   ],
+   "radius": 0.042,
+   "taper": 0.45,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom",
+   "resolution": 4,
+   "bevel_resolution": 2
+  },
+  {
+   "name": "wing.R.mem0",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.607,
+    0.342,
+    1.337
+   ],
+   "rot": [
+    -163.9,
+    39.7,
+    -6.2
+   ],
+   "size": [
+    0.206,
+    0.032,
+    0.356
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.R.mem1",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.527,
+    0.328,
+    1.257
+   ],
+   "rot": [
+    -170.8,
+    24.3,
+    -19.0
+   ],
+   "size": [
+    0.199,
+    0.032,
+    0.381
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.R.mem2",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.391,
+    0.262,
+    1.262
+   ],
+   "rot": [
+    -173.0,
+    1.9,
+    -27.6
+   ],
+   "size": [
+    0.263,
+    0.032,
+    0.341
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "wing.R.mem3",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.304,
+    0.175,
+    1.287
+   ],
+   "rot": [
+    -165.5,
+    -12.0,
+    -76.1
+   ],
+   "size": [
+    0.139,
+    0.032,
+    0.33
+   ],
+   "segments": 14,
+   "rings": 8,
+   "bone": "wing.R",
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 14,
+   "rings": 8,
+   "slot": 4,
+   "name": "mane.crest",
+   "loc": [
+    0,
+    -0.22,
+    1.19
+   ],
+   "rot": [
+    -36,
+    0,
+    0
+   ],
+   "size": [
+    0.11,
+    0.31,
+    0.12
+   ]
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 14,
+   "rings": 8,
+   "slot": 4,
+   "name": "mane.top",
+   "loc": [
+    0,
+    -0.42,
+    1.3
+   ],
+   "rot": [
+    -20,
+    0,
+    0
+   ],
+   "size": [
+    0.12,
+    0.13,
+    0.1
+   ]
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 14,
+   "rings": 8,
+   "slot": 4,
+   "name": "mane.forelock",
+   "loc": [
+    0,
+    -0.55,
+    1.22
+   ],
+   "rot": [
+    -35,
+    0,
+    0
+   ],
+   "size": [
+    0.07,
+    0.08,
+    0.13
+   ]
+  },
+  {
+   "name": "leg.F.L.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    -0.221,
+    0.11
+   ],
+   "size": [
+    0.09,
+    0.09,
+    0.08
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.F.L",
+   "slot": 4
+  },
+  {
+   "name": "leg.F.R.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    -0.221,
+    0.11
+   ],
+   "size": [
+    0.09,
+    0.09,
+    0.08
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.F.R",
+   "slot": 4
+  },
+  {
+   "name": "leg.B.L.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    0.322,
+    0.11
+   ],
+   "size": [
+    0.09,
+    0.09,
+    0.08
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.B.L",
+   "slot": 4
+  },
+  {
+   "name": "leg.B.R.tuft",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    0.322,
+    0.11
+   ],
+   "size": [
+    0.09,
+    0.09,
+    0.08
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.B.R",
+   "slot": 4
+  }
+ ]
+}

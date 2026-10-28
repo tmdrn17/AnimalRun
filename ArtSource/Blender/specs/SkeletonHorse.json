@@ -1,0 +1,1433 @@
+{
+ "name": "SkeletonHorse",
+ "display_name": "해골마",
+ "kind": "Medium",
+ "notes": "첨부 이미지(해골마 4면도). 뼈색은 이미지의 누렇게 바랜 회베이지. 속이 빈 뼈대로 만들기 위해 procedural: 해골 머리만 merge 덩어리(머리뼈+주둥이+귀, Horse 눈 키트), 몸은 뼈 부품만(척추+마디, 열린 갈비뼈 5쌍, 흉골, 어깨뼈, 골반뼈, 엉덩이·어깨 관절, 다리 위뼈+무릎+아래뼈+발굽). 리그·애니메이션은 Horse 그대로. 있는 것: 해골 머리(말처럼 아래로 숙인 긴 주둥이, 어두운 눈구멍+붉은 눈), 귀, 뼈대, 늘어진 검은 털꼬리, 어두운 발굽. 없는 것: 갈기(사용자 요청으로 뺌), 살·털 몸통, 뿔, 날개.",
+ "base": {
+  "reference": "Horse",
+  "mode": "procedural",
+  "voxel": 0.012,
+  "target_tris": 1100
+ },
+ "bones": {
+  "body": [
+   [
+    0,
+    0.001,
+    0.521
+   ],
+   [
+    0,
+    0.001,
+    0.924
+   ]
+  ],
+  "ear.L": [
+   [
+    0.09,
+    -0.4,
+    1.07
+   ],
+   [
+    0.13,
+    -0.42,
+    1.22
+   ]
+  ],
+  "ear.R": [
+   [
+    -0.09,
+    -0.4,
+    1.07
+   ],
+   [
+    -0.13,
+    -0.42,
+    1.22
+   ]
+  ],
+  "tail.01": [
+   [
+    0,
+    0.43,
+    0.67
+   ],
+   [
+    0,
+    0.53,
+    0.45
+   ]
+  ],
+  "tail.02": [
+   [
+    0,
+    0.53,
+    0.45
+   ],
+   [
+    0,
+    0.58,
+    0.18
+   ]
+  ],
+  "leg.F.L": [
+   [
+    0.108,
+    -0.237,
+    0.422
+   ],
+   [
+    0.108,
+    -0.237,
+    0.018
+   ]
+  ],
+  "leg.B.L": [
+   [
+    0.108,
+    0.246,
+    0.422
+   ],
+   [
+    0.108,
+    0.246,
+    0.018
+   ]
+  ],
+  "leg.F.R": [
+   [
+    -0.108,
+    -0.237,
+    0.422
+   ],
+   [
+    -0.108,
+    -0.237,
+    0.018
+   ]
+  ],
+  "leg.B.R": [
+   [
+    -0.108,
+    0.246,
+    0.422
+   ],
+   [
+    -0.108,
+    0.246,
+    0.018
+   ]
+  ]
+ },
+ "face_kit": {
+  "reference": "Horse",
+  "center": [
+   0,
+   -0.49,
+   0.965
+  ],
+  "scale": [
+   1.08,
+   0.85,
+   0.85
+  ]
+ },
+ "palette": {
+  "top": [
+   "#b8a584",
+   "#7d6d58",
+   "#97856a",
+   "#2f2b33",
+   "#35303a",
+   "#3a302c",
+   "#2a2228",
+   "#ff3b2e"
+  ],
+  "bottom": [
+   "#b8a584",
+   "#7d6d58",
+   "#97856a",
+   "#2f2b33",
+   "#35303a",
+   null,
+   null,
+   null
+  ]
+ },
+ "parts": [
+  {
+   "name": "skull",
+   "shape": "ellipsoid",
+   "loc": [
+    0,
+    -0.46,
+    0.98
+   ],
+   "size": [
+    0.14,
+    0.15,
+    0.13
+   ],
+   "segments": 32,
+   "rings": 16
+  },
+  {
+   "name": "muzzle",
+   "shape": "ellipsoid",
+   "loc": [
+    0,
+    -0.63,
+    0.83
+   ],
+   "rot": [
+    38,
+    0,
+    0
+   ],
+   "size": [
+    0.088,
+    0.19,
+    0.082
+   ],
+   "segments": 32,
+   "rings": 16
+  },
+  {
+   "name": "ear.L",
+   "shape": "cone",
+   "loc": [
+    0.085,
+    -0.41,
+    1.13
+   ],
+   "rot": [
+    -10,
+    22,
+    0
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.12
+   ],
+   "bone": "ear.L"
+  },
+  {
+   "name": "ear.R",
+   "shape": "cone",
+   "loc": [
+    -0.085,
+    -0.41,
+    1.13
+   ],
+   "rot": [
+    -10,
+    -22,
+    0
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.12
+   ],
+   "bone": "ear.R"
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "merge": false,
+   "name": "socket.L",
+   "loc": [
+    0.1,
+    -0.49,
+    0.965
+   ],
+   "size": [
+    0.035,
+    0.08,
+    0.08
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 10,
+   "rings": 6,
+   "merge": false,
+   "name": "socket.R",
+   "loc": [
+    -0.1,
+    -0.49,
+    0.965
+   ],
+   "size": [
+    0.035,
+    0.08,
+    0.08
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "nostril.L",
+   "loc": [
+    0.035,
+    -0.755,
+    0.755
+   ],
+   "size": [
+    0.022,
+    0.02,
+    0.025
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "nostril.R",
+   "loc": [
+    -0.035,
+    -0.755,
+    0.755
+   ],
+   "size": [
+    0.022,
+    0.02,
+    0.025
+   ],
+   "slot": 4
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "spine",
+   "points": [
+    [
+     0,
+     -0.37,
+     0.93
+    ],
+    [
+     0,
+     -0.24,
+     0.86
+    ],
+    [
+     0,
+     -0.1,
+     0.78
+    ],
+    [
+     0,
+     0.05,
+     0.76
+    ],
+    [
+     0,
+     0.2,
+     0.75
+    ],
+    [
+     0,
+     0.34,
+     0.72
+    ],
+    [
+     0,
+     0.44,
+     0.66
+    ]
+   ],
+   "radius": 0.035,
+   "taper": 0.8,
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert0",
+   "loc": [
+    0,
+    -0.3,
+    0.92
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert1",
+   "loc": [
+    0,
+    -0.17,
+    0.85
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert2",
+   "loc": [
+    0,
+    -0.03,
+    0.8
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert3",
+   "loc": [
+    0,
+    0.1,
+    0.79
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert4",
+   "loc": [
+    0,
+    0.22,
+    0.78
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "vert5",
+   "loc": [
+    0,
+    0.34,
+    0.75
+   ],
+   "size": [
+    0.04,
+    0.035,
+    0.035
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib0.L",
+   "points": [
+    [
+     0.025,
+     -0.16,
+     0.76
+    ],
+    [
+     0.139,
+     -0.139,
+     0.707
+    ],
+    [
+     0.186,
+     -0.13,
+     0.58
+    ],
+    [
+     0.139,
+     -0.139,
+     0.453
+    ],
+    [
+     0.067,
+     -0.152,
+     0.406
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib0.R",
+   "points": [
+    [
+     -0.025,
+     -0.16,
+     0.76
+    ],
+    [
+     -0.139,
+     -0.139,
+     0.707
+    ],
+    [
+     -0.186,
+     -0.13,
+     0.58
+    ],
+    [
+     -0.139,
+     -0.139,
+     0.453
+    ],
+    [
+     -0.067,
+     -0.152,
+     0.406
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib1.L",
+   "points": [
+    [
+     0.025,
+     -0.07,
+     0.76
+    ],
+    [
+     0.148,
+     -0.049,
+     0.704
+    ],
+    [
+     0.199,
+     -0.04,
+     0.569
+    ],
+    [
+     0.148,
+     -0.049,
+     0.434
+    ],
+    [
+     0.07,
+     -0.062,
+     0.384
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib1.R",
+   "points": [
+    [
+     -0.025,
+     -0.07,
+     0.76
+    ],
+    [
+     -0.148,
+     -0.049,
+     0.704
+    ],
+    [
+     -0.199,
+     -0.04,
+     0.569
+    ],
+    [
+     -0.148,
+     -0.049,
+     0.434
+    ],
+    [
+     -0.07,
+     -0.062,
+     0.384
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib2.L",
+   "points": [
+    [
+     0.025,
+     0.02,
+     0.76
+    ],
+    [
+     0.154,
+     0.041,
+     0.702
+    ],
+    [
+     0.207,
+     0.05,
+     0.562
+    ],
+    [
+     0.154,
+     0.041,
+     0.423
+    ],
+    [
+     0.072,
+     0.028,
+     0.372
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib2.R",
+   "points": [
+    [
+     -0.025,
+     0.02,
+     0.76
+    ],
+    [
+     -0.154,
+     0.041,
+     0.702
+    ],
+    [
+     -0.207,
+     0.05,
+     0.562
+    ],
+    [
+     -0.154,
+     0.041,
+     0.423
+    ],
+    [
+     -0.072,
+     0.028,
+     0.372
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib3.L",
+   "points": [
+    [
+     0.025,
+     0.11,
+     0.76
+    ],
+    [
+     0.144,
+     0.131,
+     0.705
+    ],
+    [
+     0.194,
+     0.14,
+     0.574
+    ],
+    [
+     0.144,
+     0.131,
+     0.442
+    ],
+    [
+     0.069,
+     0.118,
+     0.394
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib3.R",
+   "points": [
+    [
+     -0.025,
+     0.11,
+     0.76
+    ],
+    [
+     -0.144,
+     0.131,
+     0.705
+    ],
+    [
+     -0.194,
+     0.14,
+     0.574
+    ],
+    [
+     -0.144,
+     0.131,
+     0.442
+    ],
+    [
+     -0.069,
+     0.118,
+     0.394
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib4.L",
+   "points": [
+    [
+     0.025,
+     0.2,
+     0.76
+    ],
+    [
+     0.135,
+     0.221,
+     0.709
+    ],
+    [
+     0.18,
+     0.23,
+     0.585
+    ],
+    [
+     0.135,
+     0.221,
+     0.461
+    ],
+    [
+     0.065,
+     0.208,
+     0.416
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "rib4.R",
+   "points": [
+    [
+     -0.025,
+     0.2,
+     0.76
+    ],
+    [
+     -0.135,
+     0.221,
+     0.709
+    ],
+    [
+     -0.18,
+     0.23,
+     0.585
+    ],
+    [
+     -0.135,
+     0.221,
+     0.461
+    ],
+    [
+     -0.065,
+     0.208,
+     0.416
+    ]
+   ],
+   "radius": 0.022,
+   "taper": 0.7,
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "sternum",
+   "points": [
+    [
+     0,
+     -0.2,
+     0.38
+    ],
+    [
+     0,
+     -0.05,
+     0.37
+    ],
+    [
+     0,
+     0.1,
+     0.4
+    ]
+   ],
+   "radius": 0.03,
+   "taper": 0.8,
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "scapula.L",
+   "loc": [
+    0.19,
+    -0.22,
+    0.62
+   ],
+   "rot": [
+    28,
+    0,
+    0
+   ],
+   "size": [
+    0.028,
+    0.07,
+    0.15
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "scapula.R",
+   "loc": [
+    -0.19,
+    -0.22,
+    0.62
+   ],
+   "rot": [
+    28,
+    0,
+    0
+   ],
+   "size": [
+    0.028,
+    0.07,
+    0.15
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "pelvis.L",
+   "loc": [
+    0.09,
+    0.33,
+    0.68
+   ],
+   "rot": [
+    -25,
+    0,
+    8
+   ],
+   "size": [
+    0.07,
+    0.12,
+    0.055
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "pelvis.R",
+   "loc": [
+    -0.09,
+    0.33,
+    0.68
+   ],
+   "rot": [
+    -25,
+    0,
+    -8
+   ],
+   "size": [
+    0.07,
+    0.12,
+    0.055
+   ],
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "hip.L",
+   "loc": [
+    0.115,
+    0.27,
+    0.5
+   ],
+   "size": [
+    0.055,
+    0.055,
+    0.055
+   ],
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "hip.R",
+   "loc": [
+    -0.115,
+    0.27,
+    0.5
+   ],
+   "size": [
+    0.055,
+    0.055,
+    0.055
+   ],
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "shoulder.L",
+   "loc": [
+    0.13,
+    -0.23,
+    0.49
+   ],
+   "size": [
+    0.055,
+    0.055,
+    0.055
+   ],
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "shoulder.R",
+   "loc": [
+    -0.13,
+    -0.23,
+    0.49
+   ],
+   "size": [
+    0.055,
+    0.055,
+    0.055
+   ],
+   "slot": 3
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.F.L.upper",
+   "points": [
+    [
+     0.108,
+     -0.237,
+     0.48
+    ],
+    [
+     0.108,
+     -0.237,
+     0.36
+    ],
+    [
+     0.108,
+     -0.237,
+     0.25
+    ]
+   ],
+   "radius": 0.032,
+   "taper": 0.8,
+   "bone": "leg.F.L",
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.F.R.upper",
+   "points": [
+    [
+     -0.108,
+     -0.237,
+     0.48
+    ],
+    [
+     -0.108,
+     -0.237,
+     0.36
+    ],
+    [
+     -0.108,
+     -0.237,
+     0.25
+    ]
+   ],
+   "radius": 0.032,
+   "taper": 0.8,
+   "bone": "leg.F.R",
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "leg.F.L.knee",
+   "loc": [
+    0.108,
+    -0.237,
+    0.23
+   ],
+   "size": [
+    0.045,
+    0.045,
+    0.04
+   ],
+   "bone": "leg.F.L",
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "leg.F.R.knee",
+   "loc": [
+    -0.108,
+    -0.237,
+    0.23
+   ],
+   "size": [
+    0.045,
+    0.045,
+    0.04
+   ],
+   "bone": "leg.F.R",
+   "slot": 3
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.F.L.lower",
+   "points": [
+    [
+     0.108,
+     -0.237,
+     0.22
+    ],
+    [
+     0.108,
+     -0.237,
+     0.14
+    ],
+    [
+     0.108,
+     -0.237,
+     0.06
+    ]
+   ],
+   "radius": 0.027,
+   "taper": 0.9,
+   "bone": "leg.F.L",
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.F.R.lower",
+   "points": [
+    [
+     -0.108,
+     -0.237,
+     0.22
+    ],
+    [
+     -0.108,
+     -0.237,
+     0.14
+    ],
+    [
+     -0.108,
+     -0.237,
+     0.06
+    ]
+   ],
+   "radius": 0.027,
+   "taper": 0.9,
+   "bone": "leg.F.R",
+   "slot": 1
+  },
+  {
+   "name": "leg.F.L.hoof",
+   "shape": "cylinder",
+   "loc": [
+    0.108,
+    -0.247,
+    0.03
+   ],
+   "size": [
+    0.048,
+    0.052,
+    0.06
+   ],
+   "segments": 8,
+   "subdivide": 0,
+   "bone": "leg.F.L",
+   "slot": 6,
+   "merge": false
+  },
+  {
+   "name": "leg.F.R.hoof",
+   "shape": "cylinder",
+   "loc": [
+    -0.108,
+    -0.247,
+    0.03
+   ],
+   "size": [
+    0.048,
+    0.052,
+    0.06
+   ],
+   "segments": 8,
+   "subdivide": 0,
+   "bone": "leg.F.R",
+   "slot": 6,
+   "merge": false
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.B.L.upper",
+   "points": [
+    [
+     0.108,
+     0.246,
+     0.48
+    ],
+    [
+     0.108,
+     0.246,
+     0.36
+    ],
+    [
+     0.108,
+     0.246,
+     0.25
+    ]
+   ],
+   "radius": 0.032,
+   "taper": 0.8,
+   "bone": "leg.B.L",
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.B.R.upper",
+   "points": [
+    [
+     -0.108,
+     0.246,
+     0.48
+    ],
+    [
+     -0.108,
+     0.246,
+     0.36
+    ],
+    [
+     -0.108,
+     0.246,
+     0.25
+    ]
+   ],
+   "radius": 0.032,
+   "taper": 0.8,
+   "bone": "leg.B.R",
+   "slot": 1
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "leg.B.L.knee",
+   "loc": [
+    0.108,
+    0.246,
+    0.23
+   ],
+   "size": [
+    0.045,
+    0.045,
+    0.04
+   ],
+   "bone": "leg.B.L",
+   "slot": 3
+  },
+  {
+   "shape": "ellipsoid",
+   "segments": 8,
+   "rings": 6,
+   "merge": false,
+   "name": "leg.B.R.knee",
+   "loc": [
+    -0.108,
+    0.246,
+    0.23
+   ],
+   "size": [
+    0.045,
+    0.045,
+    0.04
+   ],
+   "bone": "leg.B.R",
+   "slot": 3
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.B.L.lower",
+   "points": [
+    [
+     0.108,
+     0.246,
+     0.22
+    ],
+    [
+     0.108,
+     0.246,
+     0.14
+    ],
+    [
+     0.108,
+     0.246,
+     0.06
+    ]
+   ],
+   "radius": 0.027,
+   "taper": 0.9,
+   "bone": "leg.B.L",
+   "slot": 1
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "leg.B.R.lower",
+   "points": [
+    [
+     -0.108,
+     0.246,
+     0.22
+    ],
+    [
+     -0.108,
+     0.246,
+     0.14
+    ],
+    [
+     -0.108,
+     0.246,
+     0.06
+    ]
+   ],
+   "radius": 0.027,
+   "taper": 0.9,
+   "bone": "leg.B.R",
+   "slot": 1
+  },
+  {
+   "name": "leg.B.L.hoof",
+   "shape": "cylinder",
+   "loc": [
+    0.108,
+    0.236,
+    0.03
+   ],
+   "size": [
+    0.048,
+    0.052,
+    0.06
+   ],
+   "segments": 8,
+   "subdivide": 0,
+   "bone": "leg.B.L",
+   "slot": 6,
+   "merge": false
+  },
+  {
+   "name": "leg.B.R.hoof",
+   "shape": "cylinder",
+   "loc": [
+    -0.108,
+    0.236,
+    0.03
+   ],
+   "size": [
+    0.048,
+    0.052,
+    0.06
+   ],
+   "segments": 8,
+   "subdivide": 0,
+   "bone": "leg.B.R",
+   "slot": 6,
+   "merge": false
+  },
+  {
+   "shape": "tube",
+   "resolution": 3,
+   "bevel_resolution": 1,
+   "merge": false,
+   "name": "tail.hair",
+   "points": [
+    [
+     0,
+     0.43,
+     0.67
+    ],
+    [
+     0,
+     0.51,
+     0.6
+    ],
+    [
+     0,
+     0.56,
+     0.4
+    ],
+    [
+     0,
+     0.58,
+     0.16
+    ]
+   ],
+   "radius": 0.07,
+   "taper": 0.55,
+   "bone": "tail.01",
+   "slot": 5
+  }
+ ]
+}
