@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     [Header(" Elements ")]
-    [FormerlySerializedAs("crowdSystem")]
     [SerializeField] private AnimalSystem animalSystem;
     [SerializeField] private PlayerAnimator playerAnimator;
 
@@ -29,8 +28,7 @@ public class PlayerController : MonoBehaviour
         else
             instance = this;
     }
-
-    // Start is called before the first frame update
+    
     private void Start()
     {
         GameManager.onGameStateChanged += GameStateChangedCallback;
@@ -40,8 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.onGameStateChanged -= GameStateChangedCallback;
     }
-
-    // Update is called once per frame
+    
     private void Update()
     {
         if (canMove)
