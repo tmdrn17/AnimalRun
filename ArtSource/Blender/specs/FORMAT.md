@@ -113,6 +113,7 @@ reference_mesh에서는 `remove_mesh`로 메시를 지운 부위의 본만 옮�
 | `size` | ellipsoid `[반지름 x, y, z]` / cylinder `[반지름 x, 반지름 y, 길이]` / cone `[밑면 반지름 x, y, 길이]` (축은 로컬 Z) |
 | `tip` | cone 끝 반지름 비율(0~1). 기본 0.05 |
 | `points`, `radius`, `taper` | tube 경로 점들(월드), 굵기, 끝 굵기 비율(기본 1). 꼬리·휘어진 뿔·갈기 가닥용 |
+| `flat` | tube 단면을 경로 평면의 법선 방향으로 이 비율(0~1)만큼 눌러 납작하게. 칼날 같은 뿔·지느러미 (예: 0.3) |
 | `resolution`, `bevel_resolution` | tube 경로 분할(기본 8)과 단면 둥글기(기본 3). 가닥이 많아 삼각형이 넘치면 4 / 2 로 |
 | `segments`, `rings` | 분할 수 |
 | `bone` | 이 부품이 따라 움직일 본. 기본 `body` |

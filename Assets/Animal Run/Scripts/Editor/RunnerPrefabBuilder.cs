@@ -41,6 +41,9 @@ namespace Animal_Run.Scripts.EditorTools
                 return;
             }
             BuildAndVerify(args[i + 1]);
+            // Unity 셰이더 미리보기. Temp 는 배치 모드 종료 때 지워지므로 블렌더 미리보기 폴더에 남긴다
+            System.IO.Directory.CreateDirectory("ArtSource/Blender/previews");
+            CapturePreview(args[i + 1], $"ArtSource/Blender/previews/{args[i + 1]}_unity.png");
         }
 
         public static void BuildAndVerify(string name)
@@ -61,9 +64,10 @@ namespace Animal_Run.Scripts.EditorTools
 
             AssetDatabase.Refresh();
 
-            // 팔레트 텍스처: 원본과 같이 Point 필터
+            // 팔레트 텍스처: 원본과 같이 Point 필터. 16x4 라 압축하면 블록 안의 이웃 칸 색이 섞이므로(5아래 칸에 6아래 분홍 등) 무압축
             var texImporter = (TextureImporter)AssetImporter.GetAtPath(texPath);
             texImporter.filterMode = FilterMode.Point;
+            texImporter.textureCompression = TextureImporterCompression.Uncompressed;
             texImporter.SaveAndReimport();
             var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(texPath);
 

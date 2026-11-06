@@ -17,3 +17,4 @@ ID	Name	PrefabKey	SpriteKey	Kind
 15	유령마	Animal Run/Prefabs/Runners/GhostHorse	Animal Run/Sprites/Runners/GhostHorse_Image	Medium
 16	해골마	Animal Run/Prefabs/Runners/SkeletonHorse	Animal Run/Sprites/Runners/SkeletonHorse_Image	Medium
 17	해마말	Animal Run/Prefabs/Runners/SeahorseSteed	Animal Run/Sprites/Runners/SeahorseSteed_Image	Medium
+18	박	Animal Run/Prefabs/Runners/Bo	Animal Run/Sprites/Runners/Bo_Image	Medium

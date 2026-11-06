@@ -103,6 +103,15 @@ def make_shape(ctx, p):
         ctx.scene.collection.objects.link(o)
         select_only(ctx, [o], o)
         bpy.ops.object.convert(target="MESH")
+        # flat: 경로가 놓인 평면의 법선 방향으로 단면을 눌러 칼날처럼 납작하게 (경로 평면 안의 폭은 그대로)
+        if "flat" in p:
+            pv = [Vector(c) for c in pts]
+            normal = (pv[1] - pv[0]).cross(pv[-1] - pv[0])
+            if normal.length > 1e-6:
+                normal.normalize()
+                center = sum(pv, Vector()) / len(pv)
+                for v in o.data.vertices:
+                    v.co -= normal * (1 - p["flat"]) * (v.co - center).dot(normal)
     else:
         raise ValueError(f"알 수 없는 shape: {shape}")
     o = ctx.active_object

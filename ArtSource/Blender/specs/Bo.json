@@ -1,0 +1,452 @@
+{
+ "name": "Bo",
+ "display_name": "박",
+ "kind": "Medium",
+ "notes": "산해경의 말 요괴 박(駮). 설명: 흰 몸, 검은 꼬리, 머리에 뿔 하나, 호랑이 발. 첨부 이미지: 길게 휘날리는 검은 갈기, 이마에서 솟아 앞으로 휜 칼날 같은 납작한 뿔 하나(검은 갈기와 구분되게 회보라, 밑동은 이마에 묻음), 발톱 달린 호랑이 발. Pegasus 원본 몸·머리·갈기·꼬리를 쓰고(갈기·꼬리는 검게), 날개와 앞으로 뻗은 원래 뿔(5아래)을 지운 뒤 뒤로 휜 뿔을 새로(5아래 칸). 발굽(3위)은 지우고 둥근 발 + 검은 발톱 3개로. 있는 것: 흰 몸, 검은 갈기·꼬리, 뿔 하나, 호랑이 발, 귀. 없는 것: 날개, 발굽, 줄무늬(이미지의 붉은 얼룩은 피라 제외).",
+ "base": {
+  "reference": "Pegasus",
+  "mode": "reference_mesh",
+  "remove_parts": [
+   "wing.L",
+   "wing.R"
+  ],
+  "remove_slots": [
+   [
+    5,
+    "bottom"
+   ],
+   [
+    3,
+    "top"
+   ]
+  ]
+ },
+ "palette": {
+  "top": [
+   "#f3f1ee",
+   "#dedde6",
+   "#dedde6",
+   "#2c2b34",
+   "#1d1c23",
+   "#25232a",
+   null,
+   null
+  ],
+  "bottom": [
+   "#f3f1ee",
+   "#dedde6",
+   "#dedde6",
+   "#2c2b34",
+   "#7a7486",
+   null,
+   null,
+   null
+  ]
+ },
+ "parts": [
+  {
+   "name": "horn",
+   "shape": "tube",
+   "points": [
+    [
+     0,
+     -0.6,
+     1.03
+    ],
+    [
+     0,
+     -0.7,
+     1.17
+    ],
+    [
+     0,
+     -0.77,
+     1.33
+    ],
+    [
+     0,
+     -0.86,
+     1.47
+    ]
+   ],
+   "radius": 0.075,
+   "taper": 0.05,
+   "flat": 0.28,
+   "resolution": 6,
+   "bevel_resolution": 2,
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "horn.base",
+   "shape": "ellipsoid",
+   "loc": [
+    0,
+    -0.665,
+    1.085
+   ],
+   "rot": [
+    -38,
+    0,
+    0
+   ],
+   "size": [
+    0.026,
+    0.075,
+    0.05
+   ],
+   "segments": 12,
+   "rings": 8,
+   "slot": 5,
+   "half": "bottom"
+  },
+  {
+   "name": "leg.F.L.paw",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    -0.245,
+    0.05
+   ],
+   "size": [
+    0.092,
+    0.11,
+    0.06
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.F.L",
+   "slot": 2
+  },
+  {
+   "name": "leg.F.R.paw",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    -0.245,
+    0.05
+   ],
+   "size": [
+    0.092,
+    0.11,
+    0.06
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.F.R",
+   "slot": 2
+  },
+  {
+   "name": "leg.F.L.claw0",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.134,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.F.R.claw0",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.134,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.R",
+   "slot": 6
+  },
+  {
+   "name": "leg.F.L.claw1",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.179,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.F.R.claw1",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.179,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.R",
+   "slot": 6
+  },
+  {
+   "name": "leg.F.L.claw2",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.224,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.F.R.claw2",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.224,
+    -0.366,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.F.R",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.L.paw",
+   "shape": "ellipsoid",
+   "loc": [
+    0.179,
+    0.3,
+    0.05
+   ],
+   "size": [
+    0.092,
+    0.11,
+    0.06
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.B.L",
+   "slot": 2
+  },
+  {
+   "name": "leg.B.R.paw",
+   "shape": "ellipsoid",
+   "loc": [
+    -0.179,
+    0.3,
+    0.05
+   ],
+   "size": [
+    0.092,
+    0.11,
+    0.06
+   ],
+   "segments": 12,
+   "rings": 8,
+   "bone": "leg.B.R",
+   "slot": 2
+  },
+  {
+   "name": "leg.B.L.claw0",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.134,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.R.claw0",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.134,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.R",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.L.claw1",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.179,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.R.claw1",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.179,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.R",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.L.claw2",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    0.224,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.L",
+   "slot": 6
+  },
+  {
+   "name": "leg.B.R.claw2",
+   "shape": "cone",
+   "segments": 6,
+   "tip": 0.1,
+   "loc": [
+    -0.224,
+    0.179,
+    0.026
+   ],
+   "rot": [
+    106.3,
+    0,
+    0
+   ],
+   "size": [
+    0.02,
+    0.02,
+    0.065
+   ],
+   "bone": "leg.B.R",
+   "slot": 6
+  }
+ ]
+}

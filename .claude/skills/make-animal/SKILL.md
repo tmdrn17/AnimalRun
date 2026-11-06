@@ -100,7 +100,7 @@ AnimalRun(Unity 2023.1.17f1)의 러너 동물을 원본 Quirky Series 규격으�
      PowerShell `(New-Object -ComObject WScript.Shell).AppActivate(<에디터 ProcessId>)`. 그래도 안 되면 Play 모드인지, Console에 컴파일 오류가 있는지 사용자에게 묻는다.
 4. 로그(배치는 -logFile, 에디터는 `<Name>.result`)에서 확인:
    `[RunnerPrefabBuilder] ... 기준 프리팹`, `[Verify] mesh=Mesh_LOD0 ... blendShapes=29 bones=10`(날개 동물 12), `Idle_A`/`Run` 상태, `Eyes_Blink ... bound=True`, `Resources runner=True ... sprite=True`
-5. 에디터 요청이면 `Temp/RunnerPrefabRequests/<Name>_preview.png`(Unity 셰이더로 찍은 3/4·옆모습)를 Read로 보고, 블렌더 미리보기와 색·모양이 같은지 확인한다.
+5. Unity 셰이더로 찍은 3/4·옆모습(에디터 요청은 `Temp/RunnerPrefabRequests/<Name>_preview.png`, 배치 모드는 `ArtSource/Blender/previews/<Name>_unity.png`)을 Read로 보고, 블렌더 미리보기와 색·모양이 같은지 확인한다.
    몸이 까맣게 나오면 정점색(Col)이 0인 것이다. 사용자에게 보고하기 전에 반드시 이 이미지로 확인한다.
    비늘 동물(사양서 `scales`)은 `shader=Animal Run/Quirky Scales`인지와 비늘 무늬도 이 이미지로 확인한다.
 
