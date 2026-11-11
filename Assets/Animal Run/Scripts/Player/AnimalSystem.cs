@@ -1,12 +1,13 @@
+using System;
 using Animal_Run.Scripts.Data;
 using UnityEngine;
 
 public class AnimalSystem : MonoBehaviour
 {
-    [Header(" Elements ")] [SerializeField]
-    private PlayerAnimator playerAnimator;
-
+    [Header(" Elements ")]
+    [SerializeField] private PlayerAnimator playerAnimator;
     [SerializeField] private Transform runnersParent;
+    [SerializeField] private PlayVFX playVFX;
 
     [Header(" Settings ")] 
     [SerializeField] private float radius;
@@ -16,6 +17,14 @@ public class AnimalSystem : MonoBehaviour
     private AnimalDef animalDef;
     private WeaponDef weaponDef;
     private Transform bulletContainer;
+    
+    public PlayVFX PlayVFX => playVFX;
+    
+    private void Start()
+    {
+        playerAnimator = GetComponent<PlayerAnimator>();
+        playVFX = GetComponentInChildren<PlayVFX>();
+    }
 
     private void Update()
     {
@@ -36,7 +45,7 @@ public class AnimalSystem : MonoBehaviour
         for (int i = 0; i < runnersParent.childCount; i++)
         {
             Transform runner = runnersParent.GetChild(i);
-            if (!runner.gameObject.activeSelf)
+            if (runner.gameObject.activeSelf == false)
                 continue;
 
             runner.localPosition = GetRunnerLocalPosition(index);
@@ -82,6 +91,21 @@ public class AnimalSystem : MonoBehaviour
 
     public Runner SpawnRunner()
     {
+        for (int i = 0; i < runnersParent.childCount; i++)
+        {
+            if (runnersParent.GetChild(i).gameObject.activeSelf == false)
+            {
+                Transform child = runnersParent.GetChild(i);
+                Runner disableRunner = child.GetComponent<Runner>();
+                
+                disableRunner.transform.localPosition = Vector3.zero;
+                disableRunner.transform.localRotation = Quaternion.identity;
+                disableRunner.gameObject.SetActive(true);
+                
+                return disableRunner;
+            }
+        }
+        
         Runner runner = Instantiate(animalDef.Prefab, runnersParent);
         runner.transform.localPosition = Vector3.zero;
         runner.transform.localRotation = Quaternion.identity;
@@ -90,6 +114,9 @@ public class AnimalSystem : MonoBehaviour
 
     public void EquipWeapon(Runner runner)
     {
+        if (runner.weaponPosition.GetComponentInChildren<Weapon>(true) != null)
+            return;
+        
         Weapon weapon = Instantiate(weaponDef.Prefab, runner.weaponPosition);
         weapon.transform.localPosition = Vector3.zero;
         // 프리팹에 지정된 회전을 그대로 사용한다. (도끼·식칼은 X축 90도로 머리 위에 누워 있다.)
@@ -156,13 +183,13 @@ public class AnimalSystem : MonoBehaviour
         // 뒤에서부터 켜진 러너만 amount 마리 제거한다. 이미 꺼진 러너는 세지 않는다.
         for (int i = runnersParent.childCount - 1; i >= 0 && amount > 0; i--)
         {
-            Transform runnerToDestroy = runnersParent.GetChild(i);
-            if (!runnerToDestroy.gameObject.activeSelf)
-                continue;
-
-            runnerToDestroy.SetParent(null);
-            Destroy(runnerToDestroy.gameObject);
-            amount--;
+            Transform child = runnersParent.GetChild(i);
+            
+            if (child.gameObject.activeSelf)
+            {
+                child.gameObject.SetActive(false);
+                amount--;
+            }
         }
     }
 }

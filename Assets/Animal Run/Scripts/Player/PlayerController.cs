@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -32,6 +33,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.onGameStateChanged += GameStateChangedCallback;
+    }
+
+    private void OnEnable()
+    {
+        animalSystem = GetComponent<AnimalSystem>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     private void OnDestroy()
@@ -70,6 +77,18 @@ public class PlayerController : MonoBehaviour
         canMove = false;
 
         playerAnimator.Idle();
+    }
+
+    // 증강 선택처럼 잠깐 멈출 때 사용한다. 애니메이션은 Time.timeScale로 멈추므로 바꾸지 않는다.
+    public void PauseMoving()
+    {
+        canMove = false;
+    }
+
+    public void ResumeMoving()
+    {
+        if (GameManager.instance.IsGameState(GameManager.GameState.Game))
+            canMove = true;
     }
 
     private void MoveForward()

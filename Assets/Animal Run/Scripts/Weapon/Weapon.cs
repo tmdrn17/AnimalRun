@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Animal_Run.Scripts.Data;
@@ -18,6 +19,8 @@ public class Weapon : MonoBehaviour
 
     private  ObjectPool<Bullet> bulletPool;
     private Transform bulletContainer;
+    
+    private bool isInitialized;
 
     public void Init(WeaponDef myDef, Transform poolContainer)
     {
@@ -29,9 +32,16 @@ public class Weapon : MonoBehaviour
         attackInterval = myDef.AttackInterval;
         weaponKind = myDef.Kind;
         bulletContainer = poolContainer;
-
+        
         InitializePool();
+        isInitialized = true;
         StartCoroutine(FireRoutine());
+    }
+
+    private void OnEnable()
+    {
+        if(isInitialized)
+            StartCoroutine(FireRoutine());
     }
 
     private void OnDestroy()

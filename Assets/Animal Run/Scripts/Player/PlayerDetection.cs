@@ -52,7 +52,7 @@ public class PlayerDetection : MonoBehaviour
                 continue;
 
             ListManager.Coins.RemoveAt(i);
-            Destroy(coin.gameObject);
+            coin.gameObject.SetActive(false);
             DataManager.instance.AddExp(1);
         }
 

@@ -25,13 +25,22 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isDead)
-            return;
+        
 
         Enemy enemy = other.GetComponentInParent<Enemy>();
-        if (enemy == null || !enemy.TryKillByRunner())
-            return;
+        
 
+        
+    }
+
+    public void Dead(Enemy enemy)
+    {
+        if (isDead)
+            return;
+        
+        if (enemy == null || enemy.TryKillByRunner() == false)
+            return;
+        
         isDead = true;
         gameObject.SetActive(false);
     }

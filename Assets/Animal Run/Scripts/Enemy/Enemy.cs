@@ -40,8 +40,7 @@ public class Enemy : MonoBehaviour
     {
         ListManager.Enemies.Add(this);
     }
-
-    // Update is called once per frame
+    
     private void Update()
     {
         if (!GameManager.instance.IsGameState(GameManager.GameState.Game))
@@ -72,6 +71,13 @@ public class Enemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         transform.LookAt(targetPosition);
+
+        if (Vector3.Distance(transform.position, targetPosition) <= 0f)
+        {
+            targetRunner.Dead(this);
+            targetRunner = null;
+            Die();
+        }
     }
 
     private Runner FindRunnerInRange()
