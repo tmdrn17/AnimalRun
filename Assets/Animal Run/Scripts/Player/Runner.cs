@@ -1,4 +1,3 @@
-using Animal_Run.Scripts.Managers;
 using UnityEngine;
 
 public class Runner : MonoBehaviour
@@ -34,9 +33,7 @@ public class Runner : MonoBehaviour
             return;
 
         isDead = true;
-        // 부모에서 바로 떼어내야 AnimalSystem이 같은 프레임에 남은 러너 수를 정확히 센다.
-        transform.SetParent(null);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public Animator GetAnimator()

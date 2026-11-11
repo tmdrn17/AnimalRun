@@ -15,13 +15,11 @@ public class Doors : MonoBehaviour
     [Header(" Settings ")]
     [SerializeField] private BonusType rightDoorBonusType;
     [SerializeField] private BonusType leftDoorBonusType;
-    [Tooltip("수식이 길어져도 문 안에 들어가도록 자동 크기 조절의 최소 폰트 크기를 낮춘다.")]
     [SerializeField] private float minFontSize = 4f;
 
     [Header(" Colors ")]
     [SerializeField] private Color bonusColor;
     [SerializeField] private Color penaltyColor;
-    [Tooltip("켜면 계산 결과에 따라 이득/손해 색을 보여준다. 끄면 정답이 드러나지 않도록 두 문 모두 같은 색을 쓴다.")]
     [SerializeField] private bool showResultColor;
     [SerializeField] private Color quizColor = new Color(0.25f, 0.6f, 1f, 0.6f);
 
@@ -32,6 +30,7 @@ public class Doors : MonoBehaviour
     {
         RandomDoor();
         ConfigureDoors();
+        ListManager.Doors.Add(this);
     }
 
     private void RandomDoor()
@@ -103,6 +102,11 @@ public class Doors : MonoBehaviour
 
     public void Disable()
     {
-        collider.enabled = false;
+        ListManager.Doors.Remove(this);
+    }
+    
+    private void OnDestroy()
+    {
+        ListManager.Doors.Remove(this);
     }
 }

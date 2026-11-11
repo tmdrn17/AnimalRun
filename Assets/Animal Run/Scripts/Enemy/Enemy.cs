@@ -1,5 +1,4 @@
 using UnityEngine;
-using Animal_Run.Scripts.Managers;
 
 public class Enemy : MonoBehaviour
 {

@@ -1,5 +1,4 @@
 using Animal_Run.Scripts.Data;
-using Animal_Run.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Pool;
 

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class AnimalSystem : MonoBehaviour
 {
-    [Header(" Elements ")]
-    [SerializeField] private PlayerAnimator playerAnimator;
+    [Header(" Elements ")] [SerializeField]
+    private PlayerAnimator playerAnimator;
+
     [SerializeField] private Transform runnersParent;
 
-    [Header(" Settings ")]
+    [Header(" Settings ")] 
     [SerializeField] private float radius;
     [SerializeField] private float angle;
-    [Tooltip("러너마다 무기가 달려 있으므로 성능을 위해 최대 수를 제한한다.")]
     [SerializeField] private int maxRunners = 150;
 
     private AnimalDef animalDef;
@@ -24,16 +24,23 @@ public class AnimalSystem : MonoBehaviour
 
         PlaceRunners();
 
-        if (runnersParent.childCount <= 0)
+        if (GetRunnersCount() <= 0)
             GameManager.instance.SetGameState(GameManager.GameState.Gameover);
     }
 
     private void PlaceRunners()
     {
+        // 꺼진 러너는 건너뛰고, 켜진 러너에게만 0번부터 자리를 매겨 빈자리가 생기지 않게 한다.
+        int index = 0;
+
         for (int i = 0; i < runnersParent.childCount; i++)
         {
-            Vector3 childLocalPosition = GetRunnerLocalPosition(i);
-            runnersParent.GetChild(i).localPosition = childLocalPosition;
+            Transform runner = runnersParent.GetChild(i);
+            if (!runner.gameObject.activeSelf)
+                continue;
+
+            runner.localPosition = GetRunnerLocalPosition(index);
+            index++;
         }
     }
 
@@ -47,12 +54,20 @@ public class AnimalSystem : MonoBehaviour
 
     public float GetAnimalGroupRadius()
     {
-        return radius * Mathf.Sqrt(runnersParent.childCount);
+        return radius * Mathf.Sqrt(GetRunnersCount());
     }
 
     public int GetRunnersCount()
     {
-        return runnersParent.childCount;
+        int count = 0;
+        
+        for (int i = 0; i < runnersParent.childCount; i++)
+        {
+            if(runnersParent.GetChild(i).gameObject.activeSelf)
+                count++;
+        }
+        
+        return count;
     }
 
     /// <summary>
@@ -84,11 +99,11 @@ public class AnimalSystem : MonoBehaviour
 
     public void ApplyBonus(BonusType bonusType, int bonusAmount)
     {
-        int currentCount = runnersParent.childCount;
+        int currentCount = GetRunnersCount();
         int targetCount = currentCount;
 
         // 문의 수식 결과가 음수일 수도 있다. (예: +(-3) 은 3명 감소, -(-3) 은 3명 증가)
-        switch(bonusType)
+        switch (bonusType)
         {
             case BonusType.Addition:
                 targetCount = currentCount + bonusAmount;
@@ -114,7 +129,7 @@ public class AnimalSystem : MonoBehaviour
     public void ChangeRunnersCount(int targetCount)
     {
         targetCount = Mathf.Clamp(targetCount, 0, maxRunners);
-        int currentCount = runnersParent.childCount;
+        int currentCount = GetRunnersCount();
 
         if (targetCount > currentCount)
             AddRunners(targetCount - currentCount);
@@ -132,21 +147,22 @@ public class AnimalSystem : MonoBehaviour
             Runner runner = SpawnRunner();
             EquipWeapon(runner);
         }
+
         playerAnimator.Run();
     }
 
     private void RemoveRunners(int amount)
     {
-        if (amount > runnersParent.childCount)
-            amount = runnersParent.childCount;
-
-        int runnersAmount = runnersParent.childCount;
-
-        for (int i = runnersAmount - 1; i >= runnersAmount - amount; i--)
+        // 뒤에서부터 켜진 러너만 amount 마리 제거한다. 이미 꺼진 러너는 세지 않는다.
+        for (int i = runnersParent.childCount - 1; i >= 0 && amount > 0; i--)
         {
             Transform runnerToDestroy = runnersParent.GetChild(i);
+            if (!runnerToDestroy.gameObject.activeSelf)
+                continue;
+
             runnerToDestroy.SetParent(null);
             Destroy(runnerToDestroy.gameObject);
+            amount--;
         }
     }
 }

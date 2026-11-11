@@ -10,7 +10,6 @@ public class DataManager : MonoBehaviour
     public static Action onLevelUp;
 
     [Header(" Exp Texts ")]
-    [FormerlySerializedAs("coinsTexts")]
     [SerializeField] private Text[] expTexts;
 
     [Header(" Exp Settings ")]

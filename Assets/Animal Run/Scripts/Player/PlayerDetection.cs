@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using System;
 
 public class PlayerDetection : MonoBehaviour
 {
     [Header(" Elements ")]
-    [FormerlySerializedAs("crowdSystem")]
     [SerializeField] private AnimalSystem animalSystem;
+    [SerializeField] private float detectDistance;
 
     [Header(" Events ")]
     public static Action onDoorsHit;
@@ -14,48 +13,53 @@ public class PlayerDetection : MonoBehaviour
     private void Update()
     {
         if(GameManager.instance.IsGameState(GameManager.GameState.Game))
-            DetectColliders();
+            DetectedObject();
     }
 
-    private void DetectColliders()
+    private void DetectedObject()
     {
-        Collider[] detectedColliders = Physics.OverlapSphere(transform.position, animalSystem.GetAnimalGroupRadius());
-
-        for (int i = 0; i < detectedColliders.Length; i++)
-        {
-            if(detectedColliders[i].TryGetComponent(out Doors doors))
-            {
-                // hit doors
-
-                int bonusAmount = doors.GetBonusAmount(transform.position.x);
-                BonusType bonusType = doors.GetBonusType(transform.position.x);
-
-                doors.Disable();
-
-                onDoorsHit?.Invoke();
-
-                animalSystem.ApplyBonus(bonusType, bonusAmount);
-            }
+        float groupRadius = animalSystem.GetAnimalGroupRadius();
+        Vector3 center = transform.position;
+        float frontZ = center.z + groupRadius;
         
-            else if(detectedColliders[i].CompareTag("Finish"))
-            {
-                Debug.Log("We've hit the finish line");
+        for (int i = ListManager.Doors.Count - 1; i >= 0; i--)
+        {
+            Doors door = ListManager.Doors[i];
 
-                PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+            if (door.transform.position.z > frontZ)
+                continue;
 
-                GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
+            int bonusAmount = door.GetBonusAmount(center.x);
+            BonusType bonusType = door.GetBonusType(center.x);
 
-                return;
-            }
+            door.Disable();
 
-            else if(detectedColliders[i].CompareTag("Coin"))
-            {
-                // 코인은 경험치로 사용된다. 같은 프레임에 두 번 집계되지 않도록 콜라이더를 먼저 끈다.
-                detectedColliders[i].enabled = false;
-                Destroy(detectedColliders[i].gameObject);
+            onDoorsHit?.Invoke();
 
-                DataManager.instance.AddExp(1);
-            }
+            animalSystem.ApplyBonus(bonusType, bonusAmount);
+        }
+        
+        float coinRange = groupRadius + detectDistance;
+        float sqrCoinRange = coinRange * coinRange;
+        
+        for (int i = ListManager.Coins.Count - 1; i >= 0; i--)
+        {
+            Coin coin = ListManager.Coins[i];
+            Vector3 offset = coin.transform.position - center;
+            offset.y = 0;
+
+            if (offset.sqrMagnitude > sqrCoinRange)
+                continue;
+
+            ListManager.Coins.RemoveAt(i);
+            Destroy(coin.gameObject);
+            DataManager.instance.AddExp(1);
+        }
+
+        if (FinishLine.instance.transform.position.z <= frontZ)
+        {
+            PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+            GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
         }
     }
 }
