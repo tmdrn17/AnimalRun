@@ -128,12 +128,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c11880e89750a4147b2b37c9b66d8643, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7176141787875330598}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c11880e89750a4147b2b37c9b66d8643, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1052532952434432226}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c11880e89750a4147b2b37c9b66d8643, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2146913778249843537}
   m_SourcePrefab: {fileID: 100100000, guid: c11880e89750a4147b2b37c9b66d8643, type: 3}
 --- !u!4 &2135419406597486422 stripped
@@ -146,56 +140,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c11880e89750a4147b2b37c9b66d8643, type: 3}
   m_PrefabInstance: {fileID: 7992397693676952418}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &7176141787875330598
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073987929165080115}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
---- !u!136 &1052532952434432226
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073987929165080115}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4099857
-  m_Height: 1.5692452
-  m_Direction: 2
-  m_Center: {x: -0.004021951, y: 0.61331373, z: -0.01652702}
 --- !u!114 &2146913778249843537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,4 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  hitMaterialOrigin: {fileID: 2100000, guid: df7defed48a242839a05b7a99ca41db7, type: 2}
+  hitMaterialInstance: {fileID: 0}
   weaponPosition: {fileID: 4446149094816457614}

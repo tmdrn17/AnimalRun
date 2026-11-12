@@ -101,7 +101,7 @@ public class SelectManager : MonoBehaviour
 
     private void LevelUpCallback()
     {
-        animalSystem.PlayVFX.PlayParticle(ParticleType.LevelUp);
+        animalSystem.PlayVFX.PlayParticle(ParticleType.LevelUp, animalSystem.GetAnimalGroupRadius());
         
         pendingAugments++;
 
@@ -112,7 +112,7 @@ public class SelectManager : MonoBehaviour
     private void ShowAugments()
     {
         Time.timeScale = 0.0f;
-        PlayerController.instance.PauseMoving();
+        PlayerController.instance.StopMoving();
 
         List<AugmentDef> allAugmentDefs = AugmentDef.All.Where(augment => augment.IsAvailableFor(selectedWeapon)).ToList();
 
@@ -144,7 +144,7 @@ public class SelectManager : MonoBehaviour
 
         selectUI.CloseAugmentPanel();
         Time.timeScale = 1.0f;
-        PlayerController.instance.ResumeMoving();
+        PlayerController.instance.StartMoving();
     }
 
     private void ApplyAugment(AugmentDef augment)

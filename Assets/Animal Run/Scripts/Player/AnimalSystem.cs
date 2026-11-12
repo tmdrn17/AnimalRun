@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Animal_Run.Scripts.Data;
 using UnityEngine;
 
@@ -48,7 +49,11 @@ public class AnimalSystem : MonoBehaviour
             if (runner.gameObject.activeSelf == false)
                 continue;
 
-            runner.localPosition = GetRunnerLocalPosition(index);
+            if (Vector3.Distance(runner.localPosition, GetRunnerLocalPosition(index)) > 0.01f)
+                runner.localPosition =
+                    Vector3.Lerp(runner.localPosition, GetRunnerLocalPosition(index), Time.deltaTime * 10);
+            else
+                runner.localPosition = GetRunnerLocalPosition(index);
             index++;
         }
     }
@@ -173,8 +178,10 @@ public class AnimalSystem : MonoBehaviour
         {
             Runner runner = SpawnRunner();
             EquipWeapon(runner);
+            
         }
 
+        playVFX.PlayParticle(ParticleType.GetRunner, GetAnimalGroupRadius());
         playerAnimator.Run();
     }
 
@@ -187,9 +194,11 @@ public class AnimalSystem : MonoBehaviour
             
             if (child.gameObject.activeSelf)
             {
-                child.gameObject.SetActive(false);
+                child.GetComponent<Runner>().Dead();
                 amount--;
             }
         }
     }
+    
+
 }

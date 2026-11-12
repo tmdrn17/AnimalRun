@@ -9,8 +9,9 @@ public class Enemy : MonoBehaviour
 
     [Header(" Settings ")]
     [SerializeField] private float maxHP;
-    [SerializeField] private float searchRadius = 5;
-    [SerializeField] private float moveSpeed = 10;
+    [SerializeField] private float searchRadius = 5f;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float runnerHitDistance = 0.1f;
 
     [Header(" State ")]
     [SerializeField] private float currentHP;
@@ -72,7 +73,7 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         transform.LookAt(targetPosition);
 
-        if (Vector3.Distance(transform.position, targetPosition) <= 0f)
+        if (Vector3.Distance(transform.position, targetPosition) <= runnerHitDistance)
         {
             targetRunner.Dead(this);
             targetRunner = null;

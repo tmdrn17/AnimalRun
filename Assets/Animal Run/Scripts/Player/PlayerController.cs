@@ -65,14 +65,14 @@ public class PlayerController : MonoBehaviour
             StopMoving();
     }
 
-    private void StartMoving()
+    public void StartMoving()
     {
         canMove = true;
 
         playerAnimator.Run();
     }
 
-    private void StopMoving()
+    public void StopMoving()
     {
         canMove = false;
 
@@ -83,12 +83,6 @@ public class PlayerController : MonoBehaviour
     public void PauseMoving()
     {
         canMove = false;
-    }
-
-    public void ResumeMoving()
-    {
-        if (GameManager.instance.IsGameState(GameManager.GameState.Game))
-            canMove = true;
     }
 
     private void MoveForward()

@@ -46,7 +46,7 @@ public class PlayVFX : MonoBehaviour
         }
     }
 
-    public void PlayParticle(ParticleType particleType)
+    public void PlayParticle(ParticleType particleType, float scale = 1f)
     {
         if (particleMap.TryGetValue(particleType, out var particle) == false)
         {
@@ -54,6 +54,8 @@ public class PlayVFX : MonoBehaviour
             return;
         }
 
+        particle.transform.localScale = Vector3.one * scale;
+        
         particle.gameObject.SetActive(true);
 
         // ParticleSystem.Stop(withChildren, stopBehavior)

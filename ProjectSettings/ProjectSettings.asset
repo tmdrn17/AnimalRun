@@ -825,7 +825,8 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: ALLIN13DSHADER_URP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

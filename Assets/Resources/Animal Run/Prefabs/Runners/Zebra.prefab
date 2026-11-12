@@ -135,9 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8105412105046757250}
   - component: {fileID: 6471018373958557722}
-  - component: {fileID: 834407005892766895}
   - component: {fileID: 8036103846841112709}
-  - component: {fileID: 5921834539938934375}
   m_Layer: 0
   m_Name: Zebra
   m_TagString: Untagged
@@ -184,29 +182,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &834407005892766895
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562743560038984388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.34
-  m_Height: 1.16
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.51, z: 0.10256934}
 --- !u!114 &8036103846841112709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,35 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  runnerSelector: {fileID: 0}
+  hitMaterialOrigin: {fileID: 2100000, guid: df7defed48a242839a05b7a99ca41db7, type: 2}
+  hitMaterialInstance: {fileID: 0}
   weaponPosition: {fileID: 1904053488771558012}
---- !u!54 &5921834539938934375
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562743560038984388}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!1 &3911223632569522054
 GameObject:
   m_ObjectHideFlags: 0

@@ -165,9 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7414597389953020873}
   - component: {fileID: 7414597389944020011}
-  - component: {fileID: 5654702463162412503}
   - component: {fileID: -6980795547138776859}
-  - component: {fileID: -3751217989421286749}
   m_Layer: 0
   m_Name: Donkey
   m_TagString: Untagged
@@ -214,29 +212,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &5654702463162412503
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414597389953511401}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.46
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!114 &-6980795547138776859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,35 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  runnerSelector: {fileID: 0}
+  hitMaterialOrigin: {fileID: 2100000, guid: df7defed48a242839a05b7a99ca41db7, type: 2}
+  hitMaterialInstance: {fileID: 0}
   weaponPosition: {fileID: 8360946378383965402}
---- !u!54 &-3751217989421286749
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414597389953511401}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!1 &7414597389953511403
 GameObject:
   m_ObjectHideFlags: 0
