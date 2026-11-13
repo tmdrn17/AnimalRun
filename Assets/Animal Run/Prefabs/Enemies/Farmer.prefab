@@ -1435,13 +1435,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb256863562ee243bbbfaa6b3053a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 146964231116601650}
+  maxHP: 10
   searchRadius: 5
   moveSpeed: 10
-  maxHP: 10
+  runnerHitDistance: 0.1
   currentHP: 0
-  state: 0
-  targetRunner: {fileID: 0}
-  healthBar: {fileID: 146964231116601650}
 --- !u!136 &2973717526364838376
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1622,7 +1621,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6304171125610508954}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0

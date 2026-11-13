@@ -79,12 +79,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.Idle();
     }
 
-    // 증강 선택처럼 잠깐 멈출 때 사용한다. 애니메이션은 Time.timeScale로 멈추므로 바꾸지 않는다.
-    public void PauseMoving()
-    {
-        canMove = false;
-    }
-
     private void MoveForward()
     {
         transform.position += Vector3.forward * (Time.deltaTime * moveSpeed);

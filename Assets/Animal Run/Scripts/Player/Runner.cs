@@ -1,12 +1,18 @@
 using System.Collections;
+using System.Drawing.Printing;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
+    private static readonly int ThresholdId = Shader.PropertyToID("_Threshold");
+    
     [Header("Elements")]
     [SerializeField] private Animator animator;
     [SerializeField] private Material hitMaterialOrigin;
     [SerializeField] private Material hitMaterialInstance;
+    [SerializeField] private GameObject addEffect;
+    [SerializeField] private float dieDuration = 1.0f;
     public Transform weaponPosition;
 
     private bool isDead;
@@ -36,13 +42,30 @@ public class Runner : MonoBehaviour
     private void OnEnable()
     {
         isDead = false;
-        bodyRenderer.sharedMaterial = originMaterial;
+        MaterialChange(false);
         ListManager.Runners.Add(this);
     }
 
     private void OnDisable()
     {
         ListManager.Runners.Remove(this);
+    }
+
+    public void AddEffectPlay()
+    {
+        StartCoroutine(AddEffectRoutine());
+    }
+    
+    private IEnumerator AddEffectRoutine()
+    {
+        float elapsed = addEffect.GetComponent<DescendingLightColumnController>().DescendDuration;
+        Debug.Log(elapsed);
+        
+        addEffect.SetActive(true);
+        
+        yield return new WaitForSeconds(elapsed);
+        
+        addEffect.SetActive(false);
     }
 
     public void Dead(Enemy enemy = null)
@@ -69,13 +92,28 @@ public class Runner : MonoBehaviour
     private IEnumerator DieRoutine()
     {
         isDead = true;
+        
         ListManager.Runners.Remove(this);
-        MaterialChange(true);
-
+        
+        weaponPosition.gameObject.SetActive(false);
+        
         Transform currentParent = transform.parent;
         transform.SetParent(null);
+        
+        MaterialChange(true);
+        
+        float elapsed = 0f;
+        float safeDuration = Mathf.Max(0.01f, dieDuration);
 
-        yield return new WaitForSecondsRealtime(1f);
+        while (elapsed < safeDuration)
+        {
+            float progress = elapsed / safeDuration;
+            bodyRenderer.sharedMaterial.SetFloat(ThresholdId, Mathf.Lerp(0f, 1f, progress));
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(dieDuration);
 
         gameObject.SetActive(false);
         transform.SetParent(currentParent);

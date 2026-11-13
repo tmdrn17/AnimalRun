@@ -178,7 +178,7 @@ public class AnimalSystem : MonoBehaviour
         {
             Runner runner = SpawnRunner();
             EquipWeapon(runner);
-            
+            runner.AddEffectPlay();
         }
 
         playVFX.PlayParticle(ParticleType.GetRunner, GetAnimalGroupRadius());
