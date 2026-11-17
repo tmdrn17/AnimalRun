@@ -119,8 +119,12 @@ public class AnimalSystem : MonoBehaviour
 
     public void EquipWeapon(Runner runner)
     {
-        if (runner.weaponPosition.GetComponentInChildren<Weapon>(true) != null)
+        if (runner.weaponPosition.gameObject.activeSelf == false)
+        {
+            Debug.Log("weapon return");
+            runner.weaponPosition.gameObject.SetActive(true);
             return;
+        }
         
         Weapon weapon = Instantiate(weaponDef.Prefab, runner.weaponPosition);
         weapon.transform.localPosition = Vector3.zero;

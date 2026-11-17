@@ -1375,8 +1375,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6352248638839714073}
   - component: {fileID: 6011294877949602720}
-  - component: {fileID: 7897556002016687949}
   - component: {fileID: 2973717526364838376}
+  - component: {fileID: 7897556002016687949}
+  - component: {fileID: 5180623947120384917}
   m_Layer: 6
   m_Name: Farmer
   m_TagString: Enemy
@@ -1423,24 +1424,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7897556002016687949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011294877949602723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb256863562ee243bbbfaa6b3053a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 146964231116601650}
-  maxHP: 10
-  searchRadius: 5
-  moveSpeed: 10
-  runnerHitDistance: 0.1
-  currentHP: 0
 --- !u!136 &2973717526364838376
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1464,6 +1447,45 @@ CapsuleCollider:
   m_Height: 225.87984
   m_Direction: 1
   m_Center: {x: 2.4866433, y: 108.6, z: 0}
+--- !u!114 &7897556002016687949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011294877949602723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb256863562ee243bbbfaa6b3053a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 146964231116601650}
+  maxHP: 100
+  searchRadius: 5
+  moveSpeed: 10
+  runnerHitDistance: 0.1
+  currentHP: 0
+--- !u!114 &5180623947120384917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011294877949602723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27eed7a1dfd7384c9fc10fc8070c40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFlash: 1
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.12
+  usePunchScale: 1
+  punchAmount: 0.15
+  punchDuration: 0.15
+  hitEffectPrefab: {fileID: 0}
+  hitEffectOffset: {x: 0, y: 1, z: 0}
+  hitEffectScale: 1
 --- !u!1 &6204558446308768133
 GameObject:
   m_ObjectHideFlags: 0
