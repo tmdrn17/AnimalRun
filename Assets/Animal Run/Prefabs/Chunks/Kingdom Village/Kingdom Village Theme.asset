@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Kingdom Village Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uC655\uAD6D \uB9C8\uC744"
+  firstChunk: {fileID: 1711777481210278030, guid: 806c52a05e2303949aec6b4ba780bba7, type: 3}
+  randomChunks:
+  - {fileID: 8684913974337156796, guid: 3992ad676fac0e94cb9be539e9632441, type: 3}
+  - {fileID: 1932428200614551070, guid: c1e0570361775c6429d439cfab31d5bc, type: 3}
+  - {fileID: 1091692962600375504, guid: 8ac77dfbffbe4544aa91fea2e8749f10, type: 3}
+  finishChunk: {fileID: 1839383408101551487, guid: a06bafb0c5676374c8eac59917a85f5f, type: 3}
+  enemyPrefabs:
+  - {fileID: 3285729817644461804, guid: 143282cc82e7e3847ae27c52e38af9a7, type: 3}
+  - {fileID: 1522133160438136231, guid: ea3f08b9d3916954d99b2965101e53c6, type: 3}
+  - {fileID: 4811271561572063800, guid: 6df3c918a061d054d9376e31248ab14c, type: 3}
+  - {fileID: 194173528535889721, guid: e1c96d84361fc014a9d480bba66b311c, type: 3}
+  - {fileID: 218178693924438089, guid: 84ac79b07b08da14fb3d3a258085d9c3, type: 3}
+  lighting:
+    enabled: 0
+    sunColor: {r: 1, g: 1, b: 1, a: 1}
+    sunIntensity: 1
+    ambientColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    useFog: 0
+    fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    fogStart: 30
+    fogEnd: 90
+    useSolidBackground: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}

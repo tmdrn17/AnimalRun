@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Misty Swamp Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uC548\uAC1C \uB2AA"
+  firstChunk: {fileID: 5311797530631486293, guid: cd3aa6df001f4ad4089f6127569d939f, type: 3}
+  randomChunks:
+  - {fileID: 6091266950885852575, guid: fb1bc67dfaee5194ebcb5c67ac4df272, type: 3}
+  - {fileID: 4550609784281326696, guid: 6e5dccc1662050f42add0efdcd8bee65, type: 3}
+  - {fileID: 367786261635402042, guid: 0db963aab38d322448128c8fc42f35d7, type: 3}
+  finishChunk: {fileID: 7223980753988352861, guid: 1081dbef2ddd17a4388707a3e829aff2, type: 3}
+  enemyPrefabs:
+  - {fileID: 4747718895104285382, guid: b3815dad5d7c59d4b9059db1c33a9768, type: 3}
+  - {fileID: 6934063781470993655, guid: 0fe7cbdf9f1fb6e42bec09cad373b64b, type: 3}
+  - {fileID: 19427673610528884, guid: ed5d35509f2cb334bb3249f901bd3645, type: 3}
+  - {fileID: 3796595706369347966, guid: 84123b073399ead43ab08b3b6cf1df72, type: 3}
+  lighting:
+    enabled: 1
+    sunColor: {r: 0.72, g: 0.82, b: 0.62, a: 1}
+    sunIntensity: 0.9
+    ambientColor: {r: 0.46, g: 0.52, b: 0.42, a: 1}
+    useFog: 1
+    fogColor: {r: 0.33, g: 0.39, b: 0.31, a: 1}
+    fogStart: 28
+    fogEnd: 100
+    useSolidBackground: 1
+    backgroundColor: {r: 0.33, g: 0.39, b: 0.31, a: 1}

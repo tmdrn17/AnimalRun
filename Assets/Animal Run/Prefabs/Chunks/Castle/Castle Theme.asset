@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Castle Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uC655\uC131 \uC131\uACFD"
+  firstChunk: {fileID: 7089747189452117607, guid: a8e9270a3894ce64481b71e7d27352d1, type: 3}
+  randomChunks:
+  - {fileID: 3220426594783905726, guid: 365ee9e97daed714481169d8c5fb4d7c, type: 3}
+  - {fileID: 487016040906876533, guid: ad425016aab7c784f94f3be87640948a, type: 3}
+  - {fileID: 2732328171857901153, guid: 727f84500000f654baca734cb0d38eef, type: 3}
+  finishChunk: {fileID: 1779802413141482697, guid: 5162388396f13ed458efac3288461d7d, type: 3}
+  enemyPrefabs:
+  - {fileID: 8880793265662863256, guid: ec6e3ee3003246249b49e1b350840d22, type: 3}
+  - {fileID: 5588510425818342969, guid: a09f45b56b9e55446bb0947f56087f26, type: 3}
+  - {fileID: 2676840996255105948, guid: 919aa5173fe44ce4799a8b5c655093f9, type: 3}
+  lighting:
+    enabled: 0
+    sunColor: {r: 1, g: 1, b: 1, a: 1}
+    sunIntensity: 1
+    ambientColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    useFog: 0
+    fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    fogStart: 30
+    fogEnd: 90
+    useSolidBackground: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}

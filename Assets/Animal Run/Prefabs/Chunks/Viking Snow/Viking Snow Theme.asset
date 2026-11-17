@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Viking Snow Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uB208 \uB36E\uC778 \uBC14\uC774\uD0B9 \uB9C8\uC744"
+  firstChunk: {fileID: 7263150896372844569, guid: 958a0f4ae22b01a419657c7c6a0c130e, type: 3}
+  randomChunks:
+  - {fileID: 3029509698100932036, guid: 517d48fd48101a44d99d0ff2688f4929, type: 3}
+  - {fileID: 7203792173401693236, guid: 1e598e35412f75042b0d929e5e35a239, type: 3}
+  - {fileID: 2835202368462769166, guid: bc2e10f1bc3f13548857a4be31ac900c, type: 3}
+  finishChunk: {fileID: 6412700299927134313, guid: 64492380bc1447742be91db868f08585, type: 3}
+  enemyPrefabs:
+  - {fileID: 6344196300086934818, guid: c5f04a8b643070c479a4e164312bd7e2, type: 3}
+  - {fileID: 8989132809888072606, guid: 3bdf30e985de9a94daa2a24bdd206318, type: 3}
+  - {fileID: 7012370377029386246, guid: 6828fd55b9bf5f747ad5cf8b78f256eb, type: 3}
+  - {fileID: 4768542549110458914, guid: 0a4715baac283c44d88bf79fb89f1da9, type: 3}
+  lighting:
+    enabled: 0
+    sunColor: {r: 1, g: 1, b: 1, a: 1}
+    sunIntensity: 1
+    ambientColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    useFog: 0
+    fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    fogStart: 30
+    fogEnd: 90
+    useSolidBackground: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}

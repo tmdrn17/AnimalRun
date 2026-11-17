@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Enchanted Grove Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uC694\uC815\uC758 \uC232"
+  firstChunk: {fileID: 2046855727791418427, guid: 1da7c1af944a0884294deb6f5cd154cf, type: 3}
+  randomChunks:
+  - {fileID: 7803727962641040021, guid: 41779ecfe9a0e1a46ba724b111325d15, type: 3}
+  - {fileID: 8808134286016828522, guid: ce66faee94fbec94eb2fa57924ba125b, type: 3}
+  - {fileID: 3590127511701978090, guid: c454ee6153e6bb04988f74b5a3e61774, type: 3}
+  finishChunk: {fileID: 8605818497077415774, guid: 5cf0d020eca1b2b4a86d1554f94c5221, type: 3}
+  enemyPrefabs:
+  - {fileID: 2756259566861521324, guid: 0e2a53fb80dacd541ba487a1baaeeed6, type: 3}
+  - {fileID: 1852057597895246661, guid: 01deb42fc26f98a47aec56364397d723, type: 3}
+  - {fileID: 6147183650800812794, guid: 4e795e4b4adbfc64e80491de9d654b9b, type: 3}
+  lighting:
+    enabled: 1
+    sunColor: {r: 0.62, g: 0.82, b: 0.95, a: 1}
+    sunIntensity: 0.95
+    ambientColor: {r: 0.44, g: 0.54, b: 0.6, a: 1}
+    useFog: 1
+    fogColor: {r: 0.13, g: 0.24, b: 0.28, a: 1}
+    fogStart: 42
+    fogEnd: 115
+    useSolidBackground: 1
+    backgroundColor: {r: 0.13, g: 0.24, b: 0.28, a: 1}

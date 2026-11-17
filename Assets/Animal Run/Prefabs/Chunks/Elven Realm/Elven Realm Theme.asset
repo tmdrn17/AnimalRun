@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51692c9b679f9ec4298f3ed7e918a74f, type: 3}
+  m_Name: Elven Realm Theme
+  m_EditorClassIdentifier: 
+  displayName: "\uC5D8\uD504 \uC655\uAD6D"
+  firstChunk: {fileID: 7262550490948172420, guid: 2161665d304009849b854af0c1b51147, type: 3}
+  randomChunks:
+  - {fileID: 2276943047385307474, guid: dc3a7ba540c95da479f02def8e08d96d, type: 3}
+  - {fileID: 6734337719800093308, guid: 4af059c549d5fa347bca4c2123b2e1a6, type: 3}
+  - {fileID: 4647758840740653016, guid: 18afc0735e63d58479a1aa481f55c7b9, type: 3}
+  finishChunk: {fileID: 3350826733108562745, guid: 5f9ac61a388874c4a991bbe4194e9b90, type: 3}
+  enemyPrefabs:
+  - {fileID: 1763029164569795213, guid: cd26f707812849e45b4a0b698650b69e, type: 3}
+  - {fileID: 8066673353646863541, guid: b9a38ae88e924814298b23239d1dc433, type: 3}
+  - {fileID: 3460893313821081925, guid: e2d244f2defde5d4d8479723c67c0ed7, type: 3}
+  - {fileID: 6500827076156844592, guid: 95b6ff7a28d179548858c8a59b94b272, type: 3}
+  lighting:
+    enabled: 1
+    sunColor: {r: 1, g: 0.9, b: 0.72, a: 1}
+    sunIntensity: 1.15
+    ambientColor: {r: 0.62, g: 0.6, b: 0.55, a: 1}
+    useFog: 1
+    fogColor: {r: 0.95, g: 0.86, b: 0.72, a: 1}
+    fogStart: 60
+    fogEnd: 160
+    useSolidBackground: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}
