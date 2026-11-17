@@ -826,6 +826,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+    Android: ALLIN13DSHADER_URP
     Standalone: ALLIN13DSHADER_URP
   additionalCompilerArguments: {}
   platformArchitecture: {}
