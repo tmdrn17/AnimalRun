@@ -374,13 +374,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dd19ac28f79e24da9f7820a8e179ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstChunk: {fileID: 4298949002023365770, guid: ae4eb9bd6b3f6d44bbaf68463bcd5f21, type: 3}
-  randomChunks:
-  - {fileID: 8052102723347043478, guid: 2046685ef145ef746b075d6bed675e6c, type: 3}
-  - {fileID: 8052102723347043478, guid: ff22aae2df4dfc04daa2663548be2e35, type: 3}
-  - {fileID: 9206812218148164743, guid: 7269a8e16e8bfc04199920e148ce08ca, type: 3}
-  finishChunk: {fileID: 8052102723347043478, guid: 0b16377c60f1dd849ad505d9f0191ae5, type: 3}
   enemyGroupPrefab: {fileID: 2373400085028042201, guid: d66fa8c8aa1d1014a8bc47c80c2d3859, type: 3}
+  themes:
+  - {fileID: 11400000, guid: 5e5f854581927764c918f8e7d1193bfe, type: 2}
+  - {fileID: 11400000, guid: 17e3bebf36ea1764a9bee4a882cb62ef, type: 2}
+  - {fileID: 11400000, guid: c0393488ff052e84d9d1b3167533df01, type: 2}
+  - {fileID: 11400000, guid: a60c307281792de4e8adbfbe8ab1d1f6, type: 2}
+  - {fileID: 11400000, guid: d5c568e5b6e548642a1e80113b9bee6e, type: 2}
+  - {fileID: 11400000, guid: c82e75c7854ff2449addf21a8c774d16, type: 2}
+  - {fileID: 11400000, guid: d73f7272b98b83245bc9b0fdc4c7afd7, type: 2}
+  - {fileID: 11400000, guid: 0d429309aba5d4f4f8516762ac0c2c83, type: 2}
   firstEnemyChunkIndex: 2
   enemySpawnHalfWidth: 3
   enemyDistanceFromDoors: 3
