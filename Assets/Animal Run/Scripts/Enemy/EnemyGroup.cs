@@ -15,6 +15,24 @@ public class EnemyGroup : MonoBehaviour
     [SerializeField] private float angle;
 
     private int amount;
+    private Enemy[] enemyPrefabOverrides;
+
+    /// <summary>
+    /// 테마 적 목록으로 바꿔 낀다. Start(적 생성) 전에 불러야 한다. 비어 있으면 기본 enemyPrefab을 쓴다.
+    /// </summary>
+    public void SetEnemyPrefabs(Enemy[] prefabs)
+    {
+        enemyPrefabOverrides = prefabs;
+    }
+
+    private Enemy PickEnemyPrefab()
+    {
+        if (enemyPrefabOverrides == null || enemyPrefabOverrides.Length == 0)
+            return enemyPrefab;
+
+        Enemy picked = enemyPrefabOverrides[Random.Range(0, enemyPrefabOverrides.Length)];
+        return picked != null ? picked : enemyPrefab;
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -33,7 +51,7 @@ public class EnemyGroup : MonoBehaviour
 
             Vector3 enemyWorldPosition = enemiesParent.TransformPoint(enemyLocalPosition);
 
-            Instantiate(enemyPrefab, enemyWorldPosition, enemiesParent.rotation, enemiesParent);
+            Instantiate(PickEnemyPrefab(), enemyWorldPosition, enemiesParent.rotation, enemiesParent);
         }
     }
 

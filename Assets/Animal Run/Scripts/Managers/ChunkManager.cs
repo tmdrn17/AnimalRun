@@ -6,10 +6,10 @@ public class ChunkManager : MonoBehaviour
     public static ChunkManager instance;
 
     [Header(" Elements ")]
-    [SerializeField] private Chunk firstChunk;
-    [SerializeField] private Chunk[] randomChunks;
-    [SerializeField] private Chunk finishChunk;
     [SerializeField] private EnemyGroup enemyGroupPrefab;
+    
+    [Header(" Themes ")]
+    [SerializeField] private MapTheme[] themes;
 
     [Header(" Enemy Settings ")]
     [Tooltip("이 순서(0부터 시작)의 청크부터 적이 등장한다. 2 = 첫 번째, 두 번째 청크 제외")]
@@ -22,7 +22,12 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private float minPlayTime = 60f;
     [SerializeField] private float maxPlayTime = 90f;
 
+    private Chunk firstChunk;
+    private Chunk[] randomChunks;
+    private Chunk finishChunk;
+    
     private GameObject finishLine;
+    private Enemy[] themeEnemyPrefabs;
 
     private void Awake()
     {
@@ -34,14 +39,50 @@ public class ChunkManager : MonoBehaviour
 
     private void Start()
     {
+        ApplyTheme();
         GenerateLevel();
 
         finishLine = GameObject.FindWithTag("Finish");
     }
 
+    // 테마가 있으면 이번 레벨의 테마 청크로 기본 청크를 바꿔 끼운다.
+    private void ApplyTheme()
+    {
+        MapTheme theme = GetCurrentTheme();
+
+        themeEnemyPrefabs = theme.EnemyPrefabs;
+        firstChunk = theme.FirstChunk;
+        randomChunks = theme.RandomChunks;
+        finishChunk = theme.FinishChunk;
+
+        theme.ApplyLighting(FindSun(), Camera.main);
+    }
+
+    private Light FindSun()
+    {
+        if (RenderSettings.sun != null)
+            return RenderSettings.sun;
+
+        foreach (Light sceneLight in FindObjectsByType<Light>(FindObjectsSortMode.None))
+        {
+            if (sceneLight.type == LightType.Directional)
+                return sceneLight;
+        }
+
+        return null;
+    }
+
+    public MapTheme GetCurrentTheme()
+    {
+        int index = Random.Range(0, themes.Length);
+        MapTheme theme = themes[index];
+
+        return theme;
+    }
+
     private void GenerateLevel()
     {
-        float startZ = PlayerController.instance != null ? PlayerController.instance.transform.position.z : 0f;
+        float startZ = PlayerController.instance.transform.position.z;
         float finishLineOffset = GetFinishLineOffset();
 
         // 플레이어 시작 지점 ~ 결승선 사이 거리 범위 (moveSpeed 5 기준 1분 ~ 1분 30초)
@@ -161,7 +202,10 @@ public class ChunkManager : MonoBehaviour
         Vector3 spawnPosition = new Vector3(Random.Range(-enemySpawnHalfWidth, enemySpawnHalfWidth), 0, spawnZ);
 
         // 적이 플레이어 쪽(-z)을 바라보도록 회전시킨다.
-        Instantiate(enemyGroupPrefab, spawnPosition, Quaternion.Euler(0, 180, 0), chunk.transform);
+        EnemyGroup enemyGroup = Instantiate(enemyGroupPrefab, spawnPosition, Quaternion.Euler(0, 180, 0), chunk.transform);
+
+        // 적 생성(Start)은 다음 프레임이라 지금 테마 적으로 바꿔 끼우면 반영된다.
+        enemyGroup.SetEnemyPrefabs(themeEnemyPrefabs);
     }
 
     public float GetFinishZ()
