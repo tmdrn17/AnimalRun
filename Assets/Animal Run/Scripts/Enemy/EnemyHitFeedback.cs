@@ -10,6 +10,11 @@ public class EnemyHitFeedback : MonoBehaviour
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
     private static readonly int ColorId = Shader.PropertyToID("_Color");
 
+    // Synty 셰이더(Generic_Basic 등)의 발광 속성
+    private static readonly int EnableEmissionId = Shader.PropertyToID("_Enable_Emission");
+    private static readonly int EmissionColorId = Shader.PropertyToID("_Emission_Color");
+    private static readonly int EmissionMapId = Shader.PropertyToID("_Emission_Map");
+
     [Header(" Flash ")]
     [SerializeField] private bool useFlash = true;
     [SerializeField] private Color flashColor = Color.white;
@@ -28,6 +33,7 @@ public class EnemyHitFeedback : MonoBehaviour
     private Renderer[] renderers;
     private Color[] originColors;
     private int[] colorIds;
+    private bool[] useEmission;
     private MaterialPropertyBlock propertyBlock;
     private Vector3 originScale;
 
@@ -42,6 +48,7 @@ public class EnemyHitFeedback : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
         originColors = new Color[renderers.Length];
         colorIds = new int[renderers.Length];
+        useEmission = new bool[renderers.Length];
 
         // 렌더러마다 원래 색을 기억해 둔다. URP Lit은 _BaseColor, 구형 셰이더는 _Color를 쓴다.
         for (int i = 0; i < renderers.Length; i++)
@@ -52,6 +59,14 @@ public class EnemyHitFeedback : MonoBehaviour
 
             if (material == null)
                 continue;
+
+            // Synty 셰이더는 _BaseColor 가 텍스처에 곱해지는데 보통 흰색이라, 색을 바꿔도 번쩍임이 보이지 않는다.
+            // 그래서 발광(Emission)을 켜서 번쩍이게 한다.
+            if (material.HasProperty(EnableEmissionId) && material.HasProperty(EmissionColorId) && material.HasProperty(EmissionMapId))
+            {
+                useEmission[i] = true;
+                continue;
+            }
 
             if (material.HasProperty(BaseColorId))
                 colorIds[i] = BaseColorId;
@@ -127,7 +142,21 @@ public class EnemyHitFeedback : MonoBehaviour
     {
         for (int i = 0; i < renderers.Length; i++)
         {
-            if (colorIds[i] == -1 || renderers[i] == null)
+            if (renderers[i] == null)
+                continue;
+
+            if (useEmission[i])
+            {
+                // 원래 발광 텍스처는 빛나는 부분만 밝아서, 번쩍이는 동안은 흰 텍스처로 바꿔 몸 전체가 빛나게 한다.
+                renderers[i].GetPropertyBlock(propertyBlock);
+                propertyBlock.SetFloat(EnableEmissionId, 1f);
+                propertyBlock.SetTexture(EmissionMapId, Texture2D.whiteTexture);
+                propertyBlock.SetColor(EmissionColorId, flashColor * amount);
+                renderers[i].SetPropertyBlock(propertyBlock);
+                continue;
+            }
+
+            if (colorIds[i] == -1)
                 continue;
 
             renderers[i].GetPropertyBlock(propertyBlock);
