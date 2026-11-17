@@ -181,7 +181,13 @@ Shader "ShaderGallery/DissolveEdgeGlow"
 
                 float3 biasedPositionWS = ApplyShadowBias(o.positionWS, o.normalWS, lightDirection);
                 float4 positionCS = TransformWorldToHClip(biasedPositionWS);
-                o.positionCS = ApplyShadowClamping(positionCS);
+                // URP 15에는 ApplyShadowClamping()이 없으므로 근평면 클램핑을 직접 처리
+                #if UNITY_REVERSED_Z
+                    positionCS.z = min(positionCS.z, UNITY_NEAR_CLIP_VALUE);
+                #else
+                    positionCS.z = max(positionCS.z, UNITY_NEAR_CLIP_VALUE);
+                #endif
+                o.positionCS = positionCS;
                 return o;
             }
 
