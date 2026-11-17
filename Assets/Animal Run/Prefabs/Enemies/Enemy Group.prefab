@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8b742cabc97f44c84da336ffb15978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7897556002016687949, guid: ca8fdf7f268e9a94680b3db8d42f3417, type: 3}
+  enemyPrefab: {fileID: 3285729817644461804, guid: 143282cc82e7e3847ae27c52e38af9a7, type: 3}
   enemiesParent: {fileID: 2021710163}
   amount: 10
   amountRange: 5
