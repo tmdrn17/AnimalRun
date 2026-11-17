@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float currentHP;
 
     private Animator animator;
+    private EnemyHitFeedback hitFeedback;
     private Runner targetRunner;
     private bool isDead;
 
@@ -26,6 +27,10 @@ public class Enemy : MonoBehaviour
     {
         currentHP = maxHP;
         animator = GetComponent<Animator>();
+
+        // 프리팹에 피격 피드백이 없으면 기본값으로 붙인다. 세부 값은 프리팹에 직접 붙여 조절한다.
+        if (TryGetComponent(out hitFeedback) == false)
+            hitFeedback = gameObject.AddComponent<EnemyHitFeedback>();
 
         // 러너(Rigidbody)와 총알이 OnTriggerEnter로 적을 감지할 수 있도록 트리거로 사용한다.
         foreach (Collider enemyCollider in GetComponentsInChildren<Collider>())
@@ -108,7 +113,12 @@ public class Enemy : MonoBehaviour
         healthBar.UpdateHealthBar(maxHP, currentHP);
 
         if (currentHP <= 0)
+        {
             Die();
+            return;
+        }
+
+        hitFeedback.Play();
     }
 
     /// <summary>
