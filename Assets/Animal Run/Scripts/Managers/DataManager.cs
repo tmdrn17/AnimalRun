@@ -18,6 +18,7 @@ public class DataManager : MonoBehaviour
 
     public WeaponTable weaponTable;
     public AnimalTable animalTable;
+    public AugmentTable augmentTable;
 
     // 경험치는 한 판 동안만 유지된다. (코인 1개 = 경험치 1)
     private int exp;
@@ -35,9 +36,11 @@ public class DataManager : MonoBehaviour
 
         animalTable = new AnimalTable();
         weaponTable = new WeaponTable();
+        augmentTable = new AugmentTable();
 
         animalTable.Load();
         weaponTable.Load();
+        augmentTable.Load();
     }
 
     private void Start()

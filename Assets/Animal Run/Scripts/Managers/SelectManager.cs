@@ -114,7 +114,7 @@ public class SelectManager : MonoBehaviour
         Time.timeScale = 0.0f;
         PlayerController.instance.StopMoving();
 
-        List<AugmentDef> allAugmentDefs = AugmentDef.All.Where(augment => augment.IsAvailableFor(selectedWeapon)).ToList();
+        List<AugmentDef> allAugmentDefs = dataManager.augmentTable.All.Where(augment => augment.IsAvailableFor(selectedWeapon)).ToList();
 
         for (int i = 0; i < selectUI.AugmentButtonCount; i++)
         {
