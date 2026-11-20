@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Animal_Run.Scripts.Data;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,9 +18,13 @@ public class SelectManager : MonoBehaviour
 
     private DataManager dataManager;
 
-    private AnimalDef[] animalDefs;
-    private WeaponDef[] weaponDefs;
-    private AugmentDef[] augmentDefs;
+    private readonly List<AnimalDef> animalDefs = new();
+    private readonly List<WeaponDef> weaponDefs = new();
+    private readonly List<AugmentDef> augmentDefs = new();
+
+    // 고른 무기에서 등장할 수 있는 증강 후보. 무기는 한 판에 한 번만 고르므로 그때 한 번 채워 두고 레벨업마다 재사용한다.
+    private readonly List<AugmentDef> availableAugments = new();
+    private Func<int, AugmentDef> getAvailableAugment;
 
     private AnimalDef selectedAnimal;
     private WeaponDef selectedWeapon;
@@ -33,6 +37,9 @@ public class SelectManager : MonoBehaviour
     {
         AugmentStats.Reset();
 
+        // 레벨업마다 람다를 새로 만들지 않도록 한 번만 만들어 둔다.
+        getAvailableAugment = index => availableAugments[index];
+
         if (animalSystem == null)
             animalSystem = runnerPosition.GetComponentInParent<AnimalSystem>();
     }
@@ -42,29 +49,36 @@ public class SelectManager : MonoBehaviour
         dataManager = DataManager.instance;
         DataManager.onLevelUp += LevelUpCallback;
 
-        animalDefs = new AnimalDef[selectUI.AnimalButtonCount];
-        weaponDefs = new WeaponDef[selectUI.WeaponButtonCount];
-        augmentDefs = new AugmentDef[selectUI.AugmentButtonCount];
-
-        List<AnimalDef> allAnimalDefs = dataManager.animalTable.All.ToList();
-        List<WeaponDef> allWeaponDefs = dataManager.weaponTable.All.ToList();
-
-        for (int i = 0; i < selectUI.AnimalButtonCount; i++)
+        PickRandomUnique(animalDefs, selectUI.AnimalButtonCount, dataManager.animalTable.Count, dataManager.animalTable.Get);
+        
+        for (int i = 0; i < animalDefs.Count; i++)
         {
-            int randNum = Random.Range(0, allAnimalDefs.Count);
-            animalDefs[i] = allAnimalDefs[randNum];
-            selectUI.SetAnimalButton(i, animalDefs[i].Sprite, animalDefs[i].Name, animalDefs[i].Name);
-            allAnimalDefs.RemoveAt(randNum);
+            AnimalDef animal = animalDefs[i];
+            selectUI.SetAnimalButton(i, animal.Sprite, animal.Name, animal.Name);
         }
 
-        for (int i = 0; i < selectUI.WeaponButtonCount; i++)
+        PickRandomUnique(weaponDefs, selectUI.WeaponButtonCount, dataManager.weaponTable.Count, dataManager.weaponTable.Get);
+        
+        for (int i = 0; i < weaponDefs.Count; i++)
         {
-            int randNum = Random.Range(0, allWeaponDefs.Count);
-            weaponDefs[i] = allWeaponDefs[randNum];
+            WeaponDef weapon = weaponDefs[i];
             string weaponDescription =
-                $"공격력: {weaponDefs[i].BulletDamage}\n공격 속도: {weaponDefs[i].AttackInterval}\n사거리: {weaponDefs[i].BulletRange}";
-            selectUI.SetWeaponButton(i, weaponDefs[i].Sprite, weaponDefs[i].Name, weaponDescription);
-            allWeaponDefs.RemoveAt(randNum);
+                $"공격력: {weapon.BulletDamage}\n공격 속도: {weapon.AttackInterval}\n사거리: {weapon.BulletRange}";
+            selectUI.SetWeaponButton(i, weapon.Sprite, weapon.Name, weaponDescription);
+        }
+    }
+    
+    private static void PickRandomUnique<T>(List<T> result, int pickCount, int poolCount, Func<int, T> getById)
+    {
+        result.Clear();
+        pickCount = Mathf.Min(pickCount, poolCount);   // 후보가 버튼보다 적어도 무한 루프에 빠지지 않게
+
+        while (true)
+        {
+            if(result.Count >= pickCount) break;
+            T candidate = getById(Random.Range(0, poolCount));
+            if (result.Contains(candidate)) continue;
+            result.Add(candidate);
         }
     }
 
@@ -91,6 +105,14 @@ public class SelectManager : MonoBehaviour
     public void SelectWeapon(int index)
     {
         selectedWeapon = weaponDefs[index];
+
+        availableAugments.Clear();
+        foreach (AugmentDef augment in dataManager.augmentTable.All)
+        {
+            if (augment.IsAvailableFor(selectedWeapon))
+                availableAugments.Add(augment);
+        }
+
         animalSystem.SetRunnerData(selectedAnimal, selectedWeapon, poolContainer);
         animalSystem.EquipWeapon(firstRunner);
 
@@ -114,15 +136,13 @@ public class SelectManager : MonoBehaviour
         Time.timeScale = 0.0f;
         PlayerController.instance.StopMoving();
 
-        List<AugmentDef> allAugmentDefs = dataManager.augmentTable.All.Where(augment => augment.IsAvailableFor(selectedWeapon)).ToList();
+        PickRandomUnique(augmentDefs, selectUI.AugmentButtonCount, availableAugments.Count, getAvailableAugment);
 
-        for (int i = 0; i < selectUI.AugmentButtonCount; i++)
+        for (int i = 0; i < augmentDefs.Count; i++)
         {
-            int randNum = Random.Range(0, allAugmentDefs.Count);
-            augmentDefs[i] = allAugmentDefs[randNum];
-            Sprite sprite = augmentDefs[i].IsRunnerAugment ? selectedAnimal.Sprite : selectedWeapon.Sprite;
-            selectUI.SetAugmentButton(i, sprite, augmentDefs[i].Name, augmentDefs[i].Description);
-            allAugmentDefs.RemoveAt(randNum);
+            AugmentDef augment = augmentDefs[i];
+            Sprite sprite = augment.IsRunnerAugment ? selectedAnimal.Sprite : selectedWeapon.Sprite;
+            selectUI.SetAugmentButton(i, sprite, augment.Name, augment.Description);
         }
 
         selectUI.ShowAugmentPanel();
