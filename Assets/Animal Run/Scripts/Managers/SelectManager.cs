@@ -52,20 +52,12 @@ public class SelectManager : MonoBehaviour
         PickRandomUnique(animalDefs, selectUI.AnimalButtonCount, dataManager.animalTable.Count, dataManager.animalTable.Get);
         
         for (int i = 0; i < animalDefs.Count; i++)
-        {
-            AnimalDef animal = animalDefs[i];
-            selectUI.SetAnimalButton(i, animal.Sprite, animal.Name, animal.Name);
-        }
+            selectUI.SetAnimalButton(i, animalDefs[i]);
 
         PickRandomUnique(weaponDefs, selectUI.WeaponButtonCount, dataManager.weaponTable.Count, dataManager.weaponTable.Get);
-        
+
         for (int i = 0; i < weaponDefs.Count; i++)
-        {
-            WeaponDef weapon = weaponDefs[i];
-            string weaponDescription =
-                $"공격력: {weapon.BulletDamage}\n공격 속도: {weapon.AttackInterval}\n사거리: {weapon.BulletRange}";
-            selectUI.SetWeaponButton(i, weapon.Sprite, weapon.Name, weaponDescription);
-        }
+            selectUI.SetWeaponButton(i, weaponDefs[i]);
     }
     
     private static void PickRandomUnique<T>(List<T> result, int pickCount, int poolCount, Func<int, T> getById)
@@ -140,9 +132,7 @@ public class SelectManager : MonoBehaviour
 
         for (int i = 0; i < augmentDefs.Count; i++)
         {
-            AugmentDef augment = augmentDefs[i];
-            Sprite sprite = augment.IsRunnerAugment ? selectedAnimal.Sprite : selectedWeapon.Sprite;
-            selectUI.SetAugmentButton(i, sprite, augment.Name, augment.Description);
+            selectUI.SetAugmentButton(i, augmentDefs[i], augmentDefs[i].Sprite);
         }
 
         selectUI.ShowAugmentPanel();
