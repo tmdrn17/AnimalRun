@@ -28,10 +28,14 @@ namespace Animal_Run.Scripts.Data
             for (int i = 0; i < rows.Count; i++)
             {
                 AugmentDTO dto = rows[i];
+                Sprite sprite = Resources.Load<Sprite>(dto.SpriteKey);
+                if(sprite == null)
+                    Debug.LogWarning($"[Table] {dto.SpriteKey} 경로에 파일 없음");
 
                 AugmentDef def = new AugmentDef();
                 def.ID = dto.ID;
                 def.Name = dto.Name;
+                def.Sprite = sprite;
                 def.Description = dto.Description;
                 def.Type = dto.Type;
                 def.Value = dto.Value;

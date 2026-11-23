@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Animal_Run.Scripts.Data
 {
     public enum AugmentType
@@ -15,6 +17,7 @@ namespace Animal_Run.Scripts.Data
     {
         public int ID;
         public string Name;
+        public string SpriteKey;
         public string Description;
         public AugmentType Type;
         public float Value;
@@ -25,11 +28,12 @@ namespace Animal_Run.Scripts.Data
     {
         public int ID;
         public string Name;
+        public Sprite Sprite;
         public string Description;
         public AugmentType Type;
         public float Value;
 
-        // 무기 계열 증강은 무기 이미지를, 러너 계열 증강은 동물 이미지를 버튼에 사용한다.
+        // 러너 수를 바꾸는 증강인지. 카드의 배지 · 태그 색(무리 강화 / 무기 강화)을 나누는 데 쓴다.
         public bool IsRunnerAugment => Type == AugmentType.AddRunners || Type == AugmentType.MultiplyRunners;
 
         /// <summary>
