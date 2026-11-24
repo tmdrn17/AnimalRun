@@ -32,10 +32,7 @@ public class Enemy : MonoBehaviour
         if (TryGetComponent(out hitFeedback) == false)
             hitFeedback = gameObject.AddComponent<EnemyHitFeedback>();
 
-        // 러너 · 총알과의 판정은 콜라이더가 아니라 거리로 한다(Enemy.Update · Bullet).
-        // 프리팹에 남은 콜라이더가 물리적으로 부딪히지 않도록 트리거로만 둔다.
-        foreach (Collider enemyCollider in GetComponentsInChildren<Collider>())
-            enemyCollider.isTrigger = true;
+        // 러너 · 총알과의 판정은 콜라이더 없이 거리로 한다(Enemy.Update · Bullet).
     }
 
     private void Start()
